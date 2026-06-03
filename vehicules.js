@@ -1,78 +1,249 @@
 /* ════════════════════════════════════════════════════════════════════════════
    JUJUCAR — CATALOGUE DES VÉHICULES
-   Auto-généré le 03/06/2026 17:37:56
-   ════════════════════════════════════════════════════════════════════════════
-
-   Ce fichier est généré automatiquement par le script publish_jujucar.py
-   Ne le modifie que si tu sais ce que tu fais !
-
-   ═════════════════════════════════════════════════════════════════════════ */
+   Auto-généré 03/06/2026 18:44:08
+   24 véhicules publiés
+   ════════════════════════════════════════════════════════════════════════════ */
 
 const vehicules = [
   {
-    marque: "Volkswagen",
-    modele: "Golf",
-    prix_concession: 39500,
-    prix_jujucar: 33900,
-    description: "Compacte essence automatique, faible consommation, finition Life.",
-    motorisation: "essence",
-    images: [],
-    economie: 5600,
-    budget_max: 33900
-  },
-  {
     marque: "Audi",
     modele: "A3 Sportback",
-    prix_concession: 43000,
-    prix_jujucar: 37500,
-    description: "Sportive compacte, finition Sportback, consommation économe.",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Audi A3 Sportback — À affiner",
     motorisation: "essence",
     images: [],
-    economie: 5500,
-    budget_max: 37500
-  },
-  {
-    marque: "Toyota",
-    modele: "Yaris",
-    prix_concession: 38000,
-    prix_jujucar: 32000,
-    description: "Hybride moderne, très économe en carburant, idéale ville.",
-    motorisation: "hybride",
-    images: [],
-    economie: 6000,
-    budget_max: 32000
-  },
-  {
-    marque: "BMW",
-    modele: "320i",
-    prix_concession: 52000,
-    prix_jujucar: 44500,
-    description: "Berline premium, performance et confort, finition luxe.",
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Chevrolet",
+    modele: "Camaro",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Chevrolet Camaro — À affiner",
     motorisation: "essence",
     images: [],
-    economie: 7500,
-    budget_max: 44500
-  },
-  {
-    marque: "Mercedes",
-    modele: "C-Class",
-    prix_concession: 58000,
-    prix_jujucar: 49000,
-    description: "Berline diesel premium, confort maximal, sièges cuir.",
-    motorisation: "diesel",
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Citroën",
+    modele: "C3 Aircross",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Citroën C3 Aircross — À affiner",
+    motorisation: "essence",
     images: [],
-    economie: 9000,
-    budget_max: 49000
-  },
-  {
-    marque: "Tesla",
-    modele: "Model 3",
-    prix_concession: 65000,
-    prix_jujucar: 55000,
-    description: "Électrique haute performance, autonomie 500km, autopilot.",
-    motorisation: "electrique",
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Audi",
+    modele: "RS3 Sportback",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Audi RS3 Sportback — À affiner",
+    motorisation: "essence",
     images: [],
-    economie: 10000,
-    budget_max: 55000
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Alpine",
+    modele: "A110 S",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Alpine A110 S — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Ford",
+    modele: "Transit Custom",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Ford Transit Custom — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Fiat",
+    modele: "Panda",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Fiat Panda — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Ford",
+    modele: "Capri Electric",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Ford Capri Electric — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Hyundai",
+    modele: "Ioniq 9",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Hyundai Ioniq 9 — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Ford",
+    modele: "Explorer Électrique",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Ford Explorer Électrique — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Hyundai",
+    modele: "Ioniq 6",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Hyundai Ioniq 6 — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Hyundai",
+    modele: "Tucson PHEV",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Hyundai Tucson PHEV — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Jeep",
+    modele: "Grand Cherokee PHEV",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Jeep Grand Cherokee PHEV — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "BYD",
+    modele: "Seal U DM-i",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "BYD Seal U DM-i — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "BYD",
+    modele: "Seal U Confort",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "BYD Seal U Confort — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Audi",
+    modele: "RS3",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Audi RS3 — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Cupra",
+    modele: "Leon ST",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Cupra Leon ST — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Peugeot",
+    modele: "208 MHEV",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Peugeot 208 MHEV — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Peugeot",
+    modele: "5008",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Peugeot 5008 — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Nissan",
+    modele: "Qashqai",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Nissan Qashqai — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Peugeot",
+    modele: "3008",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Peugeot 3008 — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Honda",
+    modele: "CR-V PHEV",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Honda CR-V PHEV — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Cupra",
+    modele: "",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Cupra  — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
+  },  {
+    marque: "Mini",
+    modele: "Aceman SE",
+    prix_concession: 45000,
+    prix_jujucar: 38000,
+    description: "Mini Aceman SE — À affiner",
+    motorisation: "essence",
+    images: [],
+    economie: 7000,
+    budget_max: 38000
   }
 ];
