@@ -1,0 +1,147 @@
+/* ============================================================
+   vehicules.css — JujuCar Catalogue
+   À inclure dans catalogue.html
+   ============================================================ */
+
+#vehicles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+/* --- Carte --- */
+.vehicule-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.vehicule-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+}
+
+/* --- Image --- */
+.vehicule-img-wrap {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+.vehicule-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Badge statut --- */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.badge-vente   { background: #22c55e; color: #fff; }
+.badge-reserve { background: #f59e0b; color: #fff; }
+.badge-vendu   { background: #6b7280; color: #fff; }
+
+/* --- Corps carte --- */
+.vehicule-body {
+  padding: 1rem 1.25rem 1.25rem;
+}
+.vehicule-titre {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.15rem;
+  color: #111;
+}
+.vehicule-annee {
+  font-weight: 400;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* --- Specs --- */
+.vehicule-specs {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  font-size: 0.85rem;
+  color: #444;
+}
+.vehicule-specs li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.spec-icon { font-size: 0.9rem; }
+
+/* --- Options / descriptif --- */
+.vehicule-options {
+  font-size: 0.82rem;
+  color: #6b7280;
+  margin: 0.4rem 0 0.7rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- Prix --- */
+.vehicule-prix {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.prix-barre {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+.prix-juju {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #111;
+}
+.prix-four {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  width: 100%;
+  margin-top: 0.1rem;
+}
+
+/* --- Économie --- */
+.vehicule-economie {
+  margin-top: 0.5rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.82rem;
+  color: #15803d;
+}
+.vehicule-economie strong {
+  font-weight: 700;
+}
+
+/* --- État vide --- */
+.catalogue-vide {
+  grid-column: 1/-1;
+  text-align: center;
+  color: #9ca3af;
+  padding: 3rem 0;
+  font-size: 1rem;
+}
