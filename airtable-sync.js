@@ -3,7 +3,7 @@
    ============================================================ */
 
 const _t1 = 'patEd9f0ln5qyWZgf';
-const _t2 = 'c2287ac1d05cffd5f2c513d298067b37688b28c4d0784050e2cc852eb77d8aef';
+const _t2 = '78b848375e2cbfd71992abe85709effe98a3d3f790c424d833513d96b6c9602b';
 const AIRTABLE_TOKEN   = _t1 + '.' + _t2;
 const BASE_ID          = 'app0yutHVptAUcSrk';
 const TABLE_ID         = 'tblWbsM0Xf60k3DGi';
