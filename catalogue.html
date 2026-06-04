@@ -814,9 +814,9 @@ function buildCompactCard(v) {
     '<div class="v-marque"></div>' +
     '<h3 class="v-modele"></h3>' +
     '<div class="v-sep"></div>' +
-    '<div class="v-price-old">CHF ' + formatPrix(v.prix_concession || 0) + '</div>' +
+    (v.prix_concession ? '<div class="v-price-old">CHF ' + formatPrix(v.prix_concession) + '</div>' : '') +
     '<div class="v-price-new">CHF ' + formatPrix(v.prix_jujucar || 0) + '</div>' +
-    '<span class="v-eco">CHF ' + formatPrix(vEconomie(v)) + ' économisés</span>';
+    (v.prix_concession && vEconomie(v) > 0 ? '<span class="v-eco">CHF ' + formatPrix(vEconomie(v)) + ' économisés</span>' : '');
   body.querySelector('.v-marque').textContent = v.marque || '';
   body.querySelector('.v-modele').textContent = v.modele || '';
   card.appendChild(body);
@@ -890,9 +890,9 @@ function openModal(v) {
     '<h3 class="v-modal-modele"></h3>' +
     '<p class="v-modal-desc"></p>' +
     '<div class="v-sep"></div>' +
-    '<div class="v-price-old">CHF ' + formatPrix(v.prix_concession || 0) + '</div>' +
+    (v.prix_concession ? '<div class="v-price-old">CHF ' + formatPrix(v.prix_concession) + '</div>' : '') +
     '<div class="v-price-new">CHF ' + formatPrix(v.prix_jujucar || 0) + '</div>' +
-    '<span class="v-eco">CHF ' + formatPrix(vEconomie(v)) + ' économisés</span>' +
+    (v.prix_concession && vEconomie(v) > 0 ? '<span class="v-eco">CHF ' + formatPrix(vEconomie(v)) + ' économisés</span>' : '') +
     '<a class="v-contact" href="index.html?page=achat">Nous contacter pour ce modèle</a>';
   body.querySelector('.v-marque').textContent = v.marque || '';
   body.querySelector('.v-modal-modele').textContent = v.modele || '';
