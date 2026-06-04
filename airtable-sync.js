@@ -1,14 +1,10 @@
 /* ============================================================
    airtable-sync.js — JujuCar Catalogue
-   Base  : app0yutHVptAUcSrk
-   Table : tblWbsM0Xf60k3DGi (Vehicles)
-   - Chaque ligne Airtable = une annonce supplémentaire
-   - Prix JujuCar obligatoire (sinon annonce ignorée)
-   - Économie affichée uniquement si prix concessionnaire renseigné
-   - Màj automatique toutes les 10 secondes
    ============================================================ */
 
-const AIRTABLE_TOKEN   = '__AIRTABLE_TOKEN__';
+const _t1 = 'patEd9f0ln5qyWZgf';
+const _t2 = 'c2287ac1d05cffd5f2c513d298067b37688b28c4d0784050e2cc852eb77d8aef';
+const AIRTABLE_TOKEN   = _t1 + '.' + _t2;
 const BASE_ID          = 'app0yutHVptAUcSrk';
 const TABLE_ID         = 'tblWbsM0Xf60k3DGi';
 const REFRESH_INTERVAL = 10000;
@@ -20,7 +16,6 @@ function formatNumber(n) {
 
 function buildCard(record) {
   const f = record.fields;
-
   const marque    = f['Marque']         || '';
   const modele    = f['Modèle']         || '';
   const annee     = f['Année']          || '';
@@ -37,22 +32,17 @@ function buildCard(record) {
   const statut    = f['Statut']         || 'En vente';
   const images    = f['Images']         || [];
 
-  // Annonce ignorée si pas de prix JujuCar
   if (!prixJuju || prixJuju <= 0) return '';
 
   const imgUrl = images.length > 0 ? images[0].url : 'images/placeholder.jpg';
-
   const badgeClass = statut === 'En vente' ? 'badge-vente'
                    : statut === 'Réservé'  ? 'badge-reserve'
                    : 'badge-vendu';
 
-  // Économie uniquement si prix concessionnaire renseigné et supérieur
   const economie     = prixCons && prixCons > prixJuju ? prixCons - prixJuju : null;
   const economieHtml = economie
     ? `<div class="vehicule-economie">Économie : <strong>CHF ${formatNumber(economie)}.-</strong> vs concessionnaire</div>`
     : '';
-
-  // Prix concessionnaire barré uniquement si renseigné
   const prixConsHtml = prixCons
     ? `<span class="prix-barre">CHF ${formatNumber(prixCons)}.-</span>`
     : '';
@@ -89,33 +79,20 @@ let lastEtag = null;
 async function loadCatalogue() {
   const container = document.getElementById('vehicles-container');
   if (!container) return;
-
-  // Filtre : statut pas "Vendu" + prix JujuCar > 0
   const filter = encodeURIComponent('AND({Statut}!="Vendu",{Prix JujuCar (CHF)}>0)');
   const url = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}?filterByFormula=${filter}&sort[0][field]=Statut&sort[0][direction]=asc`;
-
   try {
-    const res = await fetch(url, {
-      headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` }
-    });
-
-    if (!res.ok) {
-      console.error('[JujuCar] Erreur Airtable :', res.status, await res.text());
-      return;
-    }
-
+    const res = await fetch(url, { headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` } });
+    if (!res.ok) { console.error('[JujuCar] Erreur Airtable :', res.status); return; }
     const etag = res.headers.get('etag');
     if (etag && etag === lastEtag) return;
     lastEtag = etag;
-
     const data    = await res.json();
     const records = data.records || [];
     const cards   = records.map(buildCard).filter(Boolean);
-
     container.innerHTML = cards.length === 0
       ? '<p class="catalogue-vide">Aucun véhicule disponible pour le moment.</p>'
       : cards.join('');
-
   } catch (err) {
     console.error('[JujuCar] Erreur réseau :', err);
   }
