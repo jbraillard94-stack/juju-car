@@ -2,8 +2,10 @@
    airtable-sync.js — JujuCar Catalogue
    Base  : app0yutHVptAUcSrk
    Table : tblWbsM0Xf60k3DGi (Vehicles)
-   Màj automatique toutes les 10 secondes
-   ⚠️  Token injecté au build via GitHub Actions
+   - Chaque ligne Airtable = une annonce supplémentaire
+   - Prix JujuCar obligatoire (sinon annonce ignorée)
+   - Économie affichée uniquement si prix concessionnaire renseigné
+   - Màj automatique toutes les 10 secondes
    ============================================================ */
 
 const AIRTABLE_TOKEN   = '__AIRTABLE_TOKEN__';
@@ -28,12 +30,15 @@ function buildCard(record) {
   const boite     = f['Transmission']   || '';
   const puissance = f['Puissance (CV)'] ? f['Puissance (CV)'] + ' CV' : '—';
   const portes    = f['Portes']         ? f['Portes'] + ' portes' : '';
-  const prixFour  = f['Prix fournisseur (CHF)'];
   const prixJuju  = f['Prix JujuCar (CHF)'];
-  const prixCons  = f['Prix concessionnaire (CHF)'];
-  const options   = f['Options / Descriptif'] || '';
+  const prixCons  = f['Prix concessionnaire (CHF)'] || null;
+  const prixFour  = f['Prix fournisseur (CHF)']     || null;
+  const options   = f['Options / Descriptif']       || '';
   const statut    = f['Statut']         || 'En vente';
   const images    = f['Images']         || [];
+
+  // Annonce ignorée si pas de prix JujuCar
+  if (!prixJuju || prixJuju <= 0) return '';
 
   const imgUrl = images.length > 0 ? images[0].url : 'images/placeholder.jpg';
 
@@ -41,11 +46,13 @@ function buildCard(record) {
                    : statut === 'Réservé'  ? 'badge-reserve'
                    : 'badge-vendu';
 
-  const economie     = (prixCons && prixJuju) ? prixCons - prixJuju : null;
-  const economieHtml = economie && economie > 0
+  // Économie uniquement si prix concessionnaire renseigné et supérieur
+  const economie     = prixCons && prixCons > prixJuju ? prixCons - prixJuju : null;
+  const economieHtml = economie
     ? `<div class="vehicule-economie">Économie : <strong>CHF ${formatNumber(economie)}.-</strong> vs concessionnaire</div>`
     : '';
 
+  // Prix concessionnaire barré uniquement si renseigné
   const prixConsHtml = prixCons
     ? `<span class="prix-barre">CHF ${formatNumber(prixCons)}.-</span>`
     : '';
@@ -70,7 +77,6 @@ function buildCard(record) {
         <div class="vehicule-prix">
           ${prixConsHtml}
           <span class="prix-juju">CHF ${formatNumber(prixJuju)}.-</span>
-          <span class="prix-four">Prix fournisseur : CHF ${formatNumber(prixFour)}.-</span>
         </div>
         ${economieHtml}
       </div>
@@ -84,7 +90,9 @@ async function loadCatalogue() {
   const container = document.getElementById('vehicles-container');
   if (!container) return;
 
-  const url = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}?filterByFormula={Statut}!="Vendu"&sort[0][field]=Statut&sort[0][direction]=asc`;
+  // Filtre : statut pas "Vendu" + prix JujuCar > 0
+  const filter = encodeURIComponent('AND({Statut}!="Vendu",{Prix JujuCar (CHF)}>0)');
+  const url = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}?filterByFormula=${filter}&sort[0][field]=Statut&sort[0][direction]=asc`;
 
   try {
     const res = await fetch(url, {
@@ -100,12 +108,13 @@ async function loadCatalogue() {
     if (etag && etag === lastEtag) return;
     lastEtag = etag;
 
-    const data  = await res.json();
+    const data    = await res.json();
     const records = data.records || [];
+    const cards   = records.map(buildCard).filter(Boolean);
 
-    container.innerHTML = records.length === 0
+    container.innerHTML = cards.length === 0
       ? '<p class="catalogue-vide">Aucun véhicule disponible pour le moment.</p>'
-      : records.map(buildCard).join('');
+      : cards.join('');
 
   } catch (err) {
     console.error('[JujuCar] Erreur réseau :', err);
