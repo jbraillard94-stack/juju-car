@@ -180,7 +180,11 @@
       border-top: 0.5px solid rgba(255,255,255,0.10);
       border-bottom: 0.5px solid rgba(255,255,255,0.10);
       padding: 1rem 2rem;
+      transition: transform 0.35s ease;
     }
+    /* Au scroll vers le bas, la barre de filtres se rétracte vers le haut ;
+       elle réapparaît au scroll vers le haut (voir script). */
+    .filter-bar.filter-hidden { transform: translateY(-140%); }
     .filter-inner {
       max-width: 1240px; margin: 0 auto;
       display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap;
@@ -204,6 +208,7 @@
     }
     .filter-select:focus { border-color: #39ff6a; }
     .filter-select option { background: #141414; color: #ffffff; }
+    .filter-select:disabled { opacity: 0.5; cursor: not-allowed; }
 
     .budget-controls { display: flex; align-items: center; gap: 12px; }
 
@@ -243,6 +248,8 @@
     }
     .cat-disclaimer > i { font-size: 22px; color: #39ff6a; flex-shrink: 0; margin-top: 2px; }
     .cat-disclaimer strong { color: #ffffff; font-weight: 600; }
+    /* Titre « Bon à savoir » — gris foncé lisible (demande client) */
+    .cat-disclaimer-title { color: #4a4a4a; }
     .cat-disclaimer ul { margin: 8px 0 0; padding-left: 18px; }
     .cat-disclaimer li { font-size: 13px; color: rgba(255,255,255,0.62); line-height: 1.6; margin-bottom: 5px; }
     .cat-disclaimer li:last-child { margin-bottom: 0; }
@@ -261,18 +268,40 @@
 
     /* ===== CARTE VÉHICULE ===== */
     .v-card {
+      position: relative; z-index: 1;
       background: rgba(255,255,255,0.07);
       border: 0.5px solid rgba(255,255,255,0.12);
       border-radius: 16px;
       overflow: hidden;
       display: flex; flex-direction: column;
-      transition: transform 0.25s ease, border-color 0.2s, opacity 0.25s ease;
+      transition: transform 0.3s ease, border-color 0.2s, opacity 0.25s ease, box-shadow 0.3s ease;
+      will-change: transform;
     }
-    .v-card:hover { transform: scale(1.05); border-color: #39ff6a; }
+    /* Au survol : la carte grandit fortement (~1.8x), passe au premier plan
+       et chevauche les cartes voisines. La photo devient l'élément dominant. */
+    .v-card:hover {
+      transform: scale(1.8);
+      border-color: #39ff6a;
+      z-index: 60;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.65);
+    }
+    .v-card:hover .v-img-wrap { height: 230px; }
 
     .v-card.card-hidden {
       opacity: 0; transform: scale(0.96); pointer-events: none;
     }
+
+    /* Bandeau coloris (bas de l'image) — visible uniquement au survol / dans la fiche */
+    .v-color-banner {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
+      background: rgba(0,0,0,0.70);
+      color: #ffffff; font-size: 10px; font-weight: 500;
+      text-align: center; padding: 5px 8px; line-height: 1.3;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .v-card:hover .v-color-banner { opacity: 1; }
+    .v-modal-imgwrap .v-color-banner { opacity: 1; font-size: 12px; padding: 7px 10px; }
 
     /* Image / carrousel */
     .v-img-wrap {
@@ -388,7 +417,7 @@
     .v-modal-overlay.open { display: flex; }
     .v-modal {
       position: relative; margin: auto;
-      width: 100%; max-width: 560px;
+      width: 100%; max-width: 880px;
       background: rgba(15,15,15,0.98);
       border: 0.5px solid rgba(255,255,255,0.14);
       border-radius: 18px; overflow: hidden;
@@ -404,11 +433,47 @@
     }
     .v-modal-close:hover { background: #39ff6a; color: #0d0d0d; }
     .v-modal-imgwrap {
-      position: relative; height: 300px; overflow: hidden; background: #141414;
+      position: relative; height: 420px; overflow: hidden; background: #141414;
     }
-    .v-modal-body { padding: 1.5rem; }
-    .v-modal-modele { font-size: 22px; font-weight: 700; margin: 2px 0 10px; color: #ffffff; }
-    .v-modal-desc { font-size: 14px; color: rgba(255,255,255,0.70); line-height: 1.6; margin-bottom: 14px; }
+    .v-modal-body { padding: 1.75rem; }
+    .v-modal-modele { font-size: 24px; font-weight: 700; margin: 2px 0 10px; color: #ffffff; }
+    .v-modal-desc { font-size: 14px; color: rgba(255,255,255,0.70); line-height: 1.6; margin-bottom: 14px; white-space: pre-line; }
+
+    /* Données techniques de la fiche — 3 colonnes (2 sur mobile) */
+    .v-spec-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin: 6px 0 18px;
+    }
+    .v-spec {
+      background: rgba(255,255,255,0.05);
+      border: 0.5px solid rgba(255,255,255,0.10);
+      border-radius: 10px; padding: 11px 13px;
+    }
+    .v-spec-label {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+      color: rgba(255,255,255,0.45); margin-bottom: 5px;
+    }
+    .v-spec-val { font-size: 16px; font-weight: 600; color: #ffffff; }
+    .v-spec-val.accent { color: #39ff6a; }
+    .v-spec-old { font-size: 14px; color: rgba(255,255,255,0.42); text-decoration: line-through; }
+
+    /* Liste des coloris disponibles */
+    .v-colors-wrap { margin: 6px 0 18px; }
+    .v-colors-title {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+      color: #39ff6a; font-weight: 600; margin-bottom: 9px;
+    }
+    .v-colors { display: flex; flex-wrap: wrap; gap: 8px; }
+    .v-color-chip {
+      background: rgba(255,255,255,0.08);
+      border: 0.5px solid rgba(255,255,255,0.18);
+      border-radius: 20px; padding: 5px 13px;
+      font-size: 12px; color: rgba(255,255,255,0.85);
+    }
+    .v-modal-options-title {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+      color: #39ff6a; font-weight: 600; margin: 4px 0 8px;
+    }
 
     /* ===== AUCUN RÉSULTAT ===== */
     .no-results {
@@ -513,11 +578,19 @@
       .social-btn { width: 44px; height: 44px; font-size: 20px; }
     }
 
+    @media (max-width: 768px) {
+      .v-spec-grid { grid-template-columns: repeat(2, 1fr); }
+      .v-modal-imgwrap { height: 300px; }
+      /* Au survol mobile, scale plus modéré pour rester dans l'écran */
+      .v-card:hover { transform: scale(1.25); }
+    }
+
     @media (max-width: 480px) {
       .cat-hero h1 { font-size: 30px; }
       .v-grid { grid-template-columns: 1fr; }
-      .v-modal-imgwrap { height: 220px; }
+      .v-modal-imgwrap { height: 240px; }
       .v-modal-overlay { padding: 20px 12px; }
+      .v-spec-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -575,7 +648,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <label class="filter-label" for="marque-filter">Marque</label>
       <select class="filter-select" id="marque-filter">
         <option value="Toutes les marques">Toutes les marques</option>
-        <!-- Les marques sont ajoutées automatiquement depuis vehicules.js (voir script) -->
+        <!-- Les marques sont ajoutées automatiquement depuis Airtable (voir script) -->
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label" for="modele-filter">Modèle</label>
+      <select class="filter-select" id="modele-filter" disabled>
+        <option value="tous">Tous les modèles</option>
+        <!-- Les modèles dépendent de la marque sélectionnée (voir script) -->
       </select>
     </div>
 
@@ -591,10 +672,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="filter-group">
-      <label class="filter-label" id="budget-label" for="budget-slider">Budget max : CHF 80'000</label>
+      <label class="filter-label" id="budget-label" for="budget-slider">Budget max : CHF 150'000</label>
       <div class="budget-controls">
-        <input type="range" class="budget-slider" id="budget-slider" min="5000" max="80000" step="1000" value="80000">
-        <input type="text" class="budget-input" id="budget-input" value="80000" inputmode="numeric">
+        <input type="range" class="budget-slider" id="budget-slider" min="5000" max="150000" step="1000" value="150000">
+        <input type="text" class="budget-input" id="budget-input" value="150000" inputmode="numeric">
       </div>
     </div>
 
@@ -608,7 +689,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="cat-disclaimer">
       <i class="ti ti-info-circle"></i>
       <div>
-        <strong>Bon à savoir avant de parcourir le catalogue :</strong>
+        <strong class="cat-disclaimer-title">Bon à savoir avant de parcourir le catalogue :</strong>
         <ul>
           <li>Les photos sont des <strong>visuels d'illustration</strong>, pas le véhicule réel — le modèle existe souvent dans d'autres coloris.</li>
           <li>Cette page ne présente que <strong>quelques exemples</strong> de ce que nous pouvons vous proposer : la liste n'est <strong>pas exhaustive</strong>.</li>
@@ -657,8 +738,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="footer-links">
       <a class="footer-link-btn" href="index.html?page=cgv">Mentions légales &amp; CGV</a>
-      <a class="footer-link-btn" href="index.html?page=cgv">Confidentialité</a>
-      <a class="footer-link-btn" href="index.html?page=cgv">CGV</a>
+      <a class="footer-link-btn" href="index.html?page=confidentialite">Confidentialité</a>
     </div>
   </div>
 
@@ -675,78 +755,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </div><!-- end .content-wrap -->
 
-<!-- Données véhicules depuis Airtable -->
-<script>
-var vehicules = [];
-var _at1 = 'patEd9f0ln5qyWZgf';
-var _at2 = '78b848375e2cbfd71992abe85709effe98a3d3f790c424d833513d96b6c9602b';
-var _ATTOKEN = _at1 + '.' + _at2;
-var _ATBASE  = 'app0yutHVptAUcSrk';
-var _ATTABLE = 'tblWbsM0Xf60k3DGi';
-
-function _moto(carburant) {
-  if (!carburant) return 'essence';
-  var c = carburant.toLowerCase();
-  if (c.includes('lectrique')) return 'electrique';
-  if (c.includes('hybride') || c.includes('phev') || c.includes('mhev')) return 'hybride';
-  if (c.includes('diesel')) return 'diesel';
-  return 'essence';
-}
-
-function _km(val) {
-  if (!val) return 0;
-  if (typeof val === 'number') return val;
-  return parseInt(String(val).replace(/[^0-9]/g,''), 10) || 0;
-}
-
-(async function loadAirtable() {
-  try {
-    var filter = encodeURIComponent('AND({Statut}!="Vendu",{Prix JujuCar (CHF)}>0)');
-    var url = 'https://api.airtable.com/v0/' + _ATBASE + '/' + _ATTABLE +
-              '?filterByFormula=' + filter + '&sort[0][field]=Statut&sort[0][direction]=asc';
-    var all = [];
-    while (url) {
-      var res = await fetch(url, { headers: { Authorization: 'Bearer ' + _ATTOKEN } });
-      if (!res.ok) { console.error('Airtable', res.status); break; }
-      var data = await res.json();
-      all = all.concat(data.records || []);
-      url = data.offset
-        ? 'https://api.airtable.com/v0/' + _ATBASE + '/' + _ATTABLE +
-          '?filterByFormula=' + filter + '&sort[0][field]=Statut&sort[0][direction]=asc&offset=' + data.offset
-        : null;
-    }
-    vehicules = all.map(function(r) {
-      var f = r.fields;
-      var imgs = (f['Images'] || []).map(function(i) { return i.url; });
-      var prixJuju = f['Prix JujuCar (CHF)'] || 0;
-      var prixCons = f['Prix concessionnaire (CHF)'] || 0;
-      return {
-        marque:          f['Marque'] || '',
-        modele:          (f['Modèle'] || ''),
-        annee:           f['Année'] || '',
-        prix_jujucar:    prixJuju,
-        prix_concession: prixCons,
-        economie:        prixCons > prixJuju ? prixCons - prixJuju : 0,
-        budget_max:      prixJuju,
-        motorisation:    _moto(f['Carburant']),
-        description:     f['Options / Descriptif'] || '',
-        images:          imgs.length ? imgs : [],
-        km:              _km(f['Kilométrage']),
-        puissance:       f['Puissance (CV)'] ? f['Puissance (CV)'] + ' CV' : ''
-      };
-    });
-    if (typeof populateMarques === 'function') populateMarques();
-    if (typeof applyFilters   === 'function') applyFilters();
-  } catch(e) {
-    console.error('Erreur chargement catalogue:', e);
-  }
-})();
-</script>
-
-<!-- Logique du catalogue -->
+<!-- Logique du catalogue (données dynamiques depuis Airtable) -->
 <script>
 /* Image de remplacement si une photo n'existe pas encore */
 var PLACEHOLDER = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='220'%3E%3Crect width='400' height='220' fill='%23141414'/%3E%3Ctext x='200' y='118' fill='%2339ff6a' font-family='Arial,sans-serif' font-size='24' font-weight='bold' text-anchor='middle'%3EJujuCar%3C/text%3E%3C/svg%3E";
+
+/* =========================================================================
+   CONNEXION AIRTABLE
+   -------------------------------------------------------------------------
+   Toutes les données du catalogue (véhicules, marques, modèles, images…)
+   proviennent dynamiquement de la base Airtable via l'API REST.
+
+   ⚠️  À FAIRE UNE SEULE FOIS : collez ci-dessous votre Personal Access Token
+       Airtable (permission « data.records:read » uniquement — lecture seule).
+       Le token est visible côté front-end, c'est acceptable car il ne permet
+       que de LIRE les véhicules, jamais de les modifier.
+   ========================================================================= */
+var AT = {
+  token:    'patEd9f0ln5qyWZgf' + '.' + '1e98be57be5f16bd29411a400ab6ad8ae21134e759481f2501e80379957554f9',  // token Airtable (lecture seule)
+  baseId:   'app0yutHVptAUcSrk',
+  tableId:  'tblWbsM0Xf60k3DGi'
+};
+AT.endpoint = 'https://api.airtable.com/v0/' + AT.baseId + '/' + AT.tableId;
+
+/* IDs des champs Airtable (stables même si le nom de la colonne change). */
+var F = {
+  vehicule:   'fldYCksSLfAc7emN3',
+  marque:     'fldR4zmFYBT5lJ04C',
+  modele:     'fldEdKVz32lFA2S0M',
+  annee:      'fldMjqBxAVVDCjKip',
+  couleurs:   'fld2WB7O0LmxE6F0r',
+  km:         'fldIMBoo5IKmWxx44',
+  carburant:  'fld68VEp9xLOB8k9e',
+  puissance:  'fldRl5D7qHVHQ69Bj',
+  prixJuju:   'fldXNkWX9arFUvbKP',
+  prixConc:   'fldlJPaAbKqxZirPa',
+  options:    'fldXqlOCEKTHk8sEB',
+  images:     'fldTiXhEsPu2zYNBU',
+  statut:     'fld2eis6HJXczXatB'
+};
+
+/* Liste des véhicules — remplie dynamiquement depuis Airtable (voir fetchVehicles). */
+var vehicules = [];
+
+/* Bandeau affiché sur l'image au survol / dans la fiche. */
+var COLOR_BANNER_TEXT = "Existe en plusieurs coloris — photo sur demande";
 
 /* Format prix suisse : 15500 -> 15'500 */
 function formatPrix(n) {
@@ -762,7 +815,7 @@ var MOTO_LABELS = {
   hybride: "Hybride"
 };
 
-/* ----- Helpers données (champs calculés si non fournis dans vehicules.js) ----- */
+/* ----- Helpers données ----- */
 function vEconomie(v) {
   return (typeof v.economie === 'number') ? v.economie : ((v.prix_concession || 0) - (v.prix_jujucar || 0));
 }
@@ -770,10 +823,129 @@ function vBudget(v) {
   return (typeof v.budget_max === 'number') ? v.budget_max : (v.prix_jujucar || 0);
 }
 function vMotoLabel(v) {
-  return MOTO_LABELS[v.motorisation] || v.motorisation || '';
+  return MOTO_LABELS[v.motorisation] || v.carburant || '';
 }
+/* Images d'affichage (cartes + carrousel) : miniatures « large » Airtable,
+   déjà optimisées (et servies en WebP au navigateur quand il le supporte). */
 function vImages(v) {
-  return (v.images && v.images.length) ? v.images.slice(0, 5) : [PLACEHOLDER];
+  return (v.imagesDisplay && v.imagesDisplay.length) ? v.imagesDisplay : [PLACEHOLDER];
+}
+/* Images pleine résolution pour le carrousel de la fiche (toutes les photos). */
+function vFullImages(v) {
+  return (v.imagesFull && v.imagesFull.length) ? v.imagesFull : [PLACEHOLDER];
+}
+
+/* Normalise le carburant Airtable vers les 4 valeurs du filtre motorisation. */
+function normMoto(s) {
+  var t = String(s || '').toLowerCase();
+  if (t.indexOf('lectr') >= 0) return 'electrique';
+  if (t.indexOf('diesel') >= 0) return 'diesel';
+  if (t.indexOf('hybri') >= 0)  return 'hybride';
+  if (t.indexOf('essence') >= 0 || t.indexOf('benzin') >= 0 || t.indexOf('petrol') >= 0) return 'essence';
+  return t;
+}
+
+/* Optimisation des images : on convertit chaque photo en version LÉGÈRE,
+   redimensionnée (largeur `w`) ET ré-encodée en WebP, via le proxy d'images
+   gratuit wsrv.nl. Résultat : un poids de chargement très réduit, même pour
+   des photos lourdes uploadées dans Airtable.
+   Sécurité : si le proxy est indisponible, le `onerror` des <img> retombe
+   automatiquement sur l'URL d'origine Airtable (voir buildCompactCard /
+   buildCarousel), puis sur le visuel de remplacement. */
+function lightImg(url, w) {
+  if (!url) return PLACEHOLDER;
+  if (url.indexOf('data:') === 0) return url;            // placeholder SVG inline
+  return 'https://wsrv.nl/?url=' + encodeURIComponent(url) +
+         '&w=' + (w || 800) + '&output=webp&q=80&we';
+}
+
+/* Conversions de valeurs Airtable -> texte / liste. */
+function asText(v) {
+  if (v == null) return '';
+  if (Array.isArray(v)) return v.join(', ');
+  if (typeof v === 'object' && v.name) return v.name;   // singleSelect objet
+  return String(v);
+}
+function asList(v) {
+  if (v == null) return [];
+  if (Array.isArray(v)) return v.map(function(x){ return asText(x).trim(); }).filter(Boolean);
+  return String(v).split(/[\n,;]+/).map(function(s){ return s.trim(); }).filter(Boolean);
+}
+/* URL légère (WebP) pour les cartes — 800px suffisent largement. */
+function dispUrl(att) { return att ? lightImg(att.url, 800) : PLACEHOLDER; }
+/* URL légère (WebP) plus définie pour le carrousel de la fiche — 1280px. */
+function fullUrl(att) { return att ? lightImg(att.url, 1280) : PLACEHOLDER; }
+/* URL d'origine Airtable (repli si le proxy WebP échoue). */
+function rawUrl(att) {
+  if (!att) return PLACEHOLDER;
+  return (att.thumbnails && att.thumbnails.large && att.thumbnails.large.url) || att.url;
+}
+
+/* Transforme un enregistrement Airtable (champs par ID) en objet véhicule. */
+function mapRecord(rec) {
+  var f = rec.fields || {};
+  var imgs = Array.isArray(f[F.images]) ? f[F.images] : [];
+  var carburant = asText(f[F.carburant]);
+  return {
+    id: rec.id,
+    vehicule: asText(f[F.vehicule]),
+    marque: asText(f[F.marque]).trim(),
+    modele: asText(f[F.modele]).trim(),
+    annee: asText(f[F.annee]),
+    couleurs: asList(f[F.couleurs]),
+    km: f[F.km] || '',
+    carburant: carburant,
+    motorisation: normMoto(carburant),
+    puissance: f[F.puissance] || '',
+    prix_jujucar: Number(f[F.prixJuju]) || 0,
+    prix_concession: Number(f[F.prixConc]) || 0,
+    description: asText(f[F.options]),
+    imagesDisplay: imgs.map(dispUrl),
+    imagesFull: imgs.map(fullUrl),
+    imagesRaw: imgs.map(rawUrl),
+    statut: asText(f[F.statut])
+  };
+}
+
+/* Récupère TOUS les véhicules depuis Airtable (pagination 100 par 100),
+   puis affiche le catalogue (aucun filtre de Statut — tout est en ligne). */
+function fetchVehicles() {
+  resultsCount.textContent = 'Chargement du catalogue…';
+
+  function pageUrl(offset) {
+    var u = AT.endpoint + '?pageSize=100&returnFieldsByFieldId=true';
+    if (offset) u += '&offset=' + encodeURIComponent(offset);
+    return u;
+  }
+
+  var all = [];
+  function loadPage(offset) {
+    return fetch(pageUrl(offset), { headers: { Authorization: 'Bearer ' + AT.token } })
+      .then(function(res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function(data) {
+        (data.records || []).forEach(function(r) { all.push(r); });
+        if (data.offset) return loadPage(data.offset);
+      });
+  }
+
+  return loadPage(null)
+    .then(function() {
+      /* Tous les véhicules sont affichés, quel que soit le Statut
+         (« En vente » / « Réservé » / « Vendu »). */
+      vehicules = all.map(mapRecord);
+      populateMarques();
+      populateModeles();
+      applyFilters();
+    })
+    .catch(function(e) {
+      console.error('[JujuCar] Échec du chargement Airtable :', e);
+      vehicules = [];
+      applyFilters();
+      resultsCount.textContent = 'Catalogue momentanément indisponible — réessayez plus tard.';
+    });
 }
 
 /* ----- Carte COMPACTE : 1re photo + essentiel, cliquable (ouvre la fiche) ----- */
@@ -795,8 +967,14 @@ function buildCompactCard(v) {
   img.src = imgs[0];
   img.alt = (v.marque || '') + ' ' + (v.modele || '');
   img.loading = 'lazy';
+  img.decoding = 'async';
   img.draggable = false;
-  img.onerror = function() { this.onerror = null; this.src = PLACEHOLDER; };
+  /* Repli : WebP proxy → URL Airtable d'origine → visuel de remplacement. */
+  img.dataset.raw = (v.imagesRaw && v.imagesRaw[0]) || '';
+  img.onerror = function() {
+    if (this.dataset.raw && this.src !== this.dataset.raw) { this.src = this.dataset.raw; return; }
+    this.onerror = null; this.src = PLACEHOLDER;
+  };
   imgWrap.appendChild(img);
 
   var motoLabel = vMotoLabel(v);
@@ -806,7 +984,19 @@ function buildCompactCard(v) {
     fuel.textContent = motoLabel;
     imgWrap.appendChild(fuel);
   }
+
+  /* Bandeau coloris (visible au survol uniquement, via CSS) */
+  var banner = document.createElement('div');
+  banner.className = 'v-color-banner';
+  banner.textContent = COLOR_BANNER_TEXT;
+  imgWrap.appendChild(banner);
+
   card.appendChild(imgWrap);
+
+  var oldPriceHtml = (v.prix_concession > 0)
+    ? '<div class="v-price-old">CHF ' + formatPrix(v.prix_concession) + '</div>' : '';
+  var ecoHtml = (vEconomie(v) > 0)
+    ? '<span class="v-eco">CHF ' + formatPrix(vEconomie(v)) + ' économisés</span>' : '';
 
   var body = document.createElement('div');
   body.className = 'v-body';
@@ -814,9 +1004,9 @@ function buildCompactCard(v) {
     '<div class="v-marque"></div>' +
     '<h3 class="v-modele"></h3>' +
     '<div class="v-sep"></div>' +
-    (v.prix_concession ? '<div class="v-price-old">CHF ' + formatPrix(v.prix_concession) + '</div>' : '') +
+    oldPriceHtml +
     '<div class="v-price-new">CHF ' + formatPrix(v.prix_jujucar || 0) + '</div>' +
-    (v.prix_concession && vEconomie(v) > 0 ? '<span class="v-eco">CHF ' + formatPrix(vEconomie(v)) + ' économisés</span>' : '');
+    ecoHtml;
   body.querySelector('.v-marque').textContent = v.marque || '';
   body.querySelector('.v-modele').textContent = v.modele || '';
   card.appendChild(body);
@@ -826,18 +1016,25 @@ function buildCompactCard(v) {
 
 /* ----- Carrousel COMPLET (toutes les photos) pour la fiche détaillée ----- */
 function buildCarousel(v) {
-  var imgs = vImages(v);
+  var imgs = vFullImages(v);
   var wrap = document.createElement('div');
   wrap.className = 'v-modal-imgwrap';
 
   var track = document.createElement('div');
   track.className = 'v-track';
-  imgs.forEach(function(src) {
+  imgs.forEach(function(src, i) {
     var img = document.createElement('img');
     img.src = src;
     img.alt = (v.marque || '') + ' ' + (v.modele || '');
+    if (i > 0) img.loading = 'lazy';
+    img.decoding = 'async';
     img.draggable = false;
-    img.onerror = function() { this.onerror = null; this.src = PLACEHOLDER; };
+    /* Repli : WebP proxy → URL Airtable d'origine → visuel de remplacement. */
+    img.dataset.raw = (v.imagesRaw && v.imagesRaw[i]) || '';
+    img.onerror = function() {
+      if (this.dataset.raw && this.src !== this.dataset.raw) { this.src = this.dataset.raw; return; }
+      this.onerror = null; this.src = PLACEHOLDER;
+    };
     track.appendChild(img);
   });
   wrap.appendChild(track);
@@ -849,6 +1046,12 @@ function buildCarousel(v) {
     fuel.textContent = motoLabel;
     wrap.appendChild(fuel);
   }
+
+  /* Bandeau coloris — toujours visible dans la fiche (via CSS) */
+  var banner = document.createElement('div');
+  banner.className = 'v-color-banner';
+  banner.textContent = COLOR_BANNER_TEXT;
+  wrap.appendChild(banner);
 
   if (imgs.length > 1) {
     var prev = document.createElement('button');
@@ -878,25 +1081,66 @@ function buildCarousel(v) {
 var modalOverlay = document.getElementById('v-modal');
 var modalContent = document.getElementById('v-modal-content');
 
+/* Construit une case « donnée technique » (ignorée si la valeur est vide). */
+function specBlock(label, valHtml, cls) {
+  if (valHtml === '' || valHtml == null) return '';
+  return '<div class="v-spec">' +
+           '<div class="v-spec-label">' + escapeHtml(label) + '</div>' +
+           '<div class="v-spec-val ' + (cls || '') + '">' + valHtml + '</div>' +
+         '</div>';
+}
+
 function openModal(v) {
   if (!modalContent) return;
   modalContent.innerHTML = '';
   modalContent.appendChild(buildCarousel(v));
 
+  /* Grille de données : Année, Kilométrage, Carburant, Puissance,
+     Prix JujuCar, Prix concessionnaire. */
+  var specs =
+    specBlock('Année', v.annee ? escapeHtml(String(v.annee)) : '') +
+    specBlock('Kilométrage', v.km !== '' ? escapeHtml(formatPrix(v.km)) + ' km' : '') +
+    specBlock('Carburant', vMotoLabel(v) ? escapeHtml(vMotoLabel(v)) : '') +
+    specBlock('Puissance', v.puissance !== '' ? escapeHtml(String(v.puissance)) + ' CV' : '') +
+    specBlock('Prix JujuCar', v.prix_jujucar ? 'CHF ' + formatPrix(v.prix_jujucar) : '', 'accent') +
+    specBlock('Prix concessionnaire',
+              v.prix_concession ? '<span class="v-spec-old">CHF ' + formatPrix(v.prix_concession) + '</span>' : '');
+
+  /* Liste des coloris disponibles */
+  var colorsHtml = '';
+  if (v.couleurs && v.couleurs.length) {
+    var chips = v.couleurs.map(function(c) {
+      return '<span class="v-color-chip">' + escapeHtml(c) + '</span>';
+    }).join('');
+    colorsHtml =
+      '<div class="v-colors-wrap">' +
+        '<div class="v-colors-title">Couleurs disponibles</div>' +
+        '<div class="v-colors">' + chips + '</div>' +
+      '</div>';
+  }
+
+  /* Descriptif / options (texte complet) */
+  var optionsHtml = '';
+  if (v.description) {
+    optionsHtml =
+      '<div class="v-modal-options-title">Options / Descriptif</div>' +
+      '<p class="v-modal-desc">' + escapeHtml(v.description) + '</p>';
+  }
+
+  var ecoHtml = (vEconomie(v) > 0)
+    ? '<span class="v-eco">CHF ' + formatPrix(vEconomie(v)) + ' économisés</span>'
+    : '';
+
   var body = document.createElement('div');
   body.className = 'v-modal-body';
   body.innerHTML =
-    '<div class="v-marque"></div>' +
-    '<h3 class="v-modal-modele"></h3>' +
-    '<p class="v-modal-desc"></p>' +
-    '<div class="v-sep"></div>' +
-    (v.prix_concession ? '<div class="v-price-old">CHF ' + formatPrix(v.prix_concession) + '</div>' : '') +
-    '<div class="v-price-new">CHF ' + formatPrix(v.prix_jujucar || 0) + '</div>' +
-    (v.prix_concession && vEconomie(v) > 0 ? '<span class="v-eco">CHF ' + formatPrix(vEconomie(v)) + ' économisés</span>' : '') +
+    '<div class="v-marque">' + escapeHtml(v.marque || '') + '</div>' +
+    '<h3 class="v-modal-modele">' + escapeHtml(v.modele || '') + '</h3>' +
+    '<div class="v-spec-grid">' + specs + '</div>' +
+    ecoHtml +
+    colorsHtml +
+    optionsHtml +
     '<a class="v-contact" href="index.html?page=achat">Nous contacter pour ce modèle</a>';
-  body.querySelector('.v-marque').textContent = v.marque || '';
-  body.querySelector('.v-modal-modele').textContent = v.modele || '';
-  body.querySelector('.v-modal-desc').textContent = v.description || '';
   modalContent.appendChild(body);
 
   modalOverlay.classList.add('open');
@@ -959,6 +1203,7 @@ function escapeHtml(str) {
 
 /* ----- Filtres ----- */
 var marqueFilter = document.getElementById('marque-filter');
+var modeleFilter = document.getElementById('modele-filter');
 var motoFilter   = document.getElementById('moto-filter');
 var budgetSlider = document.getElementById('budget-slider');
 var budgetInput  = document.getElementById('budget-input');
@@ -967,14 +1212,14 @@ var noResults    = document.getElementById('no-results');
 var resultsCount = document.getElementById('results-count');
 var grid         = document.getElementById('v-grid');
 var voirPlusBtn  = document.getElementById('voir-plus');
-var SLIDER_MIN = 5000, SLIDER_MAX = 80000;
+var SLIDER_MIN = 5000, SLIDER_MAX = 150000;
 var PAGE_SIZE = 9;        /* nombre de véhicules affichés par "page" */
 var shownCount = PAGE_SIZE;
 
-/* Génère le menu déroulant des marques AUTOMATIQUEMENT à partir de vehicules.js
-   (dédoublonné + trié alphabétiquement). Quand Julien ajoute une annonce d'une
-   nouvelle marque, elle apparaît ici toute seule — aucun code à modifier. */
+/* Génère le menu déroulant des marques AUTOMATIQUEMENT depuis Airtable
+   (dédoublonné + trié alphabétiquement). */
 function populateMarques() {
+  marqueFilter.innerHTML = '<option value="Toutes les marques">Toutes les marques</option>';
   if (typeof vehicules === 'undefined' || !vehicules.length) return;
   var marques = [];
   vehicules.forEach(function(v) {
@@ -989,17 +1234,49 @@ function populateMarques() {
   });
 }
 
-/* Les 3 filtres (marque + motorisation + budget) fonctionnent ENSEMBLE. */
+/* Menu « Modèle » dépendant de la marque sélectionnée :
+   - aucune marque choisie  → « Tous les modèles » seul + champ désactivé
+   - une marque choisie     → uniquement les modèles présents dans Airtable
+                              pour cette marque (le filtre se réinitialise
+                              quand on change de marque). */
+function populateModeles() {
+  var brand = marqueFilter.value;
+  modeleFilter.innerHTML = '<option value="tous">Tous les modèles</option>';
+
+  if (brand === 'Toutes les marques' || typeof vehicules === 'undefined') {
+    modeleFilter.value = 'tous';
+    modeleFilter.disabled = true;
+    return;
+  }
+
+  var models = [];
+  vehicules.forEach(function(v) {
+    if (v.marque === brand && v.modele && models.indexOf(v.modele) === -1) models.push(v.modele);
+  });
+  models.sort(function(a, b) { return a.localeCompare(b, 'fr'); });
+  models.forEach(function(m) {
+    var opt = document.createElement('option');
+    opt.value = m;
+    opt.textContent = m;
+    modeleFilter.appendChild(opt);
+  });
+  modeleFilter.disabled = false;
+  modeleFilter.value = 'tous';
+}
+
+/* Les filtres (marque + modèle + motorisation + budget) fonctionnent ENSEMBLE. */
 function getFiltered() {
   if (typeof vehicules === 'undefined' || !vehicules.length) return [];
   var marque = marqueFilter.value;
+  var modele = modeleFilter.value;
   var moto   = motoFilter.value;
   var budget = parseInt(budgetSlider.value, 10);
   return vehicules.filter(function(v) {
     var mMarque = (marque === 'Toutes les marques' || v.marque === marque);
+    var mModele = (modele === 'tous' || v.modele === modele);
     var mMoto   = (moto === 'toutes' || v.motorisation === moto);
     var mBudget = (vBudget(v) <= budget);
-    return mMarque && mMoto && mBudget;
+    return mMarque && mModele && mMoto && mBudget;
   });
 }
 
@@ -1063,11 +1340,17 @@ budgetInput.addEventListener('blur', function() {
   applyFilters();
 });
 
-marqueFilter.addEventListener('change', applyFilters);
+/* Changer de marque réinitialise le filtre modèle et le repeuple. */
+marqueFilter.addEventListener('change', function() {
+  populateModeles();
+  applyFilters();
+});
+modeleFilter.addEventListener('change', applyFilters);
 motoFilter.addEventListener('change', applyFilters);
 
 function resetFilters() {
   marqueFilter.value = 'Toutes les marques';
+  populateModeles();
   motoFilter.value = 'toutes';
   budgetSlider.value = SLIDER_MAX;
   budgetInput.value = SLIDER_MAX;
@@ -1075,10 +1358,24 @@ function resetFilters() {
   applyFilters();
 }
 
-/* ----- Init ----- */
-populateMarques();
+/* ----- Barre de filtres : se rétracte au scroll vers le bas, réapparaît au
+   scroll vers le haut (transition CSS). ----- */
+(function() {
+  var bar = document.querySelector('.filter-bar');
+  if (!bar) return;
+  var lastY = 0;
+  window.addEventListener('scroll', function() {
+    var cur = window.pageYOffset || document.documentElement.scrollTop || 0;
+    if (cur > lastY && cur > 140) bar.classList.add('filter-hidden');
+    else bar.classList.remove('filter-hidden');
+    lastY = cur < 0 ? 0 : cur;
+  }, { passive: true });
+})();
+
+/* ----- Init : charge les véhicules depuis Airtable ----- */
 updateBudgetLabel(SLIDER_MAX);
-applyFilters();
+populateModeles();          /* état initial : « Tous les modèles » désactivé */
+fetchVehicles();
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1088,11 +1385,14 @@ function toggleMobile() {
 </script>
 
 <script>
+/* Bannière cookies : affichée UNE SEULE FOIS, puis mémorisée durablement.
+   localStorage persiste entre les onglets ET entre les visites → la bannière
+   ne réapparaît pas à chaque nouvel onglet (contrairement à sessionStorage). */
 function acceptCookies() {
-  localStorage.setItem('cookies_accepted', '1');
+  localStorage.setItem('cookieAccepted', '1');
   document.getElementById('cookie-banner').style.display = 'none';
 }
-if (!localStorage.getItem('cookies_accepted')) {
+if (!localStorage.getItem('cookieAccepted')) {
   document.getElementById('cookie-banner').style.display = 'flex';
 }
 </script>
