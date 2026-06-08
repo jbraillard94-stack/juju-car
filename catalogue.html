@@ -535,6 +535,44 @@
     @media (max-width: 768px) { .v-detail-card .v-modal-imgwrap { height: 300px; } }
     @media (max-width: 480px) { .v-detail-card .v-modal-imgwrap { height: 240px; } }
 
+    /* Formulaire de contact intégré à la fiche (pré-rempli avec le modèle) */
+    .v-contact-form {
+      display: none; margin-top: 16px;
+      border-top: 0.5px solid rgba(255,255,255,0.10); padding-top: 18px;
+    }
+    .v-contact-form.open { display: block; }
+    .v-form-vehicle {
+      background: rgba(57,255,106,0.06);
+      border: 0.5px solid rgba(57,255,106,0.20);
+      border-radius: 10px; padding: 12px 14px; margin-bottom: 14px;
+      font-size: 14px; color: rgba(255,255,255,0.85);
+    }
+    .v-form-vehicle strong { color: #39ff6a; font-weight: 600; }
+    .v-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .v-field-group { margin-bottom: 12px; display: flex; flex-direction: column; gap: 6px; }
+    .v-field-label { font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 500; }
+    .v-input, .v-textarea {
+      background: rgba(255,255,255,0.06);
+      border: 0.5px solid rgba(255,255,255,0.15);
+      border-radius: 10px; padding: 12px 14px; font-size: 14px;
+      color: #ffffff; font-family: 'Inter', sans-serif; outline: none;
+      width: 100%; transition: border-color 0.2s;
+    }
+    .v-input:focus, .v-textarea:focus { border-color: #39ff6a; }
+    .v-input::placeholder, .v-textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .v-textarea { resize: vertical; min-height: 84px; }
+    .v-form-submit {
+      background: #39ff6a; color: #0d0d0d; border: none; border-radius: 25px;
+      padding: 14px 28px; font-family: 'Inter', sans-serif; font-weight: 700;
+      font-size: 15px; cursor: pointer; width: 100%; margin-top: 4px;
+      transition: opacity 0.2s;
+    }
+    .v-form-submit:hover { opacity: 0.88; }
+    .v-form-submit:disabled { opacity: 0.55; cursor: default; }
+    .v-form-note { font-size: 12px; color: rgba(255,255,255,0.32); margin-top: 8px; line-height: 1.5; }
+    .v-hp { display: none !important; position: absolute; left: -9999px; }
+    @media (max-width: 480px) { .v-form-row { grid-template-columns: 1fr; } }
+
     /* ===== AUCUN RÉSULTAT ===== */
     .no-results {
       display: none; text-align: center; padding: 4rem 2rem;
@@ -1191,6 +1229,9 @@ function openDetail(v) {
     ? '<span class="v-eco">CHF ' + formatPrix(vEconomie(v)) + ' économisés</span>'
     : '';
 
+  /* Libellé du véhicule (pour l'affichage + l'e-mail reçu). */
+  var vehiculeLabel = [v.marque, v.modele, v.annee].filter(Boolean).join(' ').trim();
+
   var body = document.createElement('div');
   body.className = 'v-modal-body';
   body.innerHTML =
@@ -1201,8 +1242,23 @@ function openDetail(v) {
     ecoHtml +
     colorsHtml +
     optionsHtml +
-    '<a class="v-contact" href="index.html?page=achat">Nous contacter pour ce modèle</a>';
+    /* Bouton qui déplie un formulaire de contact pré-rempli avec ce modèle */
+    '<button type="button" class="v-contact" id="v-contact-toggle">Nous contacter pour ce modèle</button>' +
+    '<form class="v-contact-form" id="v-contact-form" novalidate>' +
+      '<div class="v-form-vehicle">Véhicule sélectionné : <strong>' + escapeHtml(vehiculeLabel || '—') + '</strong></div>' +
+      '<div class="v-form-row">' +
+        '<div class="v-field-group"><label class="v-field-label" for="vf-prenom">Prénom</label><input class="v-input" id="vf-prenom" type="text" name="prenom" placeholder="Votre prénom" autocomplete="given-name"></div>' +
+        '<div class="v-field-group"><label class="v-field-label" for="vf-nom">Nom</label><input class="v-input" id="vf-nom" type="text" name="nom" placeholder="Votre nom" autocomplete="family-name"></div>' +
+      '</div>' +
+      '<div class="v-field-group"><label class="v-field-label" for="vf-email">Email *</label><input class="v-input" id="vf-email" type="email" name="email" placeholder="votre@email.ch" autocomplete="email" required></div>' +
+      '<div class="v-field-group"><label class="v-field-label" for="vf-tel">Téléphone</label><input class="v-input" id="vf-tel" type="tel" name="telephone" placeholder="+41 79 000 00 00" autocomplete="tel"></div>' +
+      '<div class="v-field-group"><label class="v-field-label" for="vf-msg">Message</label><textarea class="v-textarea" id="vf-msg" name="message" placeholder="Une question sur ce véhicule ?"></textarea></div>' +
+      '<input type="text" name="website" class="v-hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+      '<button type="submit" class="v-form-submit">Envoyer ma demande ↗</button>' +
+      '<div class="v-form-note">* Seul l\'email est obligatoire. Votre demande nous arrive directement, avec le modèle que vous avez sélectionné.</div>' +
+    '</form>';
   detailContent.appendChild(body);
+  wireDetailContactForm(v, vehiculeLabel);
 
   contentWrap.classList.add('detail-open');
   window.scrollTo(0, 0);
@@ -1213,6 +1269,70 @@ function openDetail(v) {
   } else {
     history.pushState({ vdetail: v.id }, '', '#vehicule-' + v.id);
   }
+}
+
+/* Branche le formulaire de contact intégré à la fiche : ouverture/fermeture
+   + envoi vers Formspree (même boîte que le formulaire du site). L'e-mail reçu
+   contient le modèle sélectionné + les coordonnées. Seul l'email est requis. */
+function wireDetailContactForm(v, vehiculeLabel) {
+  var toggle = document.getElementById('v-contact-toggle');
+  var form   = document.getElementById('v-contact-form');
+  if (!toggle || !form) return;
+
+  toggle.addEventListener('click', function() {
+    var opening = !form.classList.contains('open');
+    form.classList.toggle('open');
+    if (opening) {
+      var email = form.querySelector('[name="email"]');
+      if (email) email.focus();
+      form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    /* Anti-spam : si le champ caché est rempli, on ignore silencieusement. */
+    var hp = form.querySelector('[name="website"]');
+    if (hp && hp.value) return;
+
+    var get = function(n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
+    var email = get('email');
+    if (!email) { alert('Veuillez entrer votre adresse email.'); var ef = form.querySelector('[name="email"]'); if (ef) ef.focus(); return; }
+
+    var payload = {
+      type: 'catalogue-modele',
+      vehicule: vehiculeLabel || ((v.marque || '') + ' ' + (v.modele || '')).trim(),
+      vehicule_id: v.id,
+      prix_jujucar: v.prix_jujucar ? 'CHF ' + formatPrix(v.prix_jujucar) : '',
+      prenom: get('prenom'),
+      nom: get('nom'),
+      email: email,
+      telephone: get('telephone'),
+      message: get('message'),
+      _subject: 'Demande catalogue — ' + (vehiculeLabel || 'véhicule')
+    };
+
+    var btn = form.querySelector('.v-form-submit');
+    if (btn) { btn.disabled = true; btn.textContent = 'Envoi…'; }
+
+    fetch('https://formspree.io/f/mvzyvebp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(r) {
+      if (r.ok) {
+        alert('✅ Votre demande a bien été envoyée ! Nous vous répondons sous 24h.');
+        form.reset();
+        form.classList.remove('open');
+      } else {
+        alert('⚠️ Une erreur est survenue. Veuillez réessayer.');
+      }
+    }).catch(function() {
+      alert('⚠️ Une erreur est survenue. Veuillez réessayer.');
+    }).then(function() {
+      if (btn) { btn.disabled = false; btn.textContent = 'Envoyer ma demande ↗'; }
+    });
+  });
 }
 
 function closeDetail(fromPop) {
