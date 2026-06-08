@@ -14,11 +14,41 @@
 
   <title>Catalogue — Véhicules au meilleur prix négocié | JujuCar</title>
   <meta name="description" content="Découvrez le catalogue JujuCar : une sélection de véhicules à prix négocié. Comparez avec les prix concession et filtrez par marque, motorisation et budget. Liste non exhaustive — contactez-nous pour tout autre modèle.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JujuCar">
+  <meta property="og:locale" content="fr_CH">
   <meta property="og:title" content="Catalogue JujuCar — Meilleurs prix négociés">
   <meta property="og:description" content="Découvrez le catalogue JujuCar : une sélection de véhicules à prix négocié. Comparez avec les prix concession et filtrez par marque, motorisation et budget. Liste non exhaustive — contactez-nous pour tout autre modèle.">
   <meta property="og:url" content="https://juju-car.ch/catalogue.html">
+  <meta property="og:image" content="https://juju-car.ch/banniere.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Catalogue JujuCar — Meilleurs prix négociés">
+  <meta name="twitter:description" content="Une sélection de véhicules à prix négocié. Comparez avec les prix concession et filtrez par marque, motorisation et budget.">
+  <meta name="twitter:image" content="https://juju-car.ch/banniere.png">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://juju-car.ch/catalogue.html">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Catalogue JujuCar — Véhicules au meilleur prix négocié",
+    "description": "Sélection de véhicules à prix négocié par JujuCar, courtage automobile en Suisse. Liste non exhaustive.",
+    "url": "https://juju-car.ch/catalogue.html",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "JujuCar",
+      "url": "https://juju-car.ch"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://juju-car.ch" },
+        { "@type": "ListItem", "position": 2, "name": "Catalogue", "item": "https://juju-car.ch/catalogue.html" }
+      ]
+    }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -291,17 +321,19 @@
       opacity: 0; transform: scale(0.96); pointer-events: none;
     }
 
-    /* Bandeau coloris (bas de l'image) — visible uniquement au survol / dans la fiche */
-    .v-color-banner {
-      position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
-      background: rgba(0,0,0,0.70);
-      color: #ffffff; font-size: 10px; font-weight: 500;
-      text-align: center; padding: 5px 8px; line-height: 1.3;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.25s ease;
+    /* Badge « Plusieurs coloris disponibles » — zone dédiée DANS le corps de la
+       carte (jamais en overlay sur la photo : l'image reste opaque). */
+    .v-colors-badge {
+      display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap;
+      align-self: flex-start;
+      background: rgba(57,255,106,0.12);
+      border: 0.5px solid rgba(57,255,106,0.40);
+      color: #39ff6a; border-radius: 8px;
+      padding: 6px 10px; margin-bottom: 12px;
+      font-size: 12px; font-weight: 600; line-height: 1.35;
     }
-    .v-card:hover .v-color-banner { opacity: 1; }
-    .v-modal-imgwrap .v-color-banner { opacity: 1; font-size: 12px; padding: 7px 10px; }
+    .v-colors-badge i { font-size: 14px; }
+    .v-colors-badge .vcb-list { color: rgba(255,255,255,0.82); font-weight: 500; }
 
     /* Image / carrousel */
     .v-img-wrap {
@@ -474,6 +506,34 @@
       font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
       color: #39ff6a; font-weight: 600; margin: 4px 0 8px;
     }
+
+    /* ===== FICHE DÉTAILLÉE — PLEINE PAGE (remplace l'ancienne modale) =====
+       Quand une annonce est ouverte, on masque le hero + filtres + grille et on
+       affiche cette section pleine page. L'en-tête et le pied de page restent. */
+    .v-detail-page { display: none; padding: 28px 0 64px; }
+    .content-wrap.detail-open .cat-hero,
+    .content-wrap.detail-open .filter-bar,
+    .content-wrap.detail-open .results-section { display: none !important; }
+    .content-wrap.detail-open .v-detail-page { display: block; }
+
+    .v-back-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; border: 1.5px solid #39ff6a; color: #39ff6a;
+      border-radius: 25px; padding: 10px 20px; font-size: 14px; font-weight: 600;
+      font-family: 'Inter', sans-serif; cursor: pointer; margin-bottom: 22px;
+      transition: background 0.2s;
+    }
+    .v-back-btn:hover { background: rgba(57,255,106,0.10); }
+
+    .v-detail-card {
+      background: rgba(15,15,15,0.92);
+      border: 0.5px solid rgba(255,255,255,0.14);
+      border-radius: 18px; overflow: hidden;
+    }
+    /* Galerie pleine page un peu plus haute que dans l'ancienne modale */
+    .v-detail-card .v-modal-imgwrap { height: 460px; }
+    @media (max-width: 768px) { .v-detail-card .v-modal-imgwrap { height: 300px; } }
+    @media (max-width: 480px) { .v-detail-card .v-modal-imgwrap { height: 240px; } }
 
     /* ===== AUCUN RÉSULTAT ===== */
     .no-results {
@@ -711,13 +771,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- FICHE DÉTAILLÉE (modale) -->
-<div class="v-modal-overlay" id="v-modal" onclick="vModalBackdrop(event)">
-  <div class="v-modal" role="dialog" aria-modal="true">
-    <button class="v-modal-close" onclick="closeModal()" aria-label="Fermer la fiche">&times;</button>
-    <div id="v-modal-content"></div>
+<!-- FICHE DÉTAILLÉE — PLEINE PAGE (plus de modale) -->
+<section class="v-detail-page" id="v-detail" aria-label="Fiche détaillée du véhicule">
+  <div class="inner">
+    <button class="v-back-btn" onclick="closeDetail()"><i class="ti ti-arrow-left"></i> Retour aux annonces</button>
+    <div class="v-detail-card" id="v-detail-content"></div>
   </div>
-</div>
+</section>
 
 <!-- ===== FOOTER ===== -->
 <footer>
@@ -748,7 +808,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <!-- BANNEAU COOKIES (à l'intérieur de .content-wrap pour un empilement correct) -->
-<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a1a; border-top:1px solid #2a2a2a; padding:16px 32px; z-index:900; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a1a; border-top:1px solid #2a2a2a; padding:16px 32px; z-index:900; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
   <p style="font-size:14px; color:#aaa; margin:0; flex:1; min-width:200px;">🍪 Ce site utilise des cookies pour améliorer votre expérience. En continuant à naviguer, vous acceptez notre politique de confidentialité. Vous pouvez demander la suppression de vos données à <a href="mailto:contact@juju-car.ch" style="color:#39ff6a;">contact@juju-car.ch</a>.</p>
   <button onclick="acceptCookies()" style="background:#39ff6a; color:#111; border:none; padding:10px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:14px; white-space:nowrap;">J'accepte</button>
 </div>
@@ -792,14 +852,13 @@ var F = {
   prixConc:   'fldlJPaAbKqxZirPa',
   options:    'fldXqlOCEKTHk8sEB',
   images:     'fldTiXhEsPu2zYNBU',
-  statut:     'fld2eis6HJXczXatB'
+  statut:     'fld2eis6HJXczXatB',
+  plusieursColoris: 'fldXja0d4itdQp9iE',  /* checkbox « Plusieurs coloris » */
+  colorisDispo:     'fldSPAfmRB3gzIUdY'   /* texte « Coloris disponibles » */
 };
 
 /* Liste des véhicules — remplie dynamiquement depuis Airtable (voir fetchVehicles). */
 var vehicules = [];
-
-/* Bandeau affiché sur l'image au survol / dans la fiche. */
-var COLOR_BANNER_TEXT = "Existe en plusieurs coloris — photo sur demande";
 
 /* Format prix suisse : 15500 -> 15'500 */
 function formatPrix(n) {
@@ -903,8 +962,20 @@ function mapRecord(rec) {
     imagesDisplay: imgs.map(dispUrl),
     imagesFull: imgs.map(fullUrl),
     imagesRaw: imgs.map(rawUrl),
-    statut: asText(f[F.statut])
+    statut: asText(f[F.statut]),
+    plusieursColoris: f[F.plusieursColoris] === true,
+    colorisDispo: asText(f[F.colorisDispo]).trim()
   };
+}
+
+/* Construit le badge « Plusieurs coloris disponibles » (HTML échappé) si la
+   case Airtable est cochée ; chaîne vide sinon. */
+function colorsBadgeHtml(v) {
+  if (!v.plusieursColoris) return '';
+  var liste = v.colorisDispo
+    ? ' <span class="vcb-list">' + escapeHtml(v.colorisDispo) + '</span>' : '';
+  return '<span class="v-colors-badge"><i class="ti ti-palette"></i>' +
+         'Plusieurs coloris disponibles' + liste + '</span>';
 }
 
 /* Récupère TOUS les véhicules depuis Airtable (pagination 100 par 100),
@@ -956,9 +1027,9 @@ function buildCompactCard(v) {
   card.tabIndex = 0;
   card.setAttribute('role', 'button');
   card.setAttribute('aria-label', (v.marque || '') + ' ' + (v.modele || '') + ' — voir la fiche');
-  card.addEventListener('click', function() { openModal(v); });
+  card.addEventListener('click', function() { openDetail(v); });
   card.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(v); }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDetail(v); }
   });
 
   var imgWrap = document.createElement('div');
@@ -985,12 +1056,6 @@ function buildCompactCard(v) {
     imgWrap.appendChild(fuel);
   }
 
-  /* Bandeau coloris (visible au survol uniquement, via CSS) */
-  var banner = document.createElement('div');
-  banner.className = 'v-color-banner';
-  banner.textContent = COLOR_BANNER_TEXT;
-  imgWrap.appendChild(banner);
-
   card.appendChild(imgWrap);
 
   var oldPriceHtml = (v.prix_concession > 0)
@@ -1006,7 +1071,8 @@ function buildCompactCard(v) {
     '<div class="v-sep"></div>' +
     oldPriceHtml +
     '<div class="v-price-new">CHF ' + formatPrix(v.prix_jujucar || 0) + '</div>' +
-    ecoHtml;
+    ecoHtml +
+    colorsBadgeHtml(v);
   body.querySelector('.v-marque').textContent = v.marque || '';
   body.querySelector('.v-modele').textContent = v.modele || '';
   card.appendChild(body);
@@ -1047,12 +1113,6 @@ function buildCarousel(v) {
     wrap.appendChild(fuel);
   }
 
-  /* Bandeau coloris — toujours visible dans la fiche (via CSS) */
-  var banner = document.createElement('div');
-  banner.className = 'v-color-banner';
-  banner.textContent = COLOR_BANNER_TEXT;
-  wrap.appendChild(banner);
-
   if (imgs.length > 1) {
     var prev = document.createElement('button');
     prev.className = 'v-arrow v-prev';
@@ -1077,9 +1137,9 @@ function buildCarousel(v) {
   return wrap;
 }
 
-/* ----- Fiche détaillée (modale) ----- */
-var modalOverlay = document.getElementById('v-modal');
-var modalContent = document.getElementById('v-modal-content');
+/* ----- Fiche détaillée — pleine page ----- */
+var contentWrap   = document.querySelector('.content-wrap');
+var detailContent = document.getElementById('v-detail-content');
 
 /* Construit une case « donnée technique » (ignorée si la valeur est vide). */
 function specBlock(label, valHtml, cls) {
@@ -1090,10 +1150,10 @@ function specBlock(label, valHtml, cls) {
          '</div>';
 }
 
-function openModal(v) {
-  if (!modalContent) return;
-  modalContent.innerHTML = '';
-  modalContent.appendChild(buildCarousel(v));
+function openDetail(v) {
+  if (!detailContent || !contentWrap) return;
+  detailContent.innerHTML = '';
+  detailContent.appendChild(buildCarousel(v));
 
   /* Grille de données : Année, Kilométrage, Carburant, Puissance,
      Prix JujuCar, Prix concessionnaire. */
@@ -1136,28 +1196,39 @@ function openModal(v) {
   body.innerHTML =
     '<div class="v-marque">' + escapeHtml(v.marque || '') + '</div>' +
     '<h3 class="v-modal-modele">' + escapeHtml(v.modele || '') + '</h3>' +
+    colorsBadgeHtml(v) +
     '<div class="v-spec-grid">' + specs + '</div>' +
     ecoHtml +
     colorsHtml +
     optionsHtml +
     '<a class="v-contact" href="index.html?page=achat">Nous contacter pour ce modèle</a>';
-  modalContent.appendChild(body);
+  detailContent.appendChild(body);
 
-  modalOverlay.classList.add('open');
+  contentWrap.classList.add('detail-open');
+  window.scrollTo(0, 0);
+  /* Historique : un retour navigateur (ou le bouton « Retour aux annonces »)
+     referme la fiche au lieu de quitter la page. */
+  if (history.state && history.state.vdetail) {
+    history.replaceState({ vdetail: v.id }, '', '#vehicule-' + v.id);
+  } else {
+    history.pushState({ vdetail: v.id }, '', '#vehicule-' + v.id);
+  }
 }
 
-function closeModal() {
-  if (!modalOverlay) return;
-  modalOverlay.classList.remove('open');
-  modalContent.innerHTML = '';
+function closeDetail(fromPop) {
+  if (!contentWrap) return;
+  contentWrap.classList.remove('detail-open');
+  if (detailContent) detailContent.innerHTML = '';
+  window.scrollTo(0, 0);
+  if (!fromPop && history.state && history.state.vdetail) history.back();
 }
 
-function vModalBackdrop(e) {
-  if (e.target === modalOverlay) closeModal();
-}
+window.addEventListener('popstate', function() {
+  if (contentWrap && contentWrap.classList.contains('detail-open')) closeDetail(true);
+});
 
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('open')) closeModal();
+  if (e.key === 'Escape' && contentWrap && contentWrap.classList.contains('detail-open')) closeDetail();
 });
 
 /* ----- Carrousel (flèches + swipe tactile) ----- */
@@ -1388,11 +1459,15 @@ function toggleMobile() {
 /* Bannière cookies : affichée UNE SEULE FOIS, puis mémorisée durablement.
    localStorage persiste entre les onglets ET entre les visites → la bannière
    ne réapparaît pas à chaque nouvel onglet (contrairement à sessionStorage). */
+function cookiesAccepted() {
+  return localStorage.getItem('cookies_accepted') === 'true'
+      || localStorage.getItem('cookieAccepted') === '1'; /* compat ancienne clé */
+}
 function acceptCookies() {
-  localStorage.setItem('cookieAccepted', '1');
+  localStorage.setItem('cookies_accepted', 'true');
   document.getElementById('cookie-banner').style.display = 'none';
 }
-if (!localStorage.getItem('cookieAccepted')) {
+if (!cookiesAccepted()) {
   document.getElementById('cookie-banner').style.display = 'flex';
 }
 </script>

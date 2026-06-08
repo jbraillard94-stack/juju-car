@@ -160,6 +160,15 @@ nav a.active, nav a:hover { color: #111; font-weight: 600; }
 }
 .vehicule-economie strong { font-weight: 700; }
 
+/* --- Coloris (badge « Plusieurs coloris disponibles ») --- */
+.vehicule-coloris {
+  margin-top: 0.5rem;
+  background: #eef6ff; border: 1px solid #c7ddf7;
+  border-radius: 8px; padding: 0.4rem 0.75rem;
+  font-size: 0.82rem; color: #1d4ed8;
+}
+.vehicule-coloris strong { font-weight: 700; }
+
 /* --- Vide --- */
 .catalogue-vide {
   grid-column: 1/-1; text-align: center;

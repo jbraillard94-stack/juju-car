@@ -31,6 +31,8 @@ function buildCard(record) {
   const options   = f['Options / Descriptif']       || '';
   const statut    = f['Statut']         || 'En vente';
   const images    = f['Images']         || [];
+  const plusieursColoris = f['Plusieurs coloris'] === true;
+  const colorisDispo     = f['Coloris disponibles'] || '';
 
   if (!prixJuju || prixJuju <= 0) return '';
 
@@ -45,6 +47,12 @@ function buildCard(record) {
     : '';
   const prixConsHtml = prixCons
     ? `<span class="prix-barre">CHF ${formatNumber(prixCons)}.-</span>`
+    : '';
+
+  /* Badge « Plusieurs coloris disponibles » (affiché seulement si la case
+     Airtable « Plusieurs coloris » est cochée). */
+  const colorisHtml = plusieursColoris
+    ? `<div class="vehicule-coloris">🎨 Plusieurs coloris disponibles${colorisDispo ? ` : <strong>${colorisDispo}</strong>` : ''}</div>`
     : '';
 
   return `
@@ -64,6 +72,7 @@ function buildCard(record) {
           ${portes  ? `<li><span class="spec-icon">🚪</span>${portes}</li>`  : ''}
         </ul>
         ${options ? `<p class="vehicule-options">${options}</p>` : ''}
+        ${colorisHtml}
         <div class="vehicule-prix">
           ${prixConsHtml}
           <span class="prix-juju">CHF ${formatNumber(prixJuju)}.-</span>
