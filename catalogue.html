@@ -299,7 +299,9 @@
     /* ===== CARTE VÉHICULE ===== */
     .v-card {
       position: relative; z-index: 1;
-      background: rgba(255,255,255,0.07);
+      /* Fond OPAQUE : la carte s'agrandit au survol et chevauche ses voisines —
+         un fond translucide laissait voir les cartes du dessous (texte illisible). */
+      background: #161616;
       border: 0.5px solid rgba(255,255,255,0.12);
       border-radius: 16px;
       overflow: hidden;
@@ -307,6 +309,8 @@
       transition: transform 0.3s ease, border-color 0.2s, opacity 0.25s ease, box-shadow 0.3s ease;
       will-change: transform;
     }
+    /* Au survol, fond encore plus dense pour une lisibilité totale par-dessus les voisines. */
+    .v-card:hover { background: #1c1c1c; }
     /* Au survol : la carte grandit fortement (~1.8x), passe au premier plan
        et chevauche les cartes voisines. La photo devient l'élément dominant. */
     .v-card:hover {
