@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.className += ' js';</script>
 
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -66,7 +67,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 
   <style>
@@ -76,23 +77,56 @@
     /* ===== BASE ===== */
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: #ffffff;
-      background-color: #0d0d0d;
-      background-image: url('voiture.png');
-      background-size: cover;
-      background-position: center;
+      color: #F5F1E8;
+      background-color: #0E0E0F;
+      /* Fond « heure dorée valaisanne » — dégradés chauds superposés.
+         Sert de socle élégant ; une vraie photo (hero.jpg) se pose
+         par-dessus via body::before si le fichier est présent. */
+      background-image:
+        radial-gradient(135% 85% at 72% 8%, rgba(201,162,75,0.20), transparent 52%),
+        radial-gradient(90% 70% at 12% 4%, rgba(176,108,52,0.16), transparent 58%),
+        radial-gradient(120% 90% at 50% 120%, rgba(58,90,64,0.18), transparent 60%),
+        linear-gradient(180deg, #17150F 0%, #121110 42%, #0E0E0F 100%);
       background-attachment: fixed;
-      background-repeat: no-repeat;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    /* Fixed dark overlay — sits above background, below everything else */
+    /* Calque photo optionnel (route de montagne, heure dorée).
+       Si hero.jpg n'existe pas encore, ce calque reste transparent
+       et le dégradé chaud ci-dessus suffit. */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('hero.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.55;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Voile sombre chaud + vignette — garde le texte lisible par-dessus. */
     .bg-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.52);
+      background:
+        radial-gradient(120% 120% at 50% 30%, transparent 40%, rgba(8,7,6,0.55) 100%),
+        linear-gradient(180deg, rgba(14,14,15,0.40) 0%, rgba(14,14,15,0.62) 100%);
       z-index: 0;
       pointer-events: none;
+    }
+
+    /* ===== TYPOGRAPHIE DISPLAY (titres) ===== */
+    h1, h2,
+    .hero h1, .page-hero h1,
+    .price-big, .mg4-price-paid, .tarif-price, .stat-num {
+      font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+      font-weight: 600;
+      letter-spacing: -0.5px;
     }
 
     /* All visible content lives above overlay */
@@ -101,7 +135,7 @@
       z-index: 1;
     }
 
-    .accent { color: #39ff6a; }
+    .accent { color: #C9A24B; }
     .inner { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
 
     /* ===== PAGES ===== */
@@ -136,11 +170,11 @@
       font-family: 'Inter', sans-serif;
       font-size: 22px;
       font-weight: 700;
-      color: #ffffff;
+      color: #F5F1E8;
       letter-spacing: -0.3px;
     }
 
-    .logo-btn .logo-car { color: #39ff6a; }
+    .logo-btn .logo-car { color: #C9A24B; }
 
     nav { display: flex; gap: 24px; align-items: center; }
 
@@ -157,11 +191,11 @@
       white-space: nowrap;
     }
 
-    .nav-btn:hover { color: #39ff6a; }
+    .nav-btn:hover { color: #C9A24B; }
 
     .btn-nav-contact {
-      background: #39ff6a;
-      color: #0d0d0d;
+      background: #C9A24B;
+      color: #0E0E0F;
       border: none;
       border-radius: 25px;
       padding: 9px 20px;
@@ -180,7 +214,7 @@
       display: none;
       background: none;
       border: none;
-      color: #ffffff;
+      color: #F5F1E8;
       font-size: 24px;
       cursor: pointer;
     }
@@ -216,11 +250,11 @@
       transition: color 0.2s;
     }
 
-    .mobile-nav-btn:hover { color: #39ff6a; }
+    .mobile-nav-btn:hover { color: #C9A24B; }
 
     .mobile-contact-btn {
-      background: #39ff6a;
-      color: #0d0d0d;
+      background: #C9A24B;
+      color: #0E0E0F;
       border: none;
       border-radius: 25px;
       padding: 16px;
@@ -268,7 +302,7 @@
       transition: color 0.2s;
     }
 
-    .modal-close:hover { color: #ffffff; }
+    .modal-close:hover { color: #F5F1E8; }
 
     .contact-opt {
       display: flex;
@@ -286,12 +320,12 @@
       text-align: left;
     }
 
-    .contact-opt:hover { border-color: #39ff6a; background: rgba(57,255,106,0.06); }
+    .contact-opt:hover { border-color: #C9A24B; background: rgba(201,162,75,0.06); }
 
     .contact-opt-icon {
       width: 40px;
       height: 40px;
-      background: rgba(57,255,106,0.10);
+      background: rgba(201,162,75,0.10);
       border-radius: 8px;
       display: flex;
       align-items: center;
@@ -314,14 +348,14 @@
       border-radius: 10px;
       padding: 13px 16px;
       font-size: 15px;
-      color: #ffffff;
+      color: #F5F1E8;
       width: 100%;
       outline: none;
       font-family: 'Inter', sans-serif;
       transition: border-color 0.2s;
     }
 
-    .field:focus { border-color: #39ff6a; }
+    .field:focus { border-color: #C9A24B; }
     .field::placeholder { color: rgba(255,255,255,0.22); }
 
     .fgroup { margin-bottom: 18px; }
@@ -340,9 +374,9 @@
     }
 
     .choice-btn:hover, .choice-btn.active {
-      background: rgba(57,255,106,0.10);
-      border-color: #39ff6a;
-      color: #39ff6a;
+      background: rgba(201,162,75,0.10);
+      border-color: #C9A24B;
+      color: #C9A24B;
     }
 
     /* ===== BUTTONS ===== */
@@ -350,8 +384,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #39ff6a;
-      color: #0d0d0d;
+      background: #C9A24B;
+      color: #0E0E0F;
       border: none;
       border-radius: 25px;
       padding: 13px 26px;
@@ -370,7 +404,7 @@
       align-items: center;
       gap: 8px;
       background: rgba(255,255,255,0.12);
-      color: #ffffff;
+      color: #F5F1E8;
       border: 1.5px solid rgba(255,255,255,0.45);
       border-radius: 25px;
       padding: 13px 26px;
@@ -389,8 +423,8 @@
       align-items: center;
       gap: 8px;
       background: transparent;
-      color: #39ff6a;
-      border: 1.5px solid #39ff6a;
+      color: #C9A24B;
+      border: 1.5px solid #C9A24B;
       border-radius: 25px;
       padding: 11px 22px;
       font-family: 'Inter', sans-serif;
@@ -401,11 +435,11 @@
       text-decoration: none;
     }
 
-    .btn-outline:hover { background: rgba(57,255,106,0.08); }
+    .btn-outline:hover { background: rgba(201,162,75,0.08); }
 
     .btn-submit {
-      background: #39ff6a;
-      color: #0d0d0d;
+      background: #C9A24B;
+      color: #0E0E0F;
       border: none;
       border-radius: 25px;
       padding: 15px 32px;
@@ -423,7 +457,7 @@
       background: none;
       border: none;
       cursor: pointer;
-      color: #39ff6a;
+      color: #C9A24B;
       font-size: 14px;
       font-family: 'Inter', sans-serif;
       padding: 32px 0 24px;
@@ -450,7 +484,7 @@
       text-align: left;
     }
 
-    .path-btn:hover { border-color: #39ff6a; background: rgba(57,255,106,0.04); }
+    .path-btn:hover { border-color: #C9A24B; background: rgba(201,162,75,0.04); }
 
     /* ===== SECTION BOXES ===== */
     .section-box {
@@ -463,7 +497,7 @@
 
     .section-label {
       font-size: 11px;
-      color: #39ff6a;
+      color: #C9A24B;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       font-weight: 600;
@@ -472,8 +506,8 @@
     }
 
     .info-box {
-      background: rgba(57,255,106,0.05);
-      border: 0.5px solid rgba(57,255,106,0.15);
+      background: rgba(201,162,75,0.05);
+      border: 0.5px solid rgba(201,162,75,0.15);
       border-radius: 12px;
       padding: 18px 22px;
       margin-bottom: 20px;
@@ -482,7 +516,7 @@
       align-items: flex-start;
     }
 
-    .info-box i { font-size: 20px; color: #39ff6a; flex-shrink: 0; margin-top: 1px; }
+    .info-box i { font-size: 20px; color: #C9A24B; flex-shrink: 0; margin-top: 1px; }
     .info-box p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; }
 
     /* ===== HERO SECTION ===== */
@@ -498,9 +532,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(57,255,106,0.15);
-      border: 0.5px solid rgba(57,255,106,0.45);
-      color: #39ff6a;
+      background: rgba(201,162,75,0.15);
+      border: 0.5px solid rgba(201,162,75,0.45);
+      color: #C9A24B;
       border-radius: 20px;
       padding: 5px 14px;
       font-size: 13px;
@@ -512,7 +546,7 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #39ff6a;
+      background: #C9A24B;
       animation: dotpulse 2s infinite;
       flex-shrink: 0;
     }
@@ -531,11 +565,24 @@
       text-shadow: 0 2px 30px rgba(0,0,0,0.4);
     }
 
+    .hero h1 { letter-spacing: -1px; }
+
+    .hero-lead {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 23px;
+      font-weight: 500;
+      font-style: italic;
+      color: rgba(245,241,232,0.92);
+      line-height: 1.4;
+      max-width: 560px;
+      margin-bottom: 22px;
+    }
+
     .hero-sub {
       font-size: 16px;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.65;
-      max-width: 480px;
+      color: rgba(245,241,232,0.66);
+      line-height: 1.7;
+      max-width: 520px;
       margin-bottom: 36px;
     }
 
@@ -568,7 +615,7 @@
     .stat-num {
       font-size: 32px;
       font-weight: 800;
-      color: #39ff6a;
+      color: #C9A24B;
       line-height: 1;
       margin-bottom: 4px;
     }
@@ -587,7 +634,7 @@
 
     .section-tag {
       font-size: 11px;
-      color: #39ff6a;
+      color: #C9A24B;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       font-weight: 600;
@@ -616,9 +663,9 @@
     }
 
     .bento-card:hover {
-      transform: scale(1.05);
-      border-color: #39ff6a;
-      background: rgba(57,255,106,0.08);
+      transform: translateY(-6px);
+      border-color: #C9A24B;
+      background: rgba(201,162,75,0.08);
     }
 
     .bento-card-wide { grid-column: span 2; }
@@ -626,7 +673,7 @@
     .card-icon {
       width: 44px;
       height: 44px;
-      background: rgba(57,255,106,0.12);
+      background: rgba(201,162,75,0.12);
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -634,7 +681,7 @@
       margin-bottom: 14px;
     }
 
-    .card-icon i { font-size: 22px; color: #39ff6a; }
+    .card-icon i { font-size: 22px; color: #C9A24B; }
 
     .bento-card h3 {
       font-size: 16px;
@@ -657,7 +704,7 @@
     }
 
     .bento-card ul li { padding: 3px 0 3px 18px; position: relative; }
-    .bento-card ul li::before { content: '✓'; position: absolute; left: 0; color: #39ff6a; font-size: 12px; }
+    .bento-card ul li::before { content: '✓'; position: absolute; left: 0; color: #C9A24B; font-size: 12px; }
 
     .wide-inner {
       display: grid;
@@ -684,7 +731,7 @@
     .price-big {
       font-size: 40px;
       font-weight: 800;
-      color: #39ff6a;
+      color: #C9A24B;
       letter-spacing: -1.5px;
       line-height: 1;
       margin-bottom: 4px;
@@ -698,9 +745,9 @@
 
     .badge-green-pill {
       display: inline-block;
-      background: rgba(57,255,106,0.15);
-      border: 0.5px solid rgba(57,255,106,0.35);
-      color: #39ff6a;
+      background: rgba(201,162,75,0.15);
+      border: 0.5px solid rgba(201,162,75,0.35);
+      color: #C9A24B;
       border-radius: 20px;
       padding: 4px 12px;
       font-size: 12px;
@@ -717,7 +764,7 @@
       margin-bottom: 14px;
     }
 
-    .how-label i { color: #39ff6a; font-size: 16px; }
+    .how-label i { color: #C9A24B; font-size: 16px; }
 
     .step-mini-list { list-style: none; padding: 0; }
 
@@ -734,8 +781,8 @@
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: #39ff6a;
-      color: #0d0d0d;
+      background: #C9A24B;
+      color: #0E0E0F;
       font-size: 11px;
       font-weight: 700;
       display: flex;
@@ -790,12 +837,12 @@
       z-index: 1;
     }
 
-    .step-circle.filled { background: #39ff6a; color: #0d0d0d; }
+    .step-circle.filled { background: #C9A24B; color: #0E0E0F; }
 
     .step-circle.outline {
       background: rgba(0,0,0,0.40);
-      border: 2px solid #39ff6a;
-      color: #39ff6a;
+      border: 2px solid #C9A24B;
+      color: #C9A24B;
     }
 
     .step-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
@@ -836,7 +883,7 @@
 
     .page-label {
       font-size: 11px;
-      color: #39ff6a;
+      color: #C9A24B;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       font-weight: 600;
@@ -906,7 +953,7 @@
       padding: 28px;
       transition: transform 0.25s ease, border-color 0.2s;
     }
-    .engage-card:hover { transform: scale(1.05); border-color: #39ff6a; }
+    .engage-card:hover { transform: translateY(-6px); border-color: #C9A24B; }
 
     .engage-card .card-icon { margin-bottom: 14px; }
     .engage-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
@@ -915,7 +962,7 @@
     .blockquote-section { background: rgba(0,0,0,0.58); padding: 64px 0; }
 
     .blockquote {
-      border-left: 3px solid #39ff6a;
+      border-left: 3px solid #C9A24B;
       padding: 6px 0 6px 24px;
       margin-bottom: 36px;
     }
@@ -946,7 +993,7 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: #39ff6a;
+      background: #C9A24B;
     }
 
     .tarif-header {
@@ -958,7 +1005,7 @@
       margin-bottom: 22px;
     }
 
-    .tarif-price { font-size: 36px; font-weight: 700; color: #39ff6a; line-height: 1; }
+    .tarif-price { font-size: 36px; font-weight: 700; color: #C9A24B; line-height: 1; }
     .tarif-price-sub { font-size: 14px; color: rgba(255,255,255,0.38); margin-top: 4px; }
 
     .check-list {
@@ -981,11 +1028,11 @@
       line-height: 1.5;
     }
 
-    .check-list li i { color: #39ff6a; font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+    .check-list li i { color: #C9A24B; font-size: 14px; flex-shrink: 0; margin-top: 2px; }
 
     .highlight-box {
-      background: rgba(57,255,106,0.06);
-      border: 0.5px solid rgba(57,255,106,0.20);
+      background: rgba(201,162,75,0.06);
+      border: 0.5px solid rgba(201,162,75,0.20);
       border-radius: 10px;
       padding: 14px 18px;
     }
@@ -1010,7 +1057,7 @@
 
     .special-box {
       background: rgba(255,255,255,0.05);
-      border: 0.5px solid rgba(57,255,106,0.22);
+      border: 0.5px solid rgba(201,162,75,0.22);
       border-radius: 14px;
       padding: 24px 28px;
       margin-bottom: 16px;
@@ -1019,7 +1066,7 @@
       align-items: flex-start;
     }
 
-    .special-box i { font-size: 22px; color: #39ff6a; flex-shrink: 0; }
+    .special-box i { font-size: 22px; color: #C9A24B; flex-shrink: 0; }
 
     .disclaimer-box {
       background: rgba(255,255,255,0.03);
@@ -1055,7 +1102,7 @@
     .example-header-icon {
       width: 36px;
       height: 36px;
-      background: rgba(57,255,106,0.10);
+      background: rgba(201,162,75,0.10);
       border-radius: 8px;
       display: flex;
       align-items: center;
@@ -1081,8 +1128,8 @@
     }
 
     .price-box.green-box {
-      background: rgba(57,255,106,0.05);
-      border-color: rgba(57,255,106,0.30);
+      background: rgba(201,162,75,0.05);
+      border-color: rgba(201,162,75,0.30);
     }
 
     .price-box .price-tag {
@@ -1093,7 +1140,7 @@
       margin-bottom: 6px;
     }
 
-    .price-box.green-box .price-tag { color: #39ff6a; }
+    .price-box.green-box .price-tag { color: #C9A24B; }
 
     .price-box .price-value {
       font-size: 26px;
@@ -1103,7 +1150,7 @@
     }
 
     .price-box.green-box .price-value {
-      color: #39ff6a;
+      color: #C9A24B;
       text-decoration: none;
     }
 
@@ -1118,8 +1165,8 @@
     }
 
     .economy-badge {
-      background: #39ff6a;
-      color: #0d0d0d;
+      background: #C9A24B;
+      color: #0E0E0F;
       border-radius: 8px;
       padding: 10px 12px;
       text-align: center;
@@ -1147,7 +1194,7 @@
       line-height: 1.5;
     }
 
-    .check-item i { color: #39ff6a; font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+    .check-item i { color: #C9A24B; font-size: 14px; flex-shrink: 0; margin-top: 1px; }
 
     /* ===== MG4 SHOWCASE ===== */
     .mg4-section { background: rgba(0,0,0,0.60); padding: 72px 0; }
@@ -1179,9 +1226,9 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(57,255,106,0.15);
-      border: 0.5px solid rgba(57,255,106,0.40);
-      color: #39ff6a;
+      background: rgba(201,162,75,0.15);
+      border: 0.5px solid rgba(201,162,75,0.40);
+      color: #C9A24B;
       border-radius: 20px;
       padding: 5px 14px;
       font-size: 13px;
@@ -1199,13 +1246,13 @@
       margin-bottom: 16px;
     }
 
-    .mg4-price-paid { font-size: 42px; font-weight: 800; color: #39ff6a; letter-spacing: -1.5px; }
+    .mg4-price-paid { font-size: 42px; font-weight: 800; color: #C9A24B; letter-spacing: -1.5px; }
     .mg4-price-catalogue { font-size: 22px; color: rgba(255,255,255,0.32); text-decoration: line-through; }
 
     .mg4-economy-badge {
       display: inline-block;
-      background: #39ff6a;
-      color: #0d0d0d;
+      background: #C9A24B;
+      color: #0E0E0F;
       border-radius: 20px;
       padding: 6px 16px;
       font-size: 14px;
@@ -1221,8 +1268,8 @@
     }
 
     .socials-cta {
-      background: rgba(57,255,106,0.05);
-      border: 0.5px solid rgba(57,255,106,0.20);
+      background: rgba(201,162,75,0.05);
+      border: 0.5px solid rgba(201,162,75,0.20);
       border-radius: 14px;
       padding: 22px 26px;
       display: flex;
@@ -1232,7 +1279,7 @@
       margin-top: 32px;
     }
 
-    .socials-cta i { font-size: 22px; color: #39ff6a; flex-shrink: 0; }
+    .socials-cta i { font-size: 22px; color: #C9A24B; flex-shrink: 0; }
 
     /* ===== CGV ===== */
     .cgv-section { background: rgba(0,0,0,0.58); padding: 64px 0; }
@@ -1242,7 +1289,7 @@
     .cgv-article h3 {
       font-size: 16px;
       font-weight: 700;
-      color: #39ff6a;
+      color: #C9A24B;
       margin-bottom: 10px;
       padding-bottom: 8px;
       border-bottom: 0.5px solid rgba(255,255,255,0.08);
@@ -1276,10 +1323,10 @@
       font-family: 'Inter', sans-serif;
       font-size: 18px;
       font-weight: 700;
-      color: #ffffff;
+      color: #F5F1E8;
     }
 
-    .footer-logo-btn .logo-car { color: #39ff6a; }
+    .footer-logo-btn .logo-car { color: #C9A24B; }
 
     .footer-socials { display: flex; gap: 10px; align-items: center; }
 
@@ -1298,7 +1345,7 @@
       transition: all 0.2s;
     }
 
-    .social-btn:hover { background: #39ff6a; color: #0d0d0d; border-color: #39ff6a; }
+    .social-btn:hover { background: #C9A24B; color: #0E0E0F; border-color: #C9A24B; }
 
     .footer-links { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
 
@@ -1312,7 +1359,7 @@
       transition: color 0.2s;
     }
 
-    .footer-link-btn:hover { color: #39ff6a; }
+    .footer-link-btn:hover { color: #C9A24B; }
 
     .footer-bottom {
       max-width: 1240px;
@@ -1325,7 +1372,7 @@
     }
 
     .footer-bottom a { color: rgba(255,255,255,0.50); text-decoration: none; }
-    .footer-bottom a:hover { color: #39ff6a; }
+    .footer-bottom a:hover { color: #C9A24B; }
 
     /* ===== ANIMATIONS ===== */
     @keyframes fadeUp {
@@ -1333,11 +1380,21 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .fade-badge  { animation: fadeUp 0.6s ease 0.00s both; }
-    .fade-h1     { animation: fadeUp 0.6s ease 0.15s both; }
-    .fade-sub    { animation: fadeUp 0.6s ease 0.30s both; }
-    .fade-btns   { animation: fadeUp 0.6s ease 0.45s both; }
-    .fade-stats  { animation: fadeUp 0.6s ease 0.60s both; }
+    .fade-badge  { animation: fadeUp 0.7s ease 0.00s both; }
+    .fade-h1     { animation: fadeUp 0.7s ease 0.12s both; }
+    .fade-lead   { animation: fadeUp 0.7s ease 0.30s both; }
+    .fade-sub    { animation: fadeUp 0.7s ease 0.44s both; }
+    .fade-btns   { animation: fadeUp 0.7s ease 0.56s both; }
+    .fade-stats  { animation: fadeUp 0.7s ease 0.68s both; }
+
+    /* Quand JS est actif, le hero démarre masqué : GSAP (ou le repli) le révèle.
+       Évite tout « flash » de texte avant l'animation. La requête
+       prefers-reduced-motion ci-dessous force la visibilité immédiate. */
+    .js .hero .fade-badge, .js .hero .fade-h1, .js .hero .fade-lead,
+    .js .hero .fade-sub, .js .hero .fade-btns, .js .hero .fade-stats {
+      animation: none;
+      opacity: 0;
+    }
 
     .reveal {
       opacity: 0;
@@ -1346,6 +1403,17 @@
     }
 
     .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== ACCESSIBILITÉ : animations désactivées si l'utilisateur le demande ===== */
+    @media (prefers-reduced-motion: reduce) {
+      .fade-badge, .fade-h1, .fade-lead, .fade-sub, .fade-btns, .fade-stats,
+      .reveal, .badge-dot {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
 
     /* ===== SERVICES (deux services équilibrés) ===== */
     .services-duo {
@@ -1366,7 +1434,7 @@
       font-size: 14px;
       color: rgba(255,255,255,0.70);
     }
-    .service-price strong { color: #39ff6a; font-weight: 700; }
+    .service-price strong { color: #C9A24B; font-weight: 700; }
 
     /* ===== APERÇU CATALOGUE (accueil) ===== */
     .catalogue-preview-section { background: rgba(0,0,0,0.58); padding: 80px 0; }
@@ -1383,24 +1451,24 @@
       transition: transform 0.25s ease, border-color 0.2s;
       text-align: left; font-family: 'Inter', sans-serif; padding: 0;
     }
-    .cat-prev-card:hover { transform: scale(1.05); border-color: #39ff6a; }
+    .cat-prev-card:hover { transform: translateY(-6px); border-color: #C9A24B; }
     .cat-prev-img { height: 160px; overflow: hidden; background: #141414; }
     .cat-prev-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .cat-prev-body { padding: 14px 16px; }
     .cat-prev-marque {
-      font-size: 11px; color: #39ff6a; text-transform: uppercase;
+      font-size: 11px; color: #C9A24B; text-transform: uppercase;
       letter-spacing: 1px; font-weight: 600; margin-bottom: 3px;
     }
-    .cat-prev-modele { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #ffffff; }
-    .cat-prev-price { font-size: 19px; font-weight: 800; color: #39ff6a; letter-spacing: -0.5px; }
+    .cat-prev-modele { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #F5F1E8; }
+    .cat-prev-price { font-size: 19px; font-weight: 800; color: #C9A24B; letter-spacing: -0.5px; }
     .cat-prev-colors {
       margin-top: 8px; font-size: 11px; line-height: 1.4;
       color: rgba(255,255,255,0.70);
-      background: rgba(57,255,106,0.10);
-      border: 0.5px solid rgba(57,255,106,0.30);
+      background: rgba(201,162,75,0.10);
+      border: 0.5px solid rgba(201,162,75,0.30);
       border-radius: 8px; padding: 5px 8px;
     }
-    .cat-prev-colors strong { color: #39ff6a; font-weight: 600; }
+    .cat-prev-colors strong { color: #C9A24B; font-weight: 600; }
     .cat-preview-cta { text-align: center; }
     .cat-preview-cta p {
       font-size: 16px; color: rgba(255,255,255,0.72); line-height: 1.6;
@@ -1410,13 +1478,13 @@
     /* ===== ACHAT — intro rassurante + bandeau catalogue ===== */
     .achat-intro {
       display: flex; gap: 14px; align-items: flex-start;
-      background: rgba(57,255,106,0.06);
-      border: 0.5px solid rgba(57,255,106,0.18);
+      background: rgba(201,162,75,0.06);
+      border: 0.5px solid rgba(201,162,75,0.18);
       border-radius: 14px; padding: 20px 24px; margin-bottom: 18px;
     }
-    .achat-intro i { font-size: 22px; color: #39ff6a; flex-shrink: 0; margin-top: 2px; }
+    .achat-intro i { font-size: 22px; color: #C9A24B; flex-shrink: 0; margin-top: 2px; }
     .achat-intro p { font-size: 15px; color: rgba(255,255,255,0.80); line-height: 1.65; }
-    .achat-intro strong { color: #ffffff; font-weight: 600; }
+    .achat-intro strong { color: #F5F1E8; font-weight: 600; }
 
     .catalogue-banner {
       display: flex; gap: 20px; align-items: center; justify-content: space-between;
@@ -1559,27 +1627,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="modal">
     <button class="modal-close" onclick="closeContact()"><i class="ti ti-x"></i></button>
     <div id="contact-menu">
-      <div style="font-size:11px; color:#39ff6a; letter-spacing:3px; margin-bottom:12px; font-weight:600;">NOUS CONTACTER</div>
+      <div style="font-size:11px; color:#C9A24B; letter-spacing:3px; margin-bottom:12px; font-weight:600;">NOUS CONTACTER</div>
       <h2 style="font-size:22px; font-weight:700; margin-bottom:6px;">Comment pouvons-nous <span class="accent">vous aider ?</span></h2>
       <p style="font-size:14px; color:rgba(255,255,255,0.45); margin-bottom:22px;">Choisissez l'option qui correspond à votre besoin.</p>
       <button class="contact-opt" onclick="closeContact(); showPage('achat')">
-        <div class="contact-opt-icon"><i class="ti ti-car" style="color:#39ff6a; font-size:20px;"></i></div>
-        <div style="flex:1;"><div style="font-size:16px; font-weight:600; color:#ffffff; margin-bottom:2px;">Je cherche un véhicule</div><div style="font-size:13px; color:rgba(255,255,255,0.42);">Dites-nous ce que vous recherchez</div></div>
-        <i class="ti ti-arrow-right" style="color:#39ff6a;"></i>
+        <div class="contact-opt-icon"><i class="ti ti-car" style="color:#C9A24B; font-size:20px;"></i></div>
+        <div style="flex:1;"><div style="font-size:16px; font-weight:600; color:#F5F1E8; margin-bottom:2px;">Je cherche un véhicule</div><div style="font-size:13px; color:rgba(255,255,255,0.42);">Dites-nous ce que vous recherchez</div></div>
+        <i class="ti ti-arrow-right" style="color:#C9A24B;"></i>
       </button>
       <button class="contact-opt" onclick="closeContact(); showPage('vente')">
-        <div class="contact-opt-icon"><i class="ti ti-tag" style="color:#39ff6a; font-size:20px;"></i></div>
-        <div style="flex:1;"><div style="font-size:16px; font-weight:600; color:#ffffff; margin-bottom:2px;">Je veux vendre mon véhicule</div><div style="font-size:13px; color:rgba(255,255,255,0.42);">Nous gérons tout à votre place</div></div>
-        <i class="ti ti-arrow-right" style="color:#39ff6a;"></i>
+        <div class="contact-opt-icon"><i class="ti ti-tag" style="color:#C9A24B; font-size:20px;"></i></div>
+        <div style="flex:1;"><div style="font-size:16px; font-weight:600; color:#F5F1E8; margin-bottom:2px;">Je veux vendre mon véhicule</div><div style="font-size:13px; color:rgba(255,255,255,0.42);">Nous gérons tout à votre place</div></div>
+        <i class="ti ti-arrow-right" style="color:#C9A24B;"></i>
       </button>
       <button class="contact-opt" onclick="showContactForm()">
-        <div class="contact-opt-icon"><i class="ti ti-message" style="color:#39ff6a; font-size:20px;"></i></div>
-        <div style="flex:1;"><div style="font-size:16px; font-weight:600; color:#ffffff; margin-bottom:2px;">J'ai une question</div><div style="font-size:13px; color:rgba(255,255,255,0.42);">Nous répondons avec plaisir</div></div>
-        <i class="ti ti-arrow-right" style="color:#39ff6a;"></i>
+        <div class="contact-opt-icon"><i class="ti ti-message" style="color:#C9A24B; font-size:20px;"></i></div>
+        <div style="flex:1;"><div style="font-size:16px; font-weight:600; color:#F5F1E8; margin-bottom:2px;">J'ai une question</div><div style="font-size:13px; color:rgba(255,255,255,0.42);">Nous répondons avec plaisir</div></div>
+        <i class="ti ti-arrow-right" style="color:#C9A24B;"></i>
       </button>
     </div>
     <div id="contact-form" style="display:none;">
-      <button onclick="showContactMenu()" style="background:none; border:none; cursor:pointer; color:#39ff6a; font-size:14px; font-family:'Inter',sans-serif; margin-bottom:20px; display:flex; align-items:center; gap:6px; font-weight:500;"><i class="ti ti-arrow-left"></i> Retour</button>
+      <button onclick="showContactMenu()" style="background:none; border:none; cursor:pointer; color:#C9A24B; font-size:14px; font-family:'Inter',sans-serif; margin-bottom:20px; display:flex; align-items:center; gap:6px; font-weight:500;"><i class="ti ti-arrow-left"></i> Retour</button>
       <h2 style="font-size:20px; font-weight:700; margin-bottom:4px;">Votre question</h2>
       <p style="font-size:13px; color:rgba(255,255,255,0.42); margin-bottom:20px;">Nous vous répondons personnellement sous 24h.</p>
       <div class="grid2" style="margin-bottom:12px;">
@@ -1603,16 +1671,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="inner">
       <div class="badge-pill fade-badge">
         <span class="badge-dot"></span>
-        Courtier indépendant · 100% suisse
+        Courtier automobile indépendant · Valais
       </div>
 
       <h1 class="fade-h1">
-        Même voiture.<br>
-        <span class="accent">Meilleur prix.</span>
+        Je ne vends pas<br>
+        de voitures.
       </h1>
 
+      <p class="hero-lead fade-lead">
+        Je trouve <span class="accent">la vôtre</span> — et je vous la livre, prêt à rouler.
+      </p>
+
       <p class="hero-sub fade-sub">
-        JujuCar négocie pour vous, gère tout, et vous livre à domicile. Zéro stress, zéro déplacement.
+        La voiture, neuve ou d'occasion, de votre choix — jusqu'à ~30&nbsp;% sous le prix concession.
+        Recherche, négociation, immatriculation et livraison à domicile, partout en Suisse romande.
       </p>
 
       <div class="hero-btns fade-btns">
@@ -1794,17 +1867,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div style="font-size:16px; color:rgba(255,255,255,0.75); margin-bottom:24px; font-weight:500;">Où en êtes-vous dans votre recherche ?</div>
       <button class="path-btn" onclick="showAchat('know')">
         <div>
-          <div style="font-size:18px; font-weight:700; color:#ffffff; margin-bottom:4px;">J'ai déjà mon véhicule en tête</div>
+          <div style="font-size:18px; font-weight:700; color:#F5F1E8; margin-bottom:4px;">J'ai déjà mon véhicule en tête</div>
           <div style="font-size:14px; color:rgba(255,255,255,0.45);">Je connais la marque, le modèle et ce que je veux</div>
         </div>
-        <i class="ti ti-arrow-right" style="font-size:24px; color:#39ff6a; flex-shrink:0;"></i>
+        <i class="ti ti-arrow-right" style="font-size:24px; color:#C9A24B; flex-shrink:0;"></i>
       </button>
       <button class="path-btn" onclick="showAchat('discover')">
         <div>
-          <div style="font-size:18px; font-weight:700; color:#ffffff; margin-bottom:4px;">Je cherche encore — guidez-moi</div>
+          <div style="font-size:18px; font-weight:700; color:#F5F1E8; margin-bottom:4px;">Je cherche encore — guidez-moi</div>
           <div style="font-size:14px; color:rgba(255,255,255,0.45);">J'ai des critères mais pas encore de modèle précis</div>
         </div>
-        <i class="ti ti-arrow-right" style="font-size:24px; color:#39ff6a; flex-shrink:0;"></i>
+        <i class="ti ti-arrow-right" style="font-size:24px; color:#C9A24B; flex-shrink:0;"></i>
       </button>
     </div>
   </div>
@@ -1981,9 +2054,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="content-section">
     <div class="inner">
       <div class="story-text reveal">
-        <p>En cherchant à renouveler mon véhicule, j'ai découvert par hasard qu'un même modèle, avec les mêmes garanties constructeur, était proposé outre-Sarine jusqu'à <strong style="color:#ffffff;">30% moins cher</strong> qu'en Suisse romande.</p>
+        <p>En cherchant à renouveler mon véhicule, j'ai découvert par hasard qu'un même modèle, avec les mêmes garanties constructeur, était proposé outre-Sarine jusqu'à <strong style="color:#F5F1E8;">30% moins cher</strong> qu'en Suisse romande.</p>
         <p>J'ai géré l'ensemble du processus moi-même — la recherche, les démarches administratives, l'immatriculation — et j'ai réalisé une économie substantielle sur un véhicule neuf, avec exactement les mêmes garanties.</p>
-        <p>Rapidement, des proches m'ont demandé de faire la même chose pour eux. C'est ainsi que <strong style="color:#ffffff;">JujuCar</strong> est né — avec une conviction simple : tout le monde mérite d'accéder à ces prix, sans avoir à gérer la complexité que cela implique.</p>
+        <p>Rapidement, des proches m'ont demandé de faire la même chose pour eux. C'est ainsi que <strong style="color:#F5F1E8;">JujuCar</strong> est né — avec une conviction simple : tout le monde mérite d'accéder à ces prix, sans avoir à gérer la complexité que cela implique.</p>
       </div>
     </div>
   </section>
@@ -2133,7 +2206,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="highlight-box">
-          <p>Exemple : vendu <strong style="color:#ffffff;">12'000 CHF</strong> → honoraires : <strong style="color:#39ff6a;">1'000 CHF</strong>. Vendu <strong style="color:#ffffff;">6'000 CHF</strong> → honoraires : <strong style="color:#39ff6a;">600 CHF</strong>.</p>
+          <p>Exemple : vendu <strong style="color:#F5F1E8;">12'000 CHF</strong> → honoraires : <strong style="color:#C9A24B;">1'000 CHF</strong>. Vendu <strong style="color:#F5F1E8;">6'000 CHF</strong> → honoraires : <strong style="color:#C9A24B;">600 CHF</strong>.</p>
         </div>
       </div>
 
@@ -2141,7 +2214,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="ti ti-sparkles"></i>
         <div>
           <div style="font-size:16px; font-weight:700; margin-bottom:6px;">Offre combinée achat + vente</div>
-          <p style="font-size:14px; color:rgba(255,255,255,0.65); line-height:1.7;">Vous souhaitez vendre votre véhicule et en acquérir un nouveau ? Tarification sur mesure — <button onclick="openContact()" style="background:none; border:none; cursor:pointer; color:#39ff6a; font-family:'Inter',sans-serif; font-size:14px; text-decoration:underline; padding:0;">contactez-nous →</button></p>
+          <p style="font-size:14px; color:rgba(255,255,255,0.65); line-height:1.7;">Vous souhaitez vendre votre véhicule et en acquérir un nouveau ? Tarification sur mesure — <button onclick="openContact()" style="background:none; border:none; cursor:pointer; color:#C9A24B; font-family:'Inter',sans-serif; font-size:14px; text-decoration:underline; padding:0;">contactez-nous →</button></p>
         </div>
       </div>
 
@@ -2173,14 +2246,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="cgv-section">
     <div class="inner">
 
-      <h2 style="font-size:20px; font-weight:700; color:#39ff6a; margin:8px 0 18px;">I. Mentions légales</h2>
+      <h2 style="font-size:20px; font-weight:700; color:#C9A24B; margin:8px 0 18px;">I. Mentions légales</h2>
 
-      <div class="cgv-article reveal"><h3>1. Éditeur du site</h3><p>Le site <strong style="color:rgba(255,255,255,0.80);">juju-car.ch</strong> est édité par JujuCar, service de courtage automobile indépendant exerçant en Suisse.<br><br>Contact : <a href="mailto:contact@juju-car.ch" style="color:#39ff6a;">contact@juju-car.ch</a> · +41 79 927 21 65.<br>JujuCar agit exclusivement en qualité d'intermédiaire : ce n'est ni un revendeur, ni un concessionnaire, ni un garagiste.</p></div>
-      <div class="cgv-article reveal"><h3>2. Hébergement</h3><p>Le site est hébergé par <strong style="color:rgba(255,255,255,0.80);">Infomaniak Network SA</strong>, Rue Eugène-Marziano 25, 1227 Genève (Suisse) — <a href="https://www.infomaniak.com" target="_blank" rel="noopener noreferrer" style="color:#39ff6a;">infomaniak.com</a>.</p></div>
+      <div class="cgv-article reveal"><h3>1. Éditeur du site</h3><p>Le site <strong style="color:rgba(255,255,255,0.80);">juju-car.ch</strong> est édité par JujuCar, service de courtage automobile indépendant exerçant en Suisse.<br><br>Contact : <a href="mailto:contact@juju-car.ch" style="color:#C9A24B;">contact@juju-car.ch</a> · +41 79 927 21 65.<br>JujuCar agit exclusivement en qualité d'intermédiaire : ce n'est ni un revendeur, ni un concessionnaire, ni un garagiste.</p></div>
+      <div class="cgv-article reveal"><h3>2. Hébergement</h3><p>Le site est hébergé par <strong style="color:rgba(255,255,255,0.80);">Infomaniak Network SA</strong>, Rue Eugène-Marziano 25, 1227 Genève (Suisse) — <a href="https://www.infomaniak.com" target="_blank" rel="noopener noreferrer" style="color:#C9A24B;">infomaniak.com</a>.</p></div>
       <div class="cgv-article reveal"><h3>3. Propriété intellectuelle</h3><p>L'ensemble des contenus du site (textes, logo, charte graphique, mise en page) est protégé. Les visuels des véhicules sont des <strong style="color:rgba(255,255,255,0.80);">images d'illustration</strong> et peuvent provenir des constructeurs ou de banques d'images ; ils ne représentent pas nécessairement le véhicule réel. Toute reproduction sans autorisation est interdite.</p></div>
       <div class="cgv-article reveal"><h3>4. Catalogue & disponibilité</h3><p>Le catalogue en ligne est fourni à titre indicatif. Les prix, équipements et disponibilités peuvent évoluer à tout moment et ne constituent pas une offre contractuelle. La liste présentée n'est pas exhaustive.</p></div>
 
-      <h2 style="font-size:20px; font-weight:700; color:#39ff6a; margin:34px 0 18px;">II. Conditions générales de service (CGV)</h2>
+      <h2 style="font-size:20px; font-weight:700; color:#C9A24B; margin:34px 0 18px;">II. Conditions générales de service (CGV)</h2>
 
       <div class="cgv-article reveal"><h3>5. Objet</h3><p>Les présentes conditions régissent la relation entre JujuCar (« le prestataire ») et toute personne faisant appel à ses services (« le client »), pour une prestation de courtage à l'achat ou à la vente d'un véhicule.</p></div>
       <div class="cgv-article reveal"><h3>6. Nature des prestations</h3><p><strong style="color:rgba(255,255,255,0.80);">Mandat d'achat :</strong> JujuCar recherche le véhicule, négocie le prix et coordonne les démarches. Le contrat de vente est conclu <strong style="color:rgba(255,255,255,0.80);">directement entre le client et le vendeur/concessionnaire</strong> — les fonds liés à l'achat du véhicule ne transitent jamais par JujuCar.<br><br><strong style="color:rgba(255,255,255,0.80);">Mandat de vente :</strong> JujuCar met en valeur le véhicule, gère la diffusion et les contacts. Le prestataire est tenu à une <strong style="color:rgba(255,255,255,0.80);">obligation de moyens et non de résultat</strong> : aucune vente n'est garantie.</p></div>
@@ -2188,7 +2261,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="cgv-article reveal"><h3>8. Obligations du client</h3><p>Le client s'engage à fournir des informations exactes, à coopérer de bonne foi et à régler les honoraires convenus dans les délais. Pour un mandat de vente, il garantit être propriétaire du véhicule et habilité à le vendre.</p></div>
       <div class="cgv-article reveal"><h3>9. Limitation de responsabilité</h3><p>JujuCar ne peut être tenu responsable des <strong style="color:rgba(255,255,255,0.80);">défauts ou vices du véhicule</strong>, des retards de livraison du vendeur, de l'absence de vente, des variations de prix, ni des litiges survenant entre le client et un tiers. Sa responsabilité éventuelle est limitée au montant des honoraires effectivement perçus pour la prestation concernée.</p></div>
       <div class="cgv-article reveal"><h3>10. Droit de refus & résiliation</h3><p>JujuCar se réserve le droit de refuser tout mandat sans avoir à se justifier. En cas de résiliation par le client après le début des démarches, JujuCar peut facturer au prorata les frais et le temps déjà engagés.</p></div>
-      <div class="cgv-article reveal"><h3>11. Protection des données</h3><p>Le traitement des données personnelles est détaillé dans notre <a href="#" onclick="showPage('confidentialite'); return false;" style="color:#39ff6a;">Politique de confidentialité</a>, conforme à la Loi fédérale sur la protection des données (LPD).</p></div>
+      <div class="cgv-article reveal"><h3>11. Protection des données</h3><p>Le traitement des données personnelles est détaillé dans notre <a href="#" onclick="showPage('confidentialite'); return false;" style="color:#C9A24B;">Politique de confidentialité</a>, conforme à la Loi fédérale sur la protection des données (LPD).</p></div>
       <div class="cgv-article reveal"><h3>12. Droit applicable et for</h3><p>Les présentes conditions sont soumises au <strong style="color:rgba(255,255,255,0.80);">droit suisse</strong>. Tout litige relève de la compétence exclusive des tribunaux du domicile du prestataire, en Suisse, sous réserve d'une tentative préalable de règlement amiable.</p></div>
     </div>
   </section>
@@ -2212,7 +2285,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="inner">
       <p style="font-size:14px; color:rgba(255,255,255,0.62); line-height:1.7; margin-bottom:26px;">JujuCar accorde une grande importance à la protection de votre vie privée. Cette politique explique quelles données nous traitons, pourquoi, combien de temps et quels sont vos droits. Elle est conforme à la Loi fédérale suisse sur la protection des données (nLPD).</p>
 
-      <div class="cgv-article reveal"><h3>1. Responsable du traitement</h3><p>Le responsable du traitement de vos données est <strong style="color:rgba(255,255,255,0.80);">JujuCar</strong>, service de courtage automobile en Suisse.<br>Contact dédié : <a href="mailto:contact@juju-car.ch" style="color:#39ff6a;">contact@juju-car.ch</a> · +41 79 927 21 65.</p></div>
+      <div class="cgv-article reveal"><h3>1. Responsable du traitement</h3><p>Le responsable du traitement de vos données est <strong style="color:rgba(255,255,255,0.80);">JujuCar</strong>, service de courtage automobile en Suisse.<br>Contact dédié : <a href="mailto:contact@juju-car.ch" style="color:#C9A24B;">contact@juju-car.ch</a> · +41 79 927 21 65.</p></div>
       <div class="cgv-article reveal"><h3>2. Données que nous collectons</h3><p>Nous ne collectons que les données que vous nous transmettez <strong style="color:rgba(255,255,255,0.80);">volontairement</strong> via le formulaire de contact ou par message :<br>• <strong style="color:rgba(255,255,255,0.80);">nom</strong> (pour vous identifier et vous adresser correctement) ;<br>• <strong style="color:rgba(255,255,255,0.80);">adresse e-mail</strong> (pour vous répondre) ;<br>• <strong style="color:rgba(255,255,255,0.80);">numéro de téléphone</strong> (pour vous rappeler au sujet de votre demande).<br><br>Nous ne demandons aucune donnée sensible (santé, opinions, données financières bancaires, etc.).</p></div>
       <div class="cgv-article reveal"><h3>3. Finalité — pourquoi ces données</h3><p>Vos données servent <strong style="color:rgba(255,255,255,0.80);">exclusivement</strong> à notre prestation de courtage automobile : vous recontacter, comprendre votre projet d'achat ou de vente, négocier en votre nom et assurer le suivi du dossier. Elles ne sont utilisées à aucune autre fin commerciale.</p></div>
       <div class="cgv-article reveal"><h3>4. Base légale</h3><p>Le traitement repose sur votre <strong style="color:rgba(255,255,255,0.80);">consentement</strong> (votre prise de contact) et sur l'exécution des mesures précontractuelles et contractuelles liées au mandat que vous nous confiez.</p></div>
@@ -2221,7 +2294,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="cgv-article reveal"><h3>7. Prestataires techniques (sous-traitants)</h3><p>Pour fonctionner, le site s'appuie sur des prestataires qui peuvent techniquement héberger vos données : <strong style="color:rgba(255,255,255,0.80);">Infomaniak</strong> (hébergement, Suisse) et <strong style="color:rgba(255,255,255,0.80);">Airtable</strong> (gestion du catalogue). Ces prestataires n'utilisent pas vos données pour leur propre compte.</p></div>
       <div class="cgv-article reveal"><h3>8. Cookies & mesure d'audience (Google Analytics)</h3><p>Le site utilise <strong style="color:rgba(255,255,255,0.80);">Google Analytics</strong> pour mesurer son audience de manière agrégée et anonyme (pages vues, durée de visite, provenance). Ces statistiques nous aident à améliorer le site, jamais à vous identifier personnellement. Un cookie technique mémorise par ailleurs que vous avez vu le bandeau cookies. Vous pouvez à tout moment refuser ou supprimer ces cookies via les réglages de votre navigateur.</p></div>
       <div class="cgv-article reveal"><h3>9. Sécurité</h3><p>Nous mettons en œuvre des mesures raisonnables (accès restreint, prestataires sérieux, connexions sécurisées) pour protéger vos données contre tout accès non autorisé, perte ou divulgation.</p></div>
-      <div class="cgv-article reveal"><h3>10. Vos droits</h3><p>Conformément à la nLPD, vous disposez d'un <strong style="color:rgba(255,255,255,0.80);">droit d'accès</strong>, de <strong style="color:rgba(255,255,255,0.80);">rectification</strong> et de <strong style="color:rgba(255,255,255,0.80);">suppression</strong> de vos données. Pour exercer ces droits, écrivez simplement à <a href="mailto:contact@juju-car.ch" style="color:#39ff6a;">contact@juju-car.ch</a> — nous traitons votre demande dans les meilleurs délais.</p></div>
+      <div class="cgv-article reveal"><h3>10. Vos droits</h3><p>Conformément à la nLPD, vous disposez d'un <strong style="color:rgba(255,255,255,0.80);">droit d'accès</strong>, de <strong style="color:rgba(255,255,255,0.80);">rectification</strong> et de <strong style="color:rgba(255,255,255,0.80);">suppression</strong> de vos données. Pour exercer ces droits, écrivez simplement à <a href="mailto:contact@juju-car.ch" style="color:#C9A24B;">contact@juju-car.ch</a> — nous traitons votre demande dans les meilleurs délais.</p></div>
       <div class="cgv-article reveal"><h3>11. Modifications</h3><p>Cette politique peut être mise à jour pour refléter une évolution de nos services ou de la législation. La version en vigueur est toujours celle publiée sur cette page.</p></div>
     </div>
   </section>
@@ -2260,27 +2333,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- BANNEAU COOKIES (à l'intérieur de .content-wrap pour un empilement correct) -->
 <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a1a; border-top:1px solid #2a2a2a; padding:16px 32px; z-index:900; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-  <p style="font-size:14px; color:#aaa; margin:0; flex:1; min-width:200px;">🍪 Ce site utilise des cookies pour améliorer votre expérience. En continuant à naviguer, vous acceptez notre politique de confidentialité. Vous pouvez demander la suppression de vos données à <a href="mailto:contact@juju-car.ch" style="color:#39ff6a;">contact@juju-car.ch</a>.</p>
-  <button onclick="acceptCookies()" style="background:#39ff6a; color:#111; border:none; padding:10px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:14px; white-space:nowrap;">J'accepte</button>
+  <p style="font-size:14px; color:#aaa; margin:0; flex:1; min-width:200px;">🍪 Ce site utilise des cookies pour améliorer votre expérience. En continuant à naviguer, vous acceptez notre politique de confidentialité. Vous pouvez demander la suppression de vos données à <a href="mailto:contact@juju-car.ch" style="color:#C9A24B;">contact@juju-car.ch</a>.</p>
+  <button onclick="acceptCookies()" style="background:#C9A24B; color:#111; border:none; padding:10px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:14px; white-space:nowrap;">J'accepte</button>
 </div>
 
 </div><!-- end .content-wrap -->
 
 
 <!-- ===== SCRIPTS ===== -->
+<!-- GSAP (animations) — chargé via CDN officiel GreenSock -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="vehicules.js"></script>
 <script>
-/* Background images per page */
-var bgImages = {
-  'accueil': 'voiture.png',
-  'achat':   'achat.png',
-  'vente':   'vente.png',
-  'histoire':'histoire.png',
-  'tarifs':  'tarifs.png',
-  'cgv':     'cgv.png',
-  'confidentialite': 'cgv.png'
-};
-
 function showPage(p) {
   var pages = document.querySelectorAll('.page');
   for (var i = 0; i < pages.length; i++) {
@@ -2293,9 +2358,8 @@ function showPage(p) {
     var slug = p === 'accueil' ? '/' : '/' + p;
     history.pushState({page: p}, '', slug);
     updateMeta(p);
-    /* Switch background image */
-    var img = bgImages[p] || 'voiture.png';
-    document.body.style.backgroundImage = "url('" + img + "')";
+    /* Le fond cinématique (heure dorée valaisanne) est fixe pour toutes
+       les pages — voir body / body::before dans le CSS. */
     /* Re-trigger reveal animations for newly shown page */
     triggerReveal();
   }
@@ -2462,7 +2526,7 @@ function formatPrix(n) {
   return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "'");
 }
 
-var CAT_PLACEHOLDER = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='220'%3E%3Crect width='400' height='220' fill='%23141414'/%3E%3Ctext x='200' y='118' fill='%2339ff6a' font-family='Arial,sans-serif' font-size='24' font-weight='bold' text-anchor='middle'%3EJujuCar%3C/text%3E%3C/svg%3E";
+var CAT_PLACEHOLDER = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='220'%3E%3Crect width='400' height='220' fill='%23141414'/%3E%3Ctext x='200' y='118' fill='%23C9A24B' font-family='Arial,sans-serif' font-size='24' font-weight='bold' text-anchor='middle'%3EJujuCar%3C/text%3E%3C/svg%3E";
 
 function renderCataloguePreview() {
   var section = document.getElementById('catalogue-preview');
@@ -2518,36 +2582,72 @@ function renderCataloguePreview() {
   });
 }
 
-/* ===== SCROLL REVEAL (IntersectionObserver) ===== */
-function triggerReveal() {
-  var elements = document.querySelectorAll('.page.active .reveal');
-  elements.forEach(function(el) {
-    el.classList.remove('visible');
-  });
-  setTimeout(function() {
-    if ('IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+/* ===== ANIMATIONS GSAP =====
+   - Révélation du texte du hero au chargement (timeline)
+   - Apparition des sections au défilement (ScrollTrigger)
+   - Repli propre si GSAP est indisponible OU si l'utilisateur a activé
+     « réduire les animations » (prefers-reduced-motion). */
+var PREFERS_REDUCED = window.matchMedia
+  && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var GSAP_OK = !!(window.gsap && window.ScrollTrigger) && !PREFERS_REDUCED;
 
-      document.querySelectorAll('.page.active .reveal').forEach(function(el) {
-        observer.observe(el);
-      });
-    } else {
-      document.querySelectorAll('.page.active .reveal').forEach(function(el) {
-        el.classList.add('visible');
-      });
+if (GSAP_OK) { gsap.registerPlugin(ScrollTrigger); }
+
+/* Révèle le hero immédiatement (repli sans animation). */
+function showHeroInstant() {
+  document.querySelectorAll('.hero .fade-badge, .hero .fade-h1, .hero .fade-lead, .hero .fade-sub, .hero .fade-btns, .hero .fade-stats')
+    .forEach(function(el) { el.style.opacity = 1; el.style.transform = 'none'; });
+}
+
+/* Timeline d'entrée du hero. */
+function animateHero() {
+  if (!GSAP_OK) { showHeroInstant(); return; }
+  var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.fromTo('.hero .fade-badge', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6 })
+    .fromTo('.hero .fade-h1',    { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9 }, '-=0.30')
+    .fromTo('.hero .fade-lead',  { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.8 }, '-=0.55')
+    .fromTo('.hero .fade-sub',   { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.50')
+    .fromTo('.hero .fade-btns',  { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.45')
+    .fromTo('.hero .fade-stats', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.40');
+}
+
+/* ===== SCROLL REVEAL — appelé à chaque changement de page (SPA) ===== */
+function triggerReveal() {
+  var els = document.querySelectorAll('.page.active .reveal');
+
+  /* Repli (pas de GSAP ou animations réduites) : on affiche tout de suite,
+     en gardant l'IntersectionObserver pour un fondu CSS léger si dispo. */
+  if (!GSAP_OK) {
+    if (PREFERS_REDUCED || !('IntersectionObserver' in window)) {
+      els.forEach(function(el) { el.classList.add('visible'); });
+      return;
     }
-  }, 80);
+    els.forEach(function(el) { el.classList.remove('visible'); });
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function(el) { obs.observe(el); });
+    return;
+  }
+
+  /* Chemin GSAP : chaque section glisse + apparaît à l'entrée dans le viewport. */
+  els.forEach(function(el) {
+    el.classList.add('visible');                 /* neutralise le masquage CSS */
+    if (el._st) { el._st.kill(); el._st = null; }
+    var tw = gsap.fromTo(el,
+      { opacity: 0, y: 34 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 86%', once: true } });
+    el._st = tw.scrollTrigger;
+  });
+  ScrollTrigger.refresh();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   renderCataloguePreview();
+  animateHero();
   triggerReveal();
 });
 </script>
