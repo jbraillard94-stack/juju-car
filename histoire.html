@@ -24,23 +24,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="nav">
     <a href="index.html" class="brand"><img src="assets/logo.png" alt="JujuCar"><span><b>Juju</b>Car<span class="dot">.</span></span></a>
     <nav class="menu">
-      <a href="catalogue.html">Catalogue</a>
-      <a href="achat.html">Trouver ma voiture</a>
       <a href="vente.html">Vendre</a>
       <a href="histoire.html">Histoire</a>
       <a href="tarifs.html">Tarifs</a>
+      <a href="catalogue.html">Catalogue</a>
     </nav>
-    <button class="btn-quote" onclick="location.href='achat.html'">Faire une demande</button>
+    <button class="btn-quote" onclick="location.href='index.html#contact'">Faire une demande</button>
     <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 <nav class="drawer" id="drawer" aria-hidden="true">
-  <a href="catalogue.html" data-close>Catalogue</a>
-  <a href="achat.html" data-close>Trouver ma voiture</a>
   <a href="vente.html" data-close>Vendre</a>
   <a href="histoire.html" data-close>Histoire</a>
   <a href="tarifs.html" data-close>Tarifs</a>
-  <a class="btn btn-gold" href="achat.html" data-close>Faire une demande <span class="arr">→</span></a>
+  <a href="catalogue.html" data-close>Catalogue</a>
+  <a class="btn btn-gold" href="index.html#contact" data-close>Faire une demande <span class="arr">→</span></a>
   <a class="dw-contact" href="tel:+41799272165">079 927 21 65 · contact@juju-car.ch</a>
 </nav>
 
@@ -67,9 +65,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <h2>MG4 Electric — <span class="accent">notre premier mandat</span></h2>
     </div>
     <div class="story" style="margin-top:28px;">
-      <div class="story-media reveal">
-        <img src="assets/mg4-wheel.jpg" alt="MG4 Electric — premier mandat JujuCar">
-        <span class="frame"></span>
+      <div class="reveal">
+        <div class="mg4-carousel" id="mg4Carousel">
+          <div class="mg4-track">
+            <img src="assets/mg4-orange.png" alt="MG4 Electric orange — premier mandat JujuCar">
+            <img src="assets/mg4-orange.png" alt="MG4 Electric orange — vue avant">
+            <img src="assets/mg4-orange.png" alt="MG4 Electric orange — profil">
+          </div>
+          <button class="mg4-arrow mg4-prev" aria-label="Photo précédente">&lsaquo;</button>
+          <button class="mg4-arrow mg4-next" aria-label="Photo suivante">&rsaquo;</button>
+          <div class="mg4-dots"></div>
+        </div>
+        <div class="mg4-placeholder">📸 Notre vraie photo arrive bientôt</div>
       </div>
       <div class="reveal">
         <div class="mg4-mandate-badge"><i class="ti ti-check"></i> Mandat réalisé</div>
@@ -122,7 +129,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <cite>— L'équipe JujuCar</cite>
     </div>
     <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;" class="reveal">
-      <a class="btn btn-gold" href="achat.html"><span class="arr">→</span> Trouver ma voiture</a>
+      <a class="btn btn-gold" href="index.html#contact"><span class="arr">→</span> Trouver ma voiture</a>
       <a class="btn btn-ghost" href="vente.html">Vendre mon véhicule</a>
     </div>
   </div>
@@ -138,11 +145,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div>
         <h5>Navigation</h5>
         <ul>
-          <li><a href="catalogue.html">Catalogue</a></li>
-          <li><a href="achat.html">Trouver ma voiture</a></li>
           <li><a href="vente.html">Vendre mon véhicule</a></li>
           <li><a href="histoire.html">Histoire</a></li>
           <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="catalogue.html">Catalogue</a></li>
         </ul>
       </div>
       <div>
@@ -163,5 +169,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </footer>
 
 <script src="assets/site.js" defer></script>
+<script>
+/* Mini-carrousel MG4 (flèches + points) */
+(function() {
+  var c = document.getElementById('mg4Carousel');
+  if (!c) return;
+  var track = c.querySelector('.mg4-track');
+  var slides = track.children.length;
+  var dotsWrap = c.querySelector('.mg4-dots');
+  var idx = 0;
+  for (var i = 0; i < slides; i++) {
+    var d = document.createElement('span');
+    if (i === 0) d.className = 'active';
+    (function(k) { d.addEventListener('click', function() { idx = k; upd(); }); })(i);
+    dotsWrap.appendChild(d);
+  }
+  function upd() {
+    track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+    var ds = dotsWrap.children;
+    for (var j = 0; j < ds.length; j++) ds[j].className = (j === idx ? 'active' : '');
+  }
+  c.querySelector('.mg4-prev').addEventListener('click', function() { idx = (idx - 1 + slides) % slides; upd(); });
+  c.querySelector('.mg4-next').addEventListener('click', function() { idx = (idx + 1) % slides; upd(); });
+})();
+</script>
 </body>
 </html>

@@ -18,33 +18,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/theme-pages.css">
 </head>
-<body>
+<body class="page-vente">
 
 <header id="header">
   <div class="nav">
     <a href="index.html" class="brand"><img src="assets/logo.png" alt="JujuCar"><span><b>Juju</b>Car<span class="dot">.</span></span></a>
     <nav class="menu">
-      <a href="catalogue.html">Catalogue</a>
-      <a href="achat.html">Trouver ma voiture</a>
       <a href="vente.html">Vendre</a>
       <a href="histoire.html">Histoire</a>
       <a href="tarifs.html">Tarifs</a>
+      <a href="catalogue.html">Catalogue</a>
     </nav>
     <button class="btn-quote" onclick="location.href='#form'">Faire une demande</button>
     <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 <nav class="drawer" id="drawer" aria-hidden="true">
-  <a href="catalogue.html" data-close>Catalogue</a>
-  <a href="achat.html" data-close>Trouver ma voiture</a>
   <a href="vente.html" data-close>Vendre</a>
   <a href="histoire.html" data-close>Histoire</a>
   <a href="tarifs.html" data-close>Tarifs</a>
+  <a href="catalogue.html" data-close>Catalogue</a>
   <a class="btn btn-gold" href="#form" data-close>Faire une demande <span class="arr">→</span></a>
   <a class="dw-contact" href="tel:+41799272165">079 927 21 65 · contact@juju-car.ch</a>
 </nav>
 
-<section class="page-hero">
+<section class="page-hero has-hero-photo">
   <div class="inner">
     <div class="page-label">Vendre mon véhicule</div>
     <h1>Vendez votre véhicule <span class="accent">sans vous en occuper</span></h1>
@@ -57,10 +55,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="section-box reveal">
       <span class="section-label">Ce que nous gérons pour vous</span>
       <p class="form-lead">Nous nous occupons de tout pour vendre votre véhicule d'occasion, de la mise en ligne jusqu'au rendez-vous de vente.</p>
-      <div class="check-item"><i class="ti ti-check"></i>Mise en ligne de l'annonce sur nos réseaux sociaux et les sites spécialisés (AutoScout24…)</div>
-      <div class="check-item"><i class="ti ti-check"></i>Gestion des messages et des commentaires</div>
-      <div class="check-item"><i class="ti ti-check"></i>Négociation avec les acheteurs</div>
-      <div class="check-item"><i class="ti ti-check"></i>Prise de rendez-vous pour la vente</div>
+      <div class="manage-grid">
+        <div class="manage-card"><i class="ti ti-check"></i><span>Mise en ligne de l'annonce sur nos réseaux sociaux et les sites spécialisés (AutoScout24…)</span></div>
+        <div class="manage-card"><i class="ti ti-check"></i><span>Gestion des messages et des commentaires</span></div>
+        <div class="manage-card"><i class="ti ti-check"></i><span>Négociation avec les acheteurs</span></div>
+        <div class="manage-card"><i class="ti ti-check"></i><span>Prise de rendez-vous pour la vente</span></div>
+      </div>
       <div class="service-price" style="margin-top:16px;">Tarif : <strong>10% du prix de vente, maximum 1 000 CHF</strong></div>
     </div>
 
@@ -120,11 +120,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div>
         <h5>Navigation</h5>
         <ul>
-          <li><a href="catalogue.html">Catalogue</a></li>
-          <li><a href="achat.html">Trouver ma voiture</a></li>
           <li><a href="vente.html">Vendre mon véhicule</a></li>
           <li><a href="histoire.html">Histoire</a></li>
           <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="catalogue.html">Catalogue</a></li>
         </ul>
       </div>
       <div>

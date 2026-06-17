@@ -286,6 +286,31 @@ section.block{padding:clamp(80px,11vw,140px) 0;position:relative}
 .contact-list .v{font-size:15.5px;color:var(--creme)}
 .contact-list a.v:hover{color:var(--or-clair)}
 
+/* honeypot anti-spam — toujours invisible (corrige la bande blanche) */
+.hp-field{position:absolute !important;left:-9999px !important;top:auto;width:1px;height:1px;
+  opacity:0;overflow:hidden;pointer-events:none}
+
+/* contact : icônes seules + tooltip élégant au survol (desktop) ;
+   sur mobile, le tap déclenche l'action native via le lien (tel:/mailto:/maps). */
+.contact-icons{flex-direction:row;flex-wrap:wrap;gap:18px}
+.contact-icons li{position:relative}
+.contact-icons .ci{position:relative;cursor:pointer;
+  transition:transform .25s var(--ease),border-color .25s,color .25s,box-shadow .25s}
+.contact-icons .ci:hover{transform:translateY(-3px);border-color:var(--or);color:var(--or-clair);
+  box-shadow:0 10px 26px rgba(201,162,75,.18)}
+.contact-icons .ci[data-tip]::after{content:attr(data-tip);position:absolute;left:50%;
+  bottom:calc(100% + 12px);transform:translateX(-50%) translateY(6px);
+  background:var(--surface-2);color:var(--creme);border:1px solid var(--line);border-radius:10px;
+  padding:9px 14px;font-size:13px;white-space:nowrap;letter-spacing:.01em;font-family:var(--sans);
+  box-shadow:0 14px 34px rgba(0,0,0,.45);opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .25s,transform .25s;z-index:20}
+.contact-icons .ci[data-tip]::before{content:"";position:absolute;left:50%;bottom:calc(100% + 6px);
+  transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--line);
+  opacity:0;visibility:hidden;transition:opacity .25s;z-index:20}
+.contact-icons .ci:hover::after,.contact-icons .ci:focus-visible::after{opacity:1;visibility:visible;
+  transform:translateX(-50%) translateY(0)}
+.contact-icons .ci:hover::before,.contact-icons .ci:focus-visible::before{opacity:1;visibility:visible}
+
 .form-card{background:linear-gradient(160deg,var(--surface),var(--noir-2));
   border:1px solid var(--line-soft);border-radius:20px;padding:38px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
