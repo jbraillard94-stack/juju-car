@@ -857,12 +857,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<!-- BANNEAU COOKIES (à l'intérieur de .content-wrap pour un empilement correct) -->
-<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a1a; border-top:1px solid #2a2a2a; padding:16px 32px; z-index:900; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-  <p style="font-size:14px; color:#aaa; margin:0; flex:1; min-width:200px;">🍪 Ce site utilise des cookies pour améliorer votre expérience. En continuant à naviguer, vous acceptez notre politique de confidentialité. Vous pouvez demander la suppression de vos données à <a href="mailto:contact@juju-car.ch" style="color:#C9A24B;">contact@juju-car.ch</a>.</p>
-  <button onclick="acceptCookies()" style="background:#C9A24B; color:#111; border:none; padding:10px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:14px; white-space:nowrap;">J'accepte</button>
-</div>
-
 </div><!-- end .content-wrap -->
 
 <!-- Logique du catalogue (données dynamiques depuis Airtable) -->
@@ -1568,16 +1562,7 @@ if (lb) {
 </script>
 
 <script>
-/* Bannière cookies : affichée UNE SEULE FOIS, puis mémorisée durablement.
-   localStorage persiste entre les onglets ET entre les visites → la bannière
-   ne réapparaît pas à chaque nouvel onglet (contrairement à sessionStorage). */
-function acceptCookies() {
-  localStorage.setItem('cookieAccepted', '1');
-  document.getElementById('cookie-banner').style.display = 'none';
-}
-if (!localStorage.getItem('cookieAccepted')) {
-  document.getElementById('cookie-banner').style.display = 'flex';
-}
 </script>
+  <script src="assets/cookies.js" defer></script>
 </body>
 </html>
