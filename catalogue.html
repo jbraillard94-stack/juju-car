@@ -940,7 +940,7 @@ function fetchVehicles() {
   resultsCount.textContent = 'Chargement du catalogue…';
 
   function pageUrl(offset) {
-    var u = AT.endpoint + '?pageSize=100&returnFieldsByFieldId=true';
+    var u = AT.endpoint + '?pageSize=100&returnFieldsByFieldId=true&filterByFormula=' + encodeURIComponent('{Publié sur le site}=1');
     if (offset) u += '&offset=' + encodeURIComponent(offset);
     return u;
   }
