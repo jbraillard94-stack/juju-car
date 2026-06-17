@@ -1,2672 +1,307 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>document.documentElement.className += ' js';</script>
-
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-KNT5QQ83');</script>
-  <!-- End Google Tag Manager -->
-
-  <title>JujuCar — Votre voiture neuve jusqu'à 30% moins cher | Courtage Auto Suisse</title>
-  <meta name="description" content="JujuCar trouve votre voiture neuve jusqu'à 30% moins cher, gère toute l'administration et vous la livre à domicile en Suisse. Courtage automobile en Valais et Vaud.">
-  <meta name="keywords" content="courtier automobile suisse, voiture moins cher suisse, acheter voiture neuve valais, courtage auto vaud, voiture neuve pas cher suisse romande">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="JujuCar">
-  <meta property="og:locale" content="fr_CH">
-  <meta property="og:title" content="JujuCar — Votre voiture neuve jusqu'à 30% moins cher">
-  <meta property="og:description" content="Trouvez votre voiture neuve au meilleur prix. Recherche, négociation, immatriculation et livraison à domicile en Suisse.">
-  <meta property="og:url" content="https://juju-car.ch">
-  <meta property="og:image" content="https://juju-car.ch/banniere.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="JujuCar — Votre voiture neuve jusqu'à 30% moins cher">
-  <meta name="twitter:description" content="Trouvez votre voiture neuve au meilleur prix. Recherche, négociation, immatriculation et livraison à domicile en Suisse.">
-  <meta name="twitter:image" content="https://juju-car.ch/banniere.png">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://juju-car.ch">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "JujuCar",
-    "description": "Courtage automobile en Suisse. Votre voiture neuve jusqu'à 30% moins cher, livrée à domicile.",
-    "url": "https://juju-car.ch",
-    "image": "https://juju-car.ch/banniere.png",
-    "logo": "https://juju-car.ch/logo.png",
-    "telephone": "+41799272165",
-    "email": "contact@juju-car.ch",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Grône",
-      "addressRegion": "Valais",
-      "addressCountry": "CH"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 46.2044,
-      "longitude": 7.5213
-    },
-    "openingHours": "Mo-Su 08:00-20:00",
-    "priceRange": "CHF 600-1200",
-    "serviceArea": {
-      "@type": "GeoCircle",
-      "geoMidpoint": {
-        "@type": "GeoCoordinates",
-        "latitude": 46.2044,
-        "longitude": 7.5213
-      },
-      "geoRadius": "100000"
-    }
-  }
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
-
-  <style>
-    /* ===== RESET ===== */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    /* ===== BASE ===== */
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: #F5F1E8;
-      background-color: #0E0E0F;
-      /* Fond « heure dorée valaisanne » — dégradés chauds superposés.
-         Sert de socle élégant ; une vraie photo (hero.jpg) se pose
-         par-dessus via body::before si le fichier est présent. */
-      background-image:
-        radial-gradient(135% 85% at 72% 8%, rgba(201,162,75,0.20), transparent 52%),
-        radial-gradient(90% 70% at 12% 4%, rgba(176,108,52,0.16), transparent 58%),
-        radial-gradient(120% 90% at 50% 120%, rgba(58,90,64,0.18), transparent 60%),
-        linear-gradient(180deg, #17150F 0%, #121110 42%, #0E0E0F 100%);
-      background-attachment: fixed;
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    /* Calque photo optionnel (route de montagne, heure dorée).
-       Si hero.jpg n'existe pas encore, ce calque reste transparent
-       et le dégradé chaud ci-dessus suffit. */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url('hero.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.55;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* Voile sombre chaud + vignette — garde le texte lisible par-dessus. */
-    .bg-overlay {
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(120% 120% at 50% 30%, transparent 40%, rgba(8,7,6,0.55) 100%),
-        linear-gradient(180deg, rgba(14,14,15,0.40) 0%, rgba(14,14,15,0.62) 100%);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* ===== TYPOGRAPHIE DISPLAY (titres) ===== */
-    h1, h2,
-    .hero h1, .page-hero h1,
-    .price-big, .mg4-price-paid, .tarif-price, .stat-num {
-      font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-    }
-
-    /* All visible content lives above overlay */
-    .content-wrap {
-      position: relative;
-      z-index: 1;
-    }
-
-    .accent { color: #C9A24B; }
-    .inner { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
-
-    /* ===== PAGES ===== */
-    .page { display: none; }
-    .page.active { display: block; }
-
-    /* ===== HEADER ===== */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 0.5px solid rgba(255,255,255,0.10);
-      padding: 0 2rem;
-    }
-
-    .header-inner {
-      max-width: 1240px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 64px;
-    }
-
-    .logo-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: #F5F1E8;
-      letter-spacing: -0.3px;
-    }
-
-    .logo-btn .logo-car { color: #C9A24B; }
-
-    nav { display: flex; gap: 24px; align-items: center; }
-
-    .nav-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      color: rgba(255,255,255,0.80);
-      font-size: 13px;
-      font-weight: 500;
-      transition: color 0.2s;
-      padding: 4px 0;
-      white-space: nowrap;
-    }
-
-    .nav-btn:hover { color: #C9A24B; }
-
-    .btn-nav-contact {
-      background: #C9A24B;
-      color: #0E0E0F;
-      border: none;
-      border-radius: 25px;
-      padding: 9px 20px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 13px;
-      cursor: pointer;
-      transition: opacity 0.2s;
-      margin-left: 4px;
-      white-space: nowrap;
-    }
-
-    .btn-nav-contact:hover { opacity: 0.88; }
-
-    .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: #F5F1E8;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    /* ===== MOBILE NAV ===== */
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      inset: 0;
-      top: 64px;
-      background: rgba(0,0,0,0.96);
-      z-index: 1000;
-      padding: 32px 24px 40px;
-      flex-direction: column;
-      gap: 0;
-      overflow-y: auto;
-    }
-
-    .mobile-nav.open { display: flex; }
-
-    .mobile-nav-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      color: rgba(255,255,255,0.80);
-      font-size: 22px;
-      font-weight: 600;
-      padding: 18px 0;
-      border-bottom: 0.5px solid rgba(255,255,255,0.07);
-      text-align: left;
-      width: 100%;
-      transition: color 0.2s;
-    }
-
-    .mobile-nav-btn:hover { color: #C9A24B; }
-
-    .mobile-contact-btn {
-      background: #C9A24B;
-      color: #0E0E0F;
-      border: none;
-      border-radius: 25px;
-      padding: 16px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 17px;
-      cursor: pointer;
-      margin-top: 28px;
-      width: 100%;
-    }
-
-    /* ===== CONTACT MODAL ===== */
-    .overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.78);
-      z-index: 1100;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .overlay.open { display: flex; }
-
-    .modal {
-      background: rgba(10,10,10,0.97);
-      border: 0.5px solid rgba(255,255,255,0.12);
-      border-radius: 16px;
-      padding: 36px;
-      max-width: 500px;
-      width: 90%;
-      position: relative;
-      backdrop-filter: blur(24px);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: none;
-      border: none;
-      color: rgba(255,255,255,0.40);
-      font-size: 20px;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-
-    .modal-close:hover { color: #F5F1E8; }
-
-    .contact-opt {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: rgba(255,255,255,0.05);
-      border: 0.5px solid rgba(255,255,255,0.10);
-      border-radius: 12px;
-      padding: 18px 22px;
-      cursor: pointer;
-      margin-bottom: 10px;
-      transition: border-color 0.2s, background 0.2s;
-      width: 100%;
-      font-family: 'Inter', sans-serif;
-      text-align: left;
-    }
-
-    .contact-opt:hover { border-color: #C9A24B; background: rgba(201,162,75,0.06); }
-
-    .contact-opt-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(201,162,75,0.10);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    /* ===== FORM FIELDS ===== */
-    .field-label {
-      font-size: 13px;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 6px;
-      display: block;
-      font-weight: 500;
-    }
-
-    .field {
-      background: rgba(255,255,255,0.06);
-      border: 0.5px solid rgba(255,255,255,0.15);
-      border-radius: 10px;
-      padding: 13px 16px;
-      font-size: 15px;
-      color: #F5F1E8;
-      width: 100%;
-      outline: none;
-      font-family: 'Inter', sans-serif;
-      transition: border-color 0.2s;
-    }
-
-    .field:focus { border-color: #C9A24B; }
-    .field::placeholder { color: rgba(255,255,255,0.22); }
-
-    .fgroup { margin-bottom: 18px; }
-    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-    .choice-btn {
-      background: rgba(255,255,255,0.06);
-      border: 0.5px solid rgba(255,255,255,0.15);
-      border-radius: 8px;
-      padding: 10px 16px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.65);
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      transition: all 0.2s;
-    }
-
-    .choice-btn:hover, .choice-btn.active {
-      background: rgba(201,162,75,0.10);
-      border-color: #C9A24B;
-      color: #C9A24B;
-    }
-
-    /* ===== BUTTONS ===== */
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #C9A24B;
-      color: #0E0E0F;
-      border: none;
-      border-radius: 25px;
-      padding: 13px 26px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      cursor: pointer;
-      transition: opacity 0.2s;
-      text-decoration: none;
-    }
-
-    .btn-primary:hover { opacity: 0.88; }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.12);
-      color: #F5F1E8;
-      border: 1.5px solid rgba(255,255,255,0.45);
-      border-radius: 25px;
-      padding: 13px 26px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 15px;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
-    }
-
-    .btn-secondary:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.65); }
-
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: #C9A24B;
-      border: 1.5px solid #C9A24B;
-      border-radius: 25px;
-      padding: 11px 22px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background 0.2s;
-      text-decoration: none;
-    }
-
-    .btn-outline:hover { background: rgba(201,162,75,0.08); }
-
-    .btn-submit {
-      background: #C9A24B;
-      color: #0E0E0F;
-      border: none;
-      border-radius: 25px;
-      padding: 15px 32px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 16px;
-      cursor: pointer;
-      width: 100%;
-      transition: opacity 0.2s;
-    }
-
-    .btn-submit:hover { opacity: 0.88; }
-
-    .back-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #C9A24B;
-      font-size: 14px;
-      font-family: 'Inter', sans-serif;
-      padding: 32px 0 24px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: 500;
-    }
-
-    /* ===== PATH BUTTONS ===== */
-    .path-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(255,255,255,0.05);
-      border: 0.5px solid rgba(255,255,255,0.12);
-      border-radius: 14px;
-      padding: 26px 28px;
-      cursor: pointer;
-      margin-bottom: 14px;
-      transition: border-color 0.2s, background 0.2s;
-      width: 100%;
-      font-family: 'Inter', sans-serif;
-      text-align: left;
-    }
-
-    .path-btn:hover { border-color: #C9A24B; background: rgba(201,162,75,0.04); }
-
-    /* ===== SECTION BOXES ===== */
-    .section-box {
-      background: rgba(255,255,255,0.05);
-      border: 0.5px solid rgba(255,255,255,0.10);
-      border-radius: 16px;
-      padding: 32px;
-      margin-bottom: 20px;
-    }
-
-    .section-label {
-      font-size: 11px;
-      color: #C9A24B;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 22px;
-      display: block;
-    }
-
-    .info-box {
-      background: rgba(201,162,75,0.05);
-      border: 0.5px solid rgba(201,162,75,0.15);
-      border-radius: 12px;
-      padding: 18px 22px;
-      margin-bottom: 20px;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    .info-box i { font-size: 20px; color: #C9A24B; flex-shrink: 0; margin-top: 1px; }
-    .info-box p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; }
-
-    /* ===== HERO SECTION ===== */
-    .hero {
-      min-height: calc(100vh - 64px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 80px 0 60px;
-    }
-
-    .badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(201,162,75,0.15);
-      border: 0.5px solid rgba(201,162,75,0.45);
-      color: #C9A24B;
-      border-radius: 20px;
-      padding: 5px 14px;
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 28px;
-    }
-
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #C9A24B;
-      animation: dotpulse 2s infinite;
-      flex-shrink: 0;
-    }
-
-    @keyframes dotpulse {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 1; }
-    }
-
-    .hero h1 {
-      font-size: 64px;
-      font-weight: 800;
-      letter-spacing: -2px;
-      line-height: 1.05;
-      margin-bottom: 20px;
-      text-shadow: 0 2px 30px rgba(0,0,0,0.4);
-    }
-
-    .hero h1 { letter-spacing: -1px; }
-
-    .hero-lead {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 23px;
-      font-weight: 500;
-      font-style: italic;
-      color: rgba(245,241,232,0.92);
-      line-height: 1.4;
-      max-width: 560px;
-      margin-bottom: 22px;
-    }
-
-    .hero-sub {
-      font-size: 16px;
-      color: rgba(245,241,232,0.66);
-      line-height: 1.7;
-      max-width: 520px;
-      margin-bottom: 36px;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 52px;
-    }
-
-    .stats-row {
-      display: flex;
-      align-items: center;
-      padding-top: 36px;
-      border-top: 0.5px solid rgba(255,255,255,0.12);
-      max-width: 540px;
-    }
-
-    .stat-item { flex: 1; }
-    .stat-item:not(:first-child) { padding-left: 28px; }
-    .stat-item:not(:last-child) { padding-right: 28px; }
-
-    .stat-divider {
-      width: 1px;
-      height: 44px;
-      background: rgba(255,255,255,0.20);
-      flex-shrink: 0;
-    }
-
-    .stat-num {
-      font-size: 32px;
-      font-weight: 800;
-      color: #C9A24B;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.4;
-    }
-
-    /* ===== SERVICES SECTION ===== */
-    .services-section {
-      background: rgba(0,0,0,0.62);
-      padding: 80px 0;
-    }
-
-    .section-tag {
-      font-size: 11px;
-      color: #C9A24B;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .services-section h2 {
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 40px;
-    }
-
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .bento-card {
-      background: rgba(255,255,255,0.07);
-      border: 0.5px solid rgba(255,255,255,0.12);
-      border-radius: 16px;
-      padding: 1.5rem;
-      transition: transform 0.25s ease, border-color 0.2s, background 0.2s;
-    }
-
-    .bento-card:hover {
-      transform: translateY(-6px);
-      border-color: #C9A24B;
-      background: rgba(201,162,75,0.08);
-    }
-
-    .bento-card-wide { grid-column: span 2; }
-
-    .card-icon {
-      width: 44px;
-      height: 44px;
-      background: rgba(201,162,75,0.12);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-    }
-
-    .card-icon i { font-size: 22px; color: #C9A24B; }
-
-    .bento-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .bento-card p {
-      font-size: 14px;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.65;
-    }
-
-    .bento-card ul {
-      list-style: none;
-      padding: 0;
-      font-size: 14px;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.65;
-    }
-
-    .bento-card ul li { padding: 3px 0 3px 18px; position: relative; }
-    .bento-card ul li::before { content: '✓'; position: absolute; left: 0; color: #C9A24B; font-size: 12px; }
-
-    .wide-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      height: 100%;
-    }
-
-    .wide-left { padding-right: 24px; }
-
-    .wide-right {
-      padding-left: 24px;
-      border-left: 0.5px solid rgba(255,255,255,0.10);
-    }
-
-    .price-label-small {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: rgba(255,255,255,0.40);
-      margin-bottom: 6px;
-    }
-
-    .price-big {
-      font-size: 40px;
-      font-weight: 800;
-      color: #C9A24B;
-      letter-spacing: -1.5px;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .price-sub-label {
-      font-size: 13px;
-      color: rgba(255,255,255,0.50);
-      margin-bottom: 14px;
-    }
-
-    .badge-green-pill {
-      display: inline-block;
-      background: rgba(201,162,75,0.15);
-      border: 0.5px solid rgba(201,162,75,0.35);
-      color: #C9A24B;
-      border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .how-label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      color: rgba(255,255,255,0.80);
-      margin-bottom: 14px;
-    }
-
-    .how-label i { color: #C9A24B; font-size: 16px; }
-
-    .step-mini-list { list-style: none; padding: 0; }
-
-    .step-mini-list li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 10px;
-    }
-
-    .step-num-small {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #C9A24B;
-      color: #0E0E0F;
-      font-size: 11px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    /* ===== HOW IT WORKS ===== */
-    .how-section {
-      background: rgba(0,0,0,0.55);
-      padding: 80px 0;
-    }
-
-    .how-section h2 {
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 0;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-top: 48px;
-      position: relative;
-    }
-
-    .steps-line {
-      position: absolute;
-      top: 26px;
-      left: 12%;
-      right: 12%;
-      height: 0.5px;
-      background: rgba(255,255,255,0.12);
-    }
-
-    .step-card { text-align: center; position: relative; }
-
-    .step-circle {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 17px;
-      margin: 0 auto 16px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .step-circle.filled { background: #C9A24B; color: #0E0E0F; }
-
-    .step-circle.outline {
-      background: rgba(0,0,0,0.40);
-      border: 2px solid #C9A24B;
-      color: #C9A24B;
-    }
-
-    .step-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-    .step-card p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
-
-    /* ===== CTA SECTION ===== */
-    .cta-section {
-      background: rgba(0,0,0,0.60);
-      padding: 80px 0;
-      text-align: center;
-    }
-
-    .cta-section h2 {
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 10px;
-    }
-
-    .cta-sub {
-      font-size: 15px;
-      color: rgba(255,255,255,0.58);
-      margin-bottom: 32px;
-    }
-
-    .cta-btns {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* ===== PAGE HERO (internal pages) ===== */
-    .page-hero {
-      background: rgba(0,0,0,0.58);
-      padding: 72px 0 52px;
-    }
-
-    .page-label {
-      font-size: 11px;
-      color: #C9A24B;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
-
-    .page-hero h1 {
-      font-size: 48px;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-
-    .page-hero p {
-      font-size: 16px;
-      color: rgba(255,255,255,0.70);
-      line-height: 1.65;
-      max-width: 560px;
-    }
-
-    /* ===== FORM SECTION ===== */
-    .form-section {
-      background: rgba(0,0,0,0.58);
-      padding: 48px 0 72px;
-    }
-
-    /* ===== HISTOIRE ===== */
-    .content-section { background: rgba(0,0,0,0.58); padding: 64px 0; }
-
-    .story-text {
-      background: rgba(255,255,255,0.05);
-      border: 0.5px solid rgba(255,255,255,0.10);
-      border-radius: 16px;
-      padding: 36px;
-      margin-bottom: 32px;
-    }
-
-    .story-text p {
-      font-size: 16px;
-      color: rgba(255,255,255,0.80);
-      line-height: 1.9;
-      margin-bottom: 18px;
-    }
-
-    .story-text p:last-child { margin-bottom: 0; }
-
-    .engage-section { background: rgba(0,0,0,0.55); padding: 64px 0; }
-
-    .engage-section h2 {
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 32px;
-    }
-
-    .engage-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .engage-card {
-      background: rgba(255,255,255,0.07);
-      border: 0.5px solid rgba(255,255,255,0.12);
-      border-radius: 16px;
-      padding: 28px;
-      transition: transform 0.25s ease, border-color 0.2s;
-    }
-    .engage-card:hover { transform: translateY(-6px); border-color: #C9A24B; }
-
-    .engage-card .card-icon { margin-bottom: 14px; }
-    .engage-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-    .engage-card p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; }
-
-    .blockquote-section { background: rgba(0,0,0,0.58); padding: 64px 0; }
-
-    .blockquote {
-      border-left: 3px solid #C9A24B;
-      padding: 6px 0 6px 24px;
-      margin-bottom: 36px;
-    }
-
-    .blockquote p {
-      font-size: 18px;
-      color: rgba(255,255,255,0.82);
-      line-height: 1.7;
-      font-style: italic;
-      margin-bottom: 10px;
-    }
-
-    .blockquote cite { font-size: 13px; color: rgba(255,255,255,0.38); font-style: normal; }
-
-    /* ===== TARIFS ===== */
-    .tarif-card {
-      background: rgba(255,255,255,0.06);
-      border: 0.5px solid rgba(255,255,255,0.12);
-      border-radius: 16px;
-      padding: 32px;
-      margin-bottom: 20px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tarif-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: #C9A24B;
-    }
-
-    .tarif-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 22px;
-    }
-
-    .tarif-price { font-size: 36px; font-weight: 700; color: #C9A24B; line-height: 1; }
-    .tarif-price-sub { font-size: 14px; color: rgba(255,255,255,0.38); margin-top: 4px; }
-
-    .check-list {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      border-top: 0.5px solid rgba(255,255,255,0.08);
-      padding-top: 20px;
-      margin-bottom: 20px;
-    }
-
-    .check-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.70);
-      line-height: 1.5;
-    }
-
-    .check-list li i { color: #C9A24B; font-size: 14px; flex-shrink: 0; margin-top: 2px; }
-
-    .highlight-box {
-      background: rgba(201,162,75,0.06);
-      border: 0.5px solid rgba(201,162,75,0.20);
-      border-radius: 10px;
-      padding: 14px 18px;
-    }
-
-    .highlight-box p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7; }
-
-    .platforms {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .platform-tag {
-      background: rgba(255,255,255,0.06);
-      border: 0.5px solid rgba(255,255,255,0.12);
-      border-radius: 6px;
-      padding: 5px 12px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.60);
-    }
-
-    .special-box {
-      background: rgba(255,255,255,0.05);
-      border: 0.5px solid rgba(201,162,75,0.22);
-      border-radius: 14px;
-      padding: 24px 28px;
-      margin-bottom: 16px;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
-
-    .special-box i { font-size: 22px; color: #C9A24B; flex-shrink: 0; }
-
-    .disclaimer-box {
-      background: rgba(255,255,255,0.03);
-      border: 0.5px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 18px 22px;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    .disclaimer-box i { font-size: 18px; color: rgba(255,255,255,0.30); flex-shrink: 0; margin-top: 2px; }
-    .disclaimer-box p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.7; }
-
-    /* ===== EXEMPLES ===== */
-    .example-card {
-      background: rgba(255,255,255,0.05);
-      border: 0.5px solid rgba(255,255,255,0.10);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .example-header {
-      background: rgba(255,255,255,0.04);
-      padding: 18px 24px;
-      border-bottom: 0.5px solid rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .example-header-icon {
-      width: 36px;
-      height: 36px;
-      background: rgba(201,162,75,0.10);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .example-body { padding: 24px; }
-
-    .price-comparison {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .price-box {
-      background: rgba(255,255,255,0.04);
-      border: 0.5px solid rgba(255,255,255,0.10);
-      border-radius: 10px;
-      padding: 18px;
-      text-align: center;
-    }
-
-    .price-box.green-box {
-      background: rgba(201,162,75,0.05);
-      border-color: rgba(201,162,75,0.30);
-    }
-
-    .price-box .price-tag {
-      font-size: 10px;
-      letter-spacing: 0.8px;
-      color: rgba(255,255,255,0.38);
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .price-box.green-box .price-tag { color: #C9A24B; }
-
-    .price-box .price-value {
-      font-size: 26px;
-      font-weight: 700;
-      color: rgba(255,255,255,0.35);
-      text-decoration: line-through;
-    }
-
-    .price-box.green-box .price-value {
-      color: #C9A24B;
-      text-decoration: none;
-    }
-
-    .price-box .price-note { font-size: 11px; color: rgba(255,255,255,0.40); margin-top: 4px; }
-
-    .price-arrow {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      padding: 0 12px;
-    }
-
-    .economy-badge {
-      background: #C9A24B;
-      color: #0E0E0F;
-      border-radius: 8px;
-      padding: 10px 12px;
-      text-align: center;
-    }
-
-    .economy-badge .eco-title { font-size: 9px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
-    .economy-badge .eco-amount { font-size: 17px; font-weight: 700; }
-    .economy-badge .eco-pct { font-size: 9px; }
-
-    .example-checks {
-      border-top: 0.5px solid rgba(255,255,255,0.07);
-      padding-top: 16px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4px;
-    }
-
-    .check-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-
-    .check-item i { color: #C9A24B; font-size: 14px; flex-shrink: 0; margin-top: 1px; }
-
-    /* ===== MG4 SHOWCASE ===== */
-    .mg4-section { background: rgba(0,0,0,0.60); padding: 72px 0; }
-
-    .mg4-section h2 {
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 32px;
-    }
-
-    .mg4-photos {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 32px;
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .mg4-photos img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .mg4-mandate-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(201,162,75,0.15);
-      border: 0.5px solid rgba(201,162,75,0.40);
-      color: #C9A24B;
-      border-radius: 20px;
-      padding: 5px 14px;
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .mg4-title { font-size: 24px; font-weight: 700; margin-bottom: 16px; }
-
-    .mg4-prices {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-
-    .mg4-price-paid { font-size: 42px; font-weight: 800; color: #C9A24B; letter-spacing: -1.5px; }
-    .mg4-price-catalogue { font-size: 22px; color: rgba(255,255,255,0.32); text-decoration: line-through; }
-
-    .mg4-economy-badge {
-      display: inline-block;
-      background: #C9A24B;
-      color: #0E0E0F;
-      border-radius: 20px;
-      padding: 6px 16px;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .mg4-desc {
-      font-size: 15px;
-      color: rgba(255,255,255,0.70);
-      line-height: 1.7;
-      max-width: 680px;
-    }
-
-    .socials-cta {
-      background: rgba(201,162,75,0.05);
-      border: 0.5px solid rgba(201,162,75,0.20);
-      border-radius: 14px;
-      padding: 22px 26px;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      margin-top: 32px;
-    }
-
-    .socials-cta i { font-size: 22px; color: #C9A24B; flex-shrink: 0; }
-
-    /* ===== CGV ===== */
-    .cgv-section { background: rgba(0,0,0,0.58); padding: 64px 0; }
-
-    .cgv-article { margin-bottom: 36px; }
-
-    .cgv-article h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: #C9A24B;
-      margin-bottom: 10px;
-      padding-bottom: 8px;
-      border-bottom: 0.5px solid rgba(255,255,255,0.08);
-    }
-
-    .cgv-article p { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.8; }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: rgba(0,0,0,0.88);
-      border-top: 0.5px solid rgba(255,255,255,0.06);
-      padding: 1.5rem 2rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .footer-main {
-      max-width: 1240px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .footer-logo-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: #F5F1E8;
-    }
-
-    .footer-logo-btn .logo-car { color: #C9A24B; }
-
-    .footer-socials { display: flex; gap: 10px; align-items: center; }
-
-    .social-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 0.5px solid rgba(255,255,255,0.20);
-      background: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.65);
-      font-size: 18px;
-      transition: all 0.2s;
-    }
-
-    .social-btn:hover { background: #C9A24B; color: #0E0E0F; border-color: #C9A24B; }
-
-    .footer-links { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-
-    .footer-link-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      color: rgba(255,255,255,0.42);
-      font-size: 13px;
-      transition: color 0.2s;
-    }
-
-    .footer-link-btn:hover { color: #C9A24B; }
-
-    .footer-bottom {
-      max-width: 1240px;
-      margin: 16px auto 0;
-      padding-top: 14px;
-      border-top: 0.5px solid rgba(255,255,255,0.06);
-      text-align: center;
-      font-size: 12px;
-      color: rgba(255,255,255,0.32);
-    }
-
-    .footer-bottom a { color: rgba(255,255,255,0.50); text-decoration: none; }
-    .footer-bottom a:hover { color: #C9A24B; }
-
-    /* ===== ANIMATIONS ===== */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-badge  { animation: fadeUp 0.7s ease 0.00s both; }
-    .fade-h1     { animation: fadeUp 0.7s ease 0.12s both; }
-    .fade-lead   { animation: fadeUp 0.7s ease 0.30s both; }
-    .fade-sub    { animation: fadeUp 0.7s ease 0.44s both; }
-    .fade-btns   { animation: fadeUp 0.7s ease 0.56s both; }
-    .fade-stats  { animation: fadeUp 0.7s ease 0.68s both; }
-
-    /* Quand JS est actif, le hero démarre masqué : GSAP (ou le repli) le révèle.
-       Évite tout « flash » de texte avant l'animation. La requête
-       prefers-reduced-motion ci-dessous force la visibilité immédiate. */
-    .js .hero .fade-badge, .js .hero .fade-h1, .js .hero .fade-lead,
-    .js .hero .fade-sub, .js .hero .fade-btns, .js .hero .fade-stats {
-      animation: none;
-      opacity: 0;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ===== ACCESSIBILITÉ : animations désactivées si l'utilisateur le demande ===== */
-    @media (prefers-reduced-motion: reduce) {
-      .fade-badge, .fade-h1, .fade-lead, .fade-sub, .fade-btns, .fade-stats,
-      .reveal, .badge-dot {
-        animation: none !important;
-        transition: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-      }
-    }
-
-    /* ===== SERVICES (deux services équilibrés) ===== */
-    .services-duo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .service-intro {
-      font-size: 14px;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.6;
-      margin-bottom: 14px;
-    }
-    .service-price {
-      margin-top: 16px;
-      padding-top: 14px;
-      border-top: 0.5px solid rgba(255,255,255,0.10);
-      font-size: 14px;
-      color: rgba(255,255,255,0.70);
-    }
-    .service-price strong { color: #C9A24B; font-weight: 700; }
-
-    /* ===== APERÇU CATALOGUE (accueil) ===== */
-    .catalogue-preview-section { background: rgba(0,0,0,0.58); padding: 80px 0; }
-    .catalogue-preview-section h2 {
-      font-size: 30px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 36px;
-    }
-    .cat-preview-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 36px;
-    }
-    .cat-prev-card {
-      background: rgba(255,255,255,0.07);
-      border: 0.5px solid rgba(255,255,255,0.12);
-      border-radius: 16px; overflow: hidden; cursor: pointer;
-      transition: transform 0.25s ease, border-color 0.2s;
-      text-align: left; font-family: 'Inter', sans-serif; padding: 0;
-    }
-    .cat-prev-card:hover { transform: translateY(-6px); border-color: #C9A24B; }
-    .cat-prev-img { height: 160px; overflow: hidden; background: #141414; }
-    .cat-prev-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .cat-prev-body { padding: 14px 16px; }
-    .cat-prev-marque {
-      font-size: 11px; color: #C9A24B; text-transform: uppercase;
-      letter-spacing: 1px; font-weight: 600; margin-bottom: 3px;
-    }
-    .cat-prev-modele { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #F5F1E8; }
-    .cat-prev-price { font-size: 19px; font-weight: 800; color: #C9A24B; letter-spacing: -0.5px; }
-    .cat-prev-colors {
-      margin-top: 8px; font-size: 11px; line-height: 1.4;
-      color: rgba(255,255,255,0.70);
-      background: rgba(201,162,75,0.10);
-      border: 0.5px solid rgba(201,162,75,0.30);
-      border-radius: 8px; padding: 5px 8px;
-    }
-    .cat-prev-colors strong { color: #C9A24B; font-weight: 600; }
-    .cat-preview-cta { text-align: center; }
-    .cat-preview-cta p {
-      font-size: 16px; color: rgba(255,255,255,0.72); line-height: 1.6;
-      max-width: 560px; margin: 0 auto 22px;
-    }
-
-    /* ===== ACHAT — intro rassurante + bandeau catalogue ===== */
-    .achat-intro {
-      display: flex; gap: 14px; align-items: flex-start;
-      background: rgba(201,162,75,0.06);
-      border: 0.5px solid rgba(201,162,75,0.18);
-      border-radius: 14px; padding: 20px 24px; margin-bottom: 18px;
-    }
-    .achat-intro i { font-size: 22px; color: #C9A24B; flex-shrink: 0; margin-top: 2px; }
-    .achat-intro p { font-size: 15px; color: rgba(255,255,255,0.80); line-height: 1.65; }
-    .achat-intro strong { color: #F5F1E8; font-weight: 600; }
-
-    .catalogue-banner {
-      display: flex; gap: 20px; align-items: center; justify-content: space-between;
-      flex-wrap: wrap;
-      background: rgba(255,255,255,0.05);
-      border: 0.5px solid rgba(255,255,255,0.12);
-      border-radius: 16px; padding: 22px 26px; margin-bottom: 28px;
-    }
-    .catalogue-banner h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
-    .catalogue-banner p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.6; max-width: 580px; }
-    .catalogue-banner .btn-primary { flex-shrink: 0; }
-
-    /* ===== ANTI-SPAM ===== */
-    .hp-field { display: none !important; position: absolute; left: -9999px; }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      body {
-        background-attachment: scroll;
-      }
-
-      .bg-overlay { background: rgba(0,0,0,0.60); }
-
-      nav { display: none; }
-      .hamburger { display: block; }
-
-      .inner { padding: 0 20px; }
-      header { padding: 0 20px; }
-
-      .hero { padding: 52px 0 40px; min-height: auto; }
-      .hero h1 { font-size: 38px; letter-spacing: -1px; }
-      .hero-btns { flex-direction: column; }
-      .hero-btns .btn-primary,
-      .hero-btns .btn-secondary { width: 100%; justify-content: center; }
-
-      .stats-row { flex-wrap: wrap; gap: 20px; max-width: 100%; padding-top: 24px; }
-      .stat-item { text-align: center; padding: 0 !important; min-width: 30%; }
-      .stat-divider { display: none; }
-      .stat-num { font-size: 26px; }
-
-      .services-section { padding: 56px 0; }
-      .bento-grid { grid-template-columns: 1fr; }
-      .bento-card-wide { grid-column: span 1; }
-      .wide-inner { grid-template-columns: 1fr; }
-      .wide-right { padding-left: 0; border-left: none; padding-top: 20px; border-top: 0.5px solid rgba(255,255,255,0.10); margin-top: 4px; }
-      .services-duo { grid-template-columns: 1fr; }
-
-      .catalogue-preview-section { padding: 56px 0; }
-      .cat-preview-grid { grid-template-columns: repeat(2, 1fr); }
-      .cat-preview-cta .btn-primary,
-      .cat-preview-cta .btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
-
-      .catalogue-banner { flex-direction: column; align-items: flex-start; }
-      .catalogue-banner .btn-primary { width: 100%; justify-content: center; }
-
-      .how-section { padding: 56px 0; }
-      .steps-grid { grid-template-columns: 1fr 1fr; }
-      .steps-line { display: none; }
-
-      .cta-section { padding: 56px 0; }
-      .cta-btns { flex-direction: column; align-items: center; }
-      .cta-btns .btn-primary,
-      .cta-btns .btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
-
-      .page-hero { padding: 52px 0 36px; }
-      .page-hero h1 { font-size: 32px; letter-spacing: -0.8px; }
-
-      .grid2 { grid-template-columns: 1fr; }
-
-      .engage-grid { grid-template-columns: 1fr; }
-
-      .check-list { grid-template-columns: 1fr; }
-      .tarif-header { flex-direction: column; }
-
-      .price-comparison { grid-template-columns: 1fr; gap: 12px; }
-      .price-arrow { flex-direction: row; padding: 0; justify-content: center; }
-
-      .example-checks { grid-template-columns: 1fr; }
-
-      .mg4-photos { grid-template-columns: 1fr; border-radius: 12px; }
-      .mg4-photos img { height: 200px; }
-      .mg4-price-paid { font-size: 32px; }
-
-      .footer-main { flex-direction: column; text-align: center; }
-      .footer-links { justify-content: center; }
-      .footer-socials { justify-content: center; }
-      .social-btn { width: 44px; height: 44px; font-size: 20px; }
-    }
-
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 32px; }
-      .page-hero h1 { font-size: 28px; }
-      .steps-grid { grid-template-columns: 1fr; }
-      .cat-preview-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JujuCar — Votre voiture, trouvée et livrée prête à rouler | Courtier automobile en Valais</title>
+<meta name="description" content="Courtier automobile indépendant en Valais. Nous trouvons la voiture, neuve ou d'occasion, de votre choix — jusqu'à ~30% sous le prix concession. Recherche, négociation, immatriculation et livraison à domicile partout en Suisse romande.">
+<link rel="canonical" href="https://juju-car.ch">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/theme.css">
 </head>
 <body>
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNT5QQ83"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-<!-- Fixed dark overlay -->
-<div class="bg-overlay"></div>
-
-<div class="content-wrap">
-
-<!-- ===== HEADER ===== -->
-<header>
-  <div class="header-inner">
-    <button class="logo-btn" onclick="showPage('accueil')">Juju<span class="logo-car">Car</span></button>
-    <nav>
-      <button class="nav-btn" onclick="showPage('accueil')">Accueil</button>
-      <button class="nav-btn" onclick="showPage('achat')">Trouver ma voiture</button>
-      <button class="nav-btn" onclick="showPage('vente')">Vendre mon véhicule</button>
-      <button class="nav-btn" onclick="showPage('histoire')">Notre histoire</button>
-      <button class="nav-btn" onclick="showPage('tarifs')">Tarifs</button>
-      <button class="nav-btn" onclick="window.location.href='catalogue.html'">Catalogue</button>
-      <button class="btn-nav-contact" onclick="openContact()">Nous contacter</button>
+<!-- ============ HEADER ============ -->
+<header id="header">
+  <div class="nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="JujuCar">
+      <span><b>Juju</b>Car<span class="dot">.</span></span>
+    </a>
+    <nav class="menu">
+      <a href="catalogue.html">Catalogue</a>
+      <a href="achat.html">Trouver ma voiture</a>
+      <a href="vente.html">Vendre</a>
+      <a href="histoire.html">Histoire</a>
+      <a href="tarifs.html">Tarifs</a>
     </nav>
-    <button class="hamburger" onclick="toggleMobile()"><i class="ti ti-menu-2"></i></button>
+    <button class="btn-quote" onclick="location.href='#contact'">Faire une demande</button>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<!-- ===== MENU MOBILE ===== -->
-<div class="mobile-nav" id="mobile-nav">
-  <button class="mobile-nav-btn" onclick="showPage('accueil'); closeMobile()">Accueil</button>
-  <button class="mobile-nav-btn" onclick="showPage('achat'); closeMobile()">Trouver ma voiture</button>
-  <button class="mobile-nav-btn" onclick="showPage('vente'); closeMobile()">Vendre mon véhicule</button>
-  <button class="mobile-nav-btn" onclick="showPage('histoire'); closeMobile()">Notre histoire</button>
-  <button class="mobile-nav-btn" onclick="showPage('tarifs'); closeMobile()">Tarifs</button>
-  <button class="mobile-nav-btn" onclick="window.location.href='catalogue.html'">Catalogue</button>
-  <button class="mobile-contact-btn" onclick="openContact(); closeMobile()">Nous contacter</button>
-</div>
+<!-- mobile drawer -->
+<nav class="drawer" id="drawer" aria-hidden="true">
+  <a href="catalogue.html" data-close>Catalogue</a>
+  <a href="achat.html" data-close>Trouver ma voiture</a>
+  <a href="vente.html" data-close>Vendre</a>
+  <a href="histoire.html" data-close>Histoire</a>
+  <a href="tarifs.html" data-close>Tarifs</a>
+  <a class="btn btn-gold" href="#contact" data-close>Faire une demande <span class="arr">→</span></a>
+  <a class="dw-contact" href="tel:+41799272165">079 927 21 65 · contact@juju-car.ch</a>
+</nav>
 
-<!-- ===== MODAL CONTACT ===== -->
-<div class="overlay" id="overlay" onclick="overlayClick(event)">
-  <div class="modal">
-    <button class="modal-close" onclick="closeContact()"><i class="ti ti-x"></i></button>
-    <div id="contact-menu">
-      <div style="font-size:11px; color:#C9A24B; letter-spacing:3px; margin-bottom:12px; font-weight:600;">NOUS CONTACTER</div>
-      <h2 style="font-size:22px; font-weight:700; margin-bottom:6px;">Comment pouvons-nous <span class="accent">vous aider ?</span></h2>
-      <p style="font-size:14px; color:rgba(255,255,255,0.45); margin-bottom:22px;">Choisissez l'option qui correspond à votre besoin.</p>
-      <button class="contact-opt" onclick="closeContact(); showPage('achat')">
-        <div class="contact-opt-icon"><i class="ti ti-car" style="color:#C9A24B; font-size:20px;"></i></div>
-        <div style="flex:1;"><div style="font-size:16px; font-weight:600; color:#F5F1E8; margin-bottom:2px;">Je cherche un véhicule</div><div style="font-size:13px; color:rgba(255,255,255,0.42);">Dites-nous ce que vous recherchez</div></div>
-        <i class="ti ti-arrow-right" style="color:#C9A24B;"></i>
-      </button>
-      <button class="contact-opt" onclick="closeContact(); showPage('vente')">
-        <div class="contact-opt-icon"><i class="ti ti-tag" style="color:#C9A24B; font-size:20px;"></i></div>
-        <div style="flex:1;"><div style="font-size:16px; font-weight:600; color:#F5F1E8; margin-bottom:2px;">Je veux vendre mon véhicule</div><div style="font-size:13px; color:rgba(255,255,255,0.42);">Nous gérons tout à votre place</div></div>
-        <i class="ti ti-arrow-right" style="color:#C9A24B;"></i>
-      </button>
-      <button class="contact-opt" onclick="showContactForm()">
-        <div class="contact-opt-icon"><i class="ti ti-message" style="color:#C9A24B; font-size:20px;"></i></div>
-        <div style="flex:1;"><div style="font-size:16px; font-weight:600; color:#F5F1E8; margin-bottom:2px;">J'ai une question</div><div style="font-size:13px; color:rgba(255,255,255,0.42);">Nous répondons avec plaisir</div></div>
-        <i class="ti ti-arrow-right" style="color:#C9A24B;"></i>
-      </button>
-    </div>
-    <div id="contact-form" style="display:none;">
-      <button onclick="showContactMenu()" style="background:none; border:none; cursor:pointer; color:#C9A24B; font-size:14px; font-family:'Inter',sans-serif; margin-bottom:20px; display:flex; align-items:center; gap:6px; font-weight:500;"><i class="ti ti-arrow-left"></i> Retour</button>
-      <h2 style="font-size:20px; font-weight:700; margin-bottom:4px;">Votre question</h2>
-      <p style="font-size:13px; color:rgba(255,255,255,0.42); margin-bottom:20px;">Nous vous répondons personnellement sous 24h.</p>
-      <div class="grid2" style="margin-bottom:12px;">
-        <div><span class="field-label">Prénom</span><input class="field" type="text" placeholder="Votre prénom"></div>
-        <div><span class="field-label">Nom</span><input class="field" type="text" placeholder="Votre nom"></div>
-      </div>
-      <div style="margin-bottom:12px;"><span class="field-label">Email *</span><input class="field" type="email" placeholder="votre@email.ch"></div>
-      <div style="margin-bottom:20px;"><span class="field-label">Message</span><textarea class="field" rows="3" placeholder="Votre question…" style="resize:none;"></textarea></div>
-      <button class="btn-submit" onclick="envoyerFormulaire('question')">Envoyer ↗</button>
-    </div>
-  </div>
-</div>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"><img src="assets/hero-ai-2.jpg" alt="Voiture de luxe au crépuscule, montagnes valaisannes"></div>
 
-<!-- ========================================
-     PAGE ACCUEIL
-     ======================================== -->
-<div id="page-accueil" class="page active">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="inner">
-      <div class="badge-pill fade-badge">
-        <span class="badge-dot"></span>
-        Courtier automobile indépendant · Valais
-      </div>
-
-      <h1 class="fade-h1">
-        Je ne vends pas<br>
-        de voitures.
+  <div class="inner">
+    <div class="hero-content">
+      <span class="eyebrow">Courtier automobile · Valais · Suisse romande</span>
+      <h1>
+        <span class="line"><span>Nous ne vendons pas de voitures.</span></span>
+        <span class="line"><span>Nous trouvons <em class="gold-i">la vôtre</em> —</span></span>
+        <span class="line"><span>et nous la livrons, <em class="gold-i">prête à rouler</em>.</span></span>
       </h1>
-
-      <p class="hero-lead fade-lead">
-        Je trouve <span class="accent">la vôtre</span> — et je vous la livre, prêt à rouler.
+      <p class="lead">
+        La voiture, neuve ou d'occasion, de votre choix — <b>jusqu'à ~30% sous le prix concession</b>.
+        Recherche, négociation, immatriculation et livraison à domicile : nous nous occupons de tout, partout en Suisse romande.
       </p>
-
-      <p class="hero-sub fade-sub">
-        La voiture, neuve ou d'occasion, de votre choix — jusqu'à ~30&nbsp;% sous le prix concession.
-        Recherche, négociation, immatriculation et livraison à domicile, partout en Suisse romande.
-      </p>
-
-      <div class="hero-btns fade-btns">
-        <button class="btn-primary" onclick="showPage('achat')">
-          <i class="ti ti-car"></i> Trouver ma voiture
-        </button>
-        <button class="btn-secondary" onclick="showPage('vente')">
-          Vendre mon véhicule
-        </button>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="catalogue.html">Voir le catalogue <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="#process">Comment ça marche</a>
       </div>
-
-      <div class="stats-row fade-stats">
-        <div class="stat-item">
-          <div class="stat-num">30%</div>
-          <div class="stat-label">d'économies possibles</div>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">pris en charge — de A à Z</div>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <div class="stat-num">0</div>
-          <div class="stat-label">déplacement pour vous</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NOS SERVICES -->
-  <section class="services-section">
-    <div class="inner">
-      <div class="reveal">
-        <div class="section-tag">NOS SERVICES</div>
-        <h2>Deux services, <span class="accent">zéro stress</span></h2>
-      </div>
-
-      <div class="services-duo">
-
-        <!-- SERVICE 1 — Achat / recherche de véhicule -->
-        <div class="bento-card reveal" style="transition-delay:0s;">
-          <div class="card-icon"><i class="ti ti-search"></i></div>
-          <h3>Achat &amp; recherche de véhicule</h3>
-          <p class="service-intro">On trouve le véhicule qu'il vous faut, au meilleur prix, et on s'occupe de tout jusqu'à votre porte.</p>
-          <ul>
-            <li>Recherche et sélection du véhicule</li>
-            <li>Négociation et obtention du meilleur prix</li>
-            <li>Gestion administrative complète (assurances, immatriculation)</li>
-            <li>Livraison à domicile partout en Suisse</li>
-          </ul>
-          <div class="service-price">Honoraires : <strong>600–1200 CHF</strong></div>
-        </div>
-
-        <!-- SERVICE 2 — Accompagnement à la vente de votre occasion -->
-        <div class="bento-card reveal" style="transition-delay:0.1s;">
-          <div class="card-icon"><i class="ti ti-tag"></i></div>
-          <h3>Accompagnement à la vente de votre occasion</h3>
-          <p class="service-intro">Vous vendez votre voiture ? On gère tout, de l'annonce jusqu'au rendez-vous de vente.</p>
-          <ul>
-            <li>Mise en ligne sur tous nos réseaux sociaux et des sites spécialisés (AutoScout24…)</li>
-            <li>Gestion des messages et des commentaires</li>
-            <li>Négociation avec les acheteurs</li>
-            <li>Prise de rendez-vous pour la vente</li>
-          </ul>
-          <div class="service-price">Tarif : <strong>10% du prix de vente, max. 1000 CHF</strong></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- COMMENT ÇA MARCHE -->
-  <section class="how-section">
-    <div class="inner">
-      <div class="reveal" style="text-align:center;">
-        <div class="section-tag">COMMENT ÇA MARCHE</div>
-        <h2>Simple, rapide, <span class="accent">sans surprise</span></h2>
-      </div>
-
-      <div class="steps-grid">
-        <div class="steps-line"></div>
-
-        <div class="step-card reveal" style="transition-delay:0s;">
-          <div class="step-circle filled">1</div>
-          <h4>Vous nous contactez</h4>
-          <p>Via formulaire, WhatsApp ou mail</p>
-        </div>
-
-        <div class="step-card reveal" style="transition-delay:0.1s;">
-          <div class="step-circle outline">2</div>
-          <h4>On définit votre projet</h4>
-          <p>Modèle, budget, délai</p>
-        </div>
-
-        <div class="step-card reveal" style="transition-delay:0.2s;">
-          <div class="step-circle outline">3</div>
-          <h4>Nous gérons tout</h4>
-          <p>Recherche, négociation, paperasse</p>
-        </div>
-
-        <div class="step-card reveal" style="transition-delay:0.3s;">
-          <div class="step-circle outline">4</div>
-          <h4>Livraison chez vous</h4>
-          <p>Votre véhicule à votre porte</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- APERÇU CATALOGUE (affiché seulement si vehicules.js contient des annonces) -->
-  <section class="catalogue-preview-section" id="catalogue-preview" style="display:none;">
-    <div class="inner">
-      <div class="reveal">
-        <div class="section-tag">APERÇU DU CATALOGUE</div>
-        <h2>Quelques modèles <span class="accent">négociés pour vous</span></h2>
-      </div>
-      <div class="cat-preview-grid" id="cat-preview-grid"></div>
-      <div class="cat-preview-cta reveal">
-        <p>Vous ne trouvez pas votre modèle ? Le catalogue ne montre qu'une partie de nos offres.</p>
-        <div class="cta-btns">
-          <button class="btn-primary" onclick="window.location.href='catalogue.html'"><i class="ti ti-car"></i> Voir le catalogue complet</button>
-          <button class="btn-secondary" onclick="openContact()">Nous contacter</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="inner reveal">
-      <div class="section-tag">DÉMARRER</div>
-      <h2>Parlez-nous de <span class="accent">votre projet</span></h2>
-      <p class="cta-sub">Nous vous répondons personnellement sous 24h</p>
-      <div class="cta-btns">
-        <button class="btn-primary" onclick="showPage('achat')">
-          <i class="ti ti-car"></i> Trouver ma voiture
-        </button>
-        <button class="btn-secondary" onclick="showPage('vente')">
-          Vendre mon véhicule
-        </button>
-      </div>
-    </div>
-  </section>
-
-</div>
-<!-- FIN PAGE ACCUEIL -->
-
-
-<!-- ========================================
-     PAGE ACHAT
-     ======================================== -->
-<div id="page-achat" class="page">
-
-  <section class="page-hero">
-    <div class="inner">
-      <div class="page-label">TROUVER MA VOITURE</div>
-      <h1>Trouvons le véhicule <span class="accent">idéal pour vous</span></h1>
-      <p>Dites-nous ce que vous cherchez — nous nous occupons du reste. Seule votre adresse email est indispensable.</p>
-    </div>
-  </section>
-
-  <div id="achat-choix" class="form-section">
-    <div class="inner">
-
-      <div class="achat-intro reveal">
-        <i class="ti ti-mail"></i>
-        <p>En remplissant ce formulaire, votre demande arrive <strong>directement chez nous</strong>. Nous l'étudions <strong>personnellement</strong> — pas de robot, pas de centre d'appel — et vous recontactons dans les plus brefs délais.</p>
-      </div>
-
-      <div class="catalogue-banner reveal">
-        <div>
-          <h3>Avant de remplir, jetez un œil au catalogue 👀</h3>
-          <p>Vous y trouverez peut-être déjà votre bonheur. Et si votre modèle n'y figure pas, pas de panique : le catalogue ne montre qu'une partie de nos offres — contactez-nous pour tout autre véhicule.</p>
-        </div>
-        <button class="btn-primary" onclick="window.location.href='catalogue.html'"><i class="ti ti-car"></i> Voir le catalogue</button>
-      </div>
-
-      <div style="font-size:16px; color:rgba(255,255,255,0.75); margin-bottom:24px; font-weight:500;">Où en êtes-vous dans votre recherche ?</div>
-      <button class="path-btn" onclick="showAchat('know')">
-        <div>
-          <div style="font-size:18px; font-weight:700; color:#F5F1E8; margin-bottom:4px;">J'ai déjà mon véhicule en tête</div>
-          <div style="font-size:14px; color:rgba(255,255,255,0.45);">Je connais la marque, le modèle et ce que je veux</div>
-        </div>
-        <i class="ti ti-arrow-right" style="font-size:24px; color:#C9A24B; flex-shrink:0;"></i>
-      </button>
-      <button class="path-btn" onclick="showAchat('discover')">
-        <div>
-          <div style="font-size:18px; font-weight:700; color:#F5F1E8; margin-bottom:4px;">Je cherche encore — guidez-moi</div>
-          <div style="font-size:14px; color:rgba(255,255,255,0.45);">J'ai des critères mais pas encore de modèle précis</div>
-        </div>
-        <i class="ti ti-arrow-right" style="font-size:24px; color:#C9A24B; flex-shrink:0;"></i>
-      </button>
     </div>
   </div>
 
-  <div id="achat-know" style="display:none;" class="form-section">
-    <div class="inner">
-      <button onclick="showAchat('choix')" class="back-btn"><i class="ti ti-arrow-left"></i> Retour</button>
-      <h2 style="font-size:22px; font-weight:700; margin-bottom:28px;">J'ai déjà mon véhicule en tête</h2>
-      <div class="section-box">
-        <span class="section-label">LE VÉHICULE</span>
-        <div class="grid2">
-          <div class="fgroup"><span class="field-label">Marque</span><input class="field" type="text" placeholder="Ex : Volkswagen"></div>
-          <div class="fgroup"><span class="field-label">Modèle</span><input class="field" type="text" placeholder="Ex : Golf"></div>
-          <div class="fgroup"><span class="field-label">Gamme / Version</span><input class="field" type="text" placeholder="Ex : GTI, Life…"></div>
-          <div class="fgroup"><span class="field-label">Niveau de finition</span><input class="field" type="text" placeholder="Ex : Highline…"></div>
-          <div class="fgroup"><span class="field-label">Couleur souhaitée</span><input class="field" type="text" placeholder="Ex : Noir, Gris…"></div>
-          <div class="fgroup"><span class="field-label">Options particulières</span><input class="field" type="text" placeholder="Ex : Toit ouvrant…"></div>
-        </div>
-      </div>
-      <div class="section-box">
-        <span class="section-label">VOS COORDONNÉES</span>
-        <div class="grid2">
-          <div class="fgroup"><span class="field-label">Prénom</span><input class="field" type="text" placeholder="Votre prénom"></div>
-          <div class="fgroup"><span class="field-label">Nom</span><input class="field" type="text" placeholder="Votre nom"></div>
-          <div class="fgroup"><span class="field-label">Email *</span><input class="field" type="email" placeholder="votre@email.ch"></div>
-          <div class="fgroup"><span class="field-label">Téléphone</span><input class="field" type="tel" placeholder="+41 79 000 00 00"></div>
-          <div class="fgroup" style="grid-column:1/-1;"><span class="field-label">Ville</span><input class="field" type="text" placeholder="Votre ville"></div>
-        </div>
-        <div style="font-size:12px; color:rgba(255,255,255,0.30); margin-top:4px;">* Seul le champ email est obligatoire</div>
-      </div>
-      <input type="text" id="hp_field" class="hp-field" name="website" tabindex="-1" autocomplete="off">
-      <button class="btn-submit" onclick="envoyerFormulaire('achat-connu')">Envoyer ma demande ↗</button>
+  <div class="scroll-cue">Découvrir<i></i></div>
+</section>
+
+<!-- ============ TRUST ============ -->
+<section class="trust">
+  <div class="inner">
+    <div class="trust-item">
+      <div class="trust-num" data-count="30"><span class="u">%</span></div>
+      <div class="trust-label">d'économies possibles sur le prix concession</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num" data-count="100"><span class="u">%</span></div>
+      <div class="trust-label">pris en charge — recherche, paperasse, livraison</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num" data-count="0"></div>
+      <div class="trust-label">déplacement à faire — tout vient à votre porte</div>
     </div>
   </div>
+</section>
 
-  <div id="achat-discover" style="display:none;" class="form-section">
-    <div class="inner">
-      <button onclick="showAchat('choix')" class="back-btn"><i class="ti ti-arrow-left"></i> Retour</button>
-      <h2 style="font-size:22px; font-weight:700; margin-bottom:28px;">Guidez-nous vers votre véhicule idéal</h2>
-      <div class="section-box">
-        <span class="section-label">VOS CRITÈRES</span>
-        <div class="fgroup">
-          <span class="field-label">Motorisation</span>
-          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;">
-            <button class="choice-btn" onclick="toggleChoice(this)">Électrique</button>
-            <button class="choice-btn" onclick="toggleChoice(this)">Hybride</button>
-            <button class="choice-btn" onclick="toggleChoice(this)">Essence</button>
-            <button class="choice-btn" onclick="toggleChoice(this)">Diesel</button>
-            <button class="choice-btn" onclick="toggleChoice(this)">Peu importe</button>
-          </div>
-        </div>
-        <div class="fgroup">
-          <span class="field-label">Type de véhicule</span>
-          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;">
-            <button class="choice-btn" onclick="toggleChoice(this)">Berline</button>
-            <button class="choice-btn" onclick="toggleChoice(this)">SUV</button>
-            <button class="choice-btn" onclick="toggleChoice(this)">Van / Monospace</button>
-            <button class="choice-btn" onclick="toggleChoice(this)">Coupé</button>
-            <button class="choice-btn" onclick="toggleChoice(this)">Break</button>
-            <button class="choice-btn" onclick="toggleChoice(this)">Peu importe</button>
-          </div>
-        </div>
-        <div class="fgroup">
-          <span class="field-label">Roues motrices</span>
-          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;">
-            <button class="choice-btn" onclick="toggleChoice(this)">2 roues motrices</button>
-            <button class="choice-btn" onclick="toggleChoice(this)">4x4 / AWD</button>
-            <button class="choice-btn" onclick="toggleChoice(this)">Peu importe</button>
-          </div>
-        </div>
-        <div class="grid2">
-          <div class="fgroup"><span class="field-label">Budget maximum</span><input class="field" type="text" placeholder="Ex : 45 000 CHF"></div>
-          <div class="fgroup"><span class="field-label">Couleur souhaitée</span><input class="field" type="text" placeholder="Ex : Sombre…"></div>
-          <div class="fgroup"><span class="field-label">Nombre de places</span><input class="field" type="text" placeholder="Ex : 5 places"></div>
-        </div>
-      </div>
-      <div class="section-box">
-        <span class="section-label">VOS COORDONNÉES</span>
-        <div class="grid2">
-          <div class="fgroup"><span class="field-label">Prénom</span><input class="field" type="text" placeholder="Votre prénom"></div>
-          <div class="fgroup"><span class="field-label">Nom</span><input class="field" type="text" placeholder="Votre nom"></div>
-          <div class="fgroup"><span class="field-label">Email *</span><input class="field" type="email" placeholder="votre@email.ch"></div>
-          <div class="fgroup"><span class="field-label">Téléphone</span><input class="field" type="tel" placeholder="+41 79 000 00 00"></div>
-          <div class="fgroup" style="grid-column:1/-1;"><span class="field-label">Ville</span><input class="field" type="text" placeholder="Votre ville"></div>
-        </div>
-        <div style="font-size:12px; color:rgba(255,255,255,0.30); margin-top:4px;">* Seul le champ email est obligatoire</div>
-      </div>
-      <button class="btn-submit" onclick="envoyerFormulaire('achat-guide')">Envoyer ma demande ↗</button>
+<!-- ============ SERVICES ============ -->
+<section class="block" id="services">
+  <div class="inner">
+    <div class="reveal">
+      <span class="tag">Mes services</span>
+      <h2 class="h2">Deux métiers, <span class="gold-i">zéro tracas</span></h2>
+      <p class="section-intro">Que vous cherchiez la perle rare ou que vous vendiez votre véhicule, nous nous occupons de tout — de la première recherche jusqu'aux clés en main.</p>
     </div>
-  </div>
 
-</div>
-<!-- FIN PAGE ACHAT -->
-
-
-<!-- ========================================
-     PAGE VENTE
-     ======================================== -->
-<div id="page-vente" class="page">
-
-  <section class="page-hero">
-    <div class="inner">
-      <div class="page-label">VENDRE MON VÉHICULE</div>
-      <h1>Vendez votre véhicule <span class="accent">sans vous en occuper</span></h1>
-      <p>Donnez-nous les informations essentielles. Nous vous recontactons avec un formulaire complet pour finaliser votre dossier.</p>
-    </div>
-  </section>
-
-  <div class="form-section">
-    <div class="inner">
-      <div class="section-box reveal">
-        <span class="section-label">CE QUE NOUS GÉRONS POUR VOUS</span>
-        <p style="font-size:15px; color:rgba(255,255,255,0.78); line-height:1.7; margin-bottom:18px;">On s'occupe de tout pour vendre votre véhicule d'occasion, de la mise en ligne jusqu'au rendez-vous de vente.</p>
-        <div class="check-item"><i class="ti ti-check"></i>Mise en ligne de l'annonce sur tous nos réseaux sociaux et des sites spécialisés (AutoScout24…)</div>
-        <div class="check-item"><i class="ti ti-check"></i>Gestion des messages et des commentaires</div>
-        <div class="check-item"><i class="ti ti-check"></i>Négociation avec les acheteurs</div>
-        <div class="check-item"><i class="ti ti-check"></i>Prise de rendez-vous pour la vente</div>
-        <div class="service-price" style="margin-top:16px;">Tarif : <strong>10% du prix de vente, maximum 1000 CHF</strong></div>
-      </div>
-      <div class="section-box">
-        <span class="section-label">VOTRE VÉHICULE</span>
-        <div class="grid2">
-          <div class="fgroup"><span class="field-label">Marque</span><input class="field" type="text" placeholder="Ex : Renault"></div>
-          <div class="fgroup"><span class="field-label">Modèle</span><input class="field" type="text" placeholder="Ex : Clio"></div>
-          <div class="fgroup"><span class="field-label">Année</span><input class="field" type="text" placeholder="Ex : 2019"></div>
-          <div class="fgroup"><span class="field-label">Kilométrage</span><input class="field" type="text" placeholder="Ex : 45 000 km"></div>
-          <div class="fgroup"><span class="field-label">Couleur</span><input class="field" type="text" placeholder="Ex : Blanc nacré"></div>
-          <div class="fgroup"><span class="field-label">Prix souhaité</span><input class="field" type="text" placeholder="Ex : 18 000 CHF"></div>
-        </div>
-        <div class="fgroup">
-          <span class="field-label">Roues motrices</span>
-          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;">
-            <button class="choice-btn" onclick="toggleChoice(this)">2 roues motrices</button>
-            <button class="choice-btn" onclick="toggleChoice(this)">4x4 / AWD</button>
-            <button class="choice-btn" onclick="toggleChoice(this)">Je ne sais pas</button>
-          </div>
-        </div>
-      </div>
-      <div class="section-box">
-        <span class="section-label">VOS COORDONNÉES</span>
-        <div class="grid2">
-          <div class="fgroup"><span class="field-label">Prénom</span><input class="field" type="text" placeholder="Votre prénom"></div>
-          <div class="fgroup"><span class="field-label">Nom</span><input class="field" type="text" placeholder="Votre nom"></div>
-          <div class="fgroup"><span class="field-label">Email *</span><input class="field" type="email" placeholder="votre@email.ch"></div>
-          <div class="fgroup"><span class="field-label">Téléphone</span><input class="field" type="tel" placeholder="+41 79 000 00 00"></div>
-          <div class="fgroup" style="grid-column:1/-1;"><span class="field-label">Ville</span><input class="field" type="text" placeholder="Votre ville"></div>
-        </div>
-        <div style="font-size:12px; color:rgba(255,255,255,0.30); margin-top:4px;">* Seul le champ email est obligatoire</div>
-      </div>
-      <div class="info-box">
-        <i class="ti ti-info-circle"></i>
-        <p>Après réception, nous vous enverrons un formulaire détaillé par email — état du véhicule, historique, documents disponibles.</p>
-      </div>
-      <button class="btn-submit" onclick="envoyerFormulaire('vente')">Envoyer ma demande ↗</button>
-    </div>
-  </div>
-
-</div>
-<!-- FIN PAGE VENTE -->
-
-
-<!-- ========================================
-     PAGE HISTOIRE
-     ======================================== -->
-<div id="page-histoire" class="page">
-
-  <section class="page-hero">
-    <div class="inner">
-      <div class="page-label">NOTRE HISTOIRE &amp; TRANSPARENCE</div>
-      <h1>Un service né d'une<br><span class="accent">expérience personnelle</span></h1>
-    </div>
-  </section>
-
-  <section class="content-section">
-    <div class="inner">
-      <div class="story-text reveal">
-        <p>En cherchant à renouveler mon véhicule, j'ai découvert par hasard qu'un même modèle, avec les mêmes garanties constructeur, était proposé outre-Sarine jusqu'à <strong style="color:#F5F1E8;">30% moins cher</strong> qu'en Suisse romande.</p>
-        <p>J'ai géré l'ensemble du processus moi-même — la recherche, les démarches administratives, l'immatriculation — et j'ai réalisé une économie substantielle sur un véhicule neuf, avec exactement les mêmes garanties.</p>
-        <p>Rapidement, des proches m'ont demandé de faire la même chose pour eux. C'est ainsi que <strong style="color:#F5F1E8;">JujuCar</strong> est né — avec une conviction simple : tout le monde mérite d'accéder à ces prix, sans avoir à gérer la complexité que cela implique.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- MG4 — Premier mandat (déplacé depuis l'ancienne page « Nos exemples ») -->
-  <section class="mg4-section">
-    <div class="inner">
-      <div class="reveal">
-        <h2>MG4 Electric — <span class="accent">Premier mandat JujuCar</span></h2>
-      </div>
-
-      <div class="mg4-photos reveal">
-        <img src="mg4.png" alt="MG4 Electric négociée par JujuCar, premier mandat" loading="lazy" decoding="async" width="640" height="260">
-        <img src="mg4_2.png" alt="Intérieur de la MG4 Electric livrée par JujuCar" loading="lazy" decoding="async" width="640" height="260">
-      </div>
-
-      <div class="reveal">
-        <div class="mg4-mandate-badge">
-          <i class="ti ti-check"></i> Mandat réalisé ✓
-        </div>
-
-        <div class="mg4-prices">
-          <span class="mg4-price-paid">CHF 15'500</span>
-          <span class="mg4-price-catalogue">CHF 25'000</span>
-        </div>
-
-        <div class="mg4-economy-badge">CHF 9'500 économisés</div>
-
-        <p class="mg4-desc" style="margin-top:16px;">
-          Notre fondateur a lui-même acheté sa MG4 via JujuCar. Recherche, négociation et livraison gérées de A à Z. Ce que nous faisons pour vous, nous l'avons fait pour nous.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="engage-section">
-    <div class="inner">
-      <div class="reveal">
-        <div class="section-tag">NOS ENGAGEMENTS</div>
-        <h2>La transparence, <span class="accent">au cœur de notre approche</span></h2>
-      </div>
-      <div class="engage-grid">
-        <div class="engage-card reveal" style="transition-delay:0s;">
-          <div class="card-icon"><i class="ti ti-shield-check"></i></div>
-          <h3>Aucune marge sur le véhicule</h3>
-          <p>Nous ne touchons rien sur le prix. Le contrat est signé directement entre vous et le concessionnaire — l'argent ne passe jamais par nous.</p>
-        </div>
-        <div class="engage-card reveal" style="transition-delay:0.1s;">
-          <div class="card-icon"><i class="ti ti-file-check"></i></div>
-          <h3>Vous signez directement</h3>
-          <p>Nous vous transmettons le contrat, vous le signez et payez directement le concessionnaire. Pas d'intermédiaire financier.</p>
-        </div>
-        <div class="engage-card reveal" style="transition-delay:0.2s;">
-          <div class="card-icon"><i class="ti ti-eye"></i></div>
-          <h3>Véhicules vérifiables en ligne</h3>
-          <p>Tous les véhicules que nous proposons sont retrouvables sur internet. Vous pouvez vérifier chaque offre de façon totalement indépendante.</p>
-        </div>
-        <div class="engage-card reveal" style="transition-delay:0.3s;">
-          <div class="card-icon"><i class="ti ti-receipt"></i></div>
-          <h3>Des honoraires clairs</h3>
-          <p>Rémunérés uniquement par nos honoraires de service — définis à l'avance, sans surprise. Ce que vous économisez vous appartient entièrement.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="blockquote-section">
-    <div class="inner">
-      <div class="blockquote reveal">
-        <p>"Notre mission est simple : vous faire accéder aux meilleures offres du marché, en toute transparence, sans que vous ayez à bouger de chez vous."</p>
-        <cite>— Julien, fondateur de JujuCar</cite>
-      </div>
-      <div style="display:flex; gap:12px; flex-wrap:wrap;" class="reveal">
-        <button class="btn-primary" onclick="showPage('achat')"><i class="ti ti-car"></i> Trouver ma voiture</button>
-        <button class="btn-secondary" onclick="showPage('vente')">Vendre mon véhicule</button>
-      </div>
-    </div>
-  </section>
-
-</div>
-<!-- FIN PAGE HISTOIRE -->
-
-
-<!-- ========================================
-     PAGE TARIFS
-     ======================================== -->
-<div id="page-tarifs" class="page">
-
-  <section class="page-hero">
-    <div class="inner">
-      <div class="page-label">TARIFS</div>
-      <h1>Des honoraires <span class="accent">clairs et fixes</span></h1>
-      <p>Définis avant le début de chaque mandat, sans surprise. Aucune marge cachée sur le véhicule.</p>
-    </div>
-  </section>
-
-  <section class="form-section">
-    <div class="inner">
-
-      <div class="tarif-card reveal">
-        <div class="tarif-header">
-          <div>
-            <div class="card-icon" style="margin-bottom:14px;"><i class="ti ti-car"></i></div>
-            <h2 style="font-size:22px; font-weight:700; margin-bottom:4px;">Recherche &amp; achat</h2>
-            <p style="font-size:14px; color:rgba(255,255,255,0.45);">Mandat de recherche, négociation, admin et livraison</p>
-          </div>
-          <div style="text-align:right;">
-            <div class="tarif-price">À partir de 600</div>
-            <div class="tarif-price-sub">CHF · selon complexité</div>
-          </div>
-        </div>
-        <ul class="check-list">
-          <li><i class="ti ti-check"></i>Recherche et sélection du véhicule</li>
-          <li><i class="ti ti-check"></i>Négociation du meilleur prix</li>
-          <li><i class="ti ti-check"></i>Gestion administrative complète</li>
-          <li><i class="ti ti-check"></i>Immatriculation et livraison à domicile</li>
+    <div class="services">
+      <div class="card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+        <h3>Achat &amp; recherche de véhicule</h3>
+        <p class="desc">Nous dénichons le véhicule qu'il vous faut, au meilleur prix, et nous gérons tout jusqu'à votre porte.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Recherche et sélection sur mesure</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Négociation et obtention du meilleur prix</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Administratif complet : assurances, immatriculation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Livraison à domicile partout en Suisse</li>
         </ul>
+        <div class="price-tag">Honoraires : <b>600–1 200 CHF</b></div>
       </div>
 
-      <div class="tarif-card reveal">
-        <div class="tarif-header">
-          <div>
-            <div class="card-icon" style="margin-bottom:14px;"><i class="ti ti-tag"></i></div>
-            <h2 style="font-size:22px; font-weight:700; margin-bottom:4px;">Mandat de vente</h2>
-            <p style="font-size:14px; color:rgba(255,255,255,0.45);">Publication, gestion des contacts et organisation des visites</p>
-          </div>
-          <div style="text-align:right;">
-            <div class="tarif-price">10%</div>
-            <div class="tarif-price-sub">du prix obtenu · max. 1'000 CHF</div>
-          </div>
-        </div>
-        <ul class="check-list">
-          <li><i class="ti ti-check"></i>Rédaction et mise en ligne de l'annonce</li>
-          <li><i class="ti ti-check"></i>Publication sur toutes les plateformes</li>
-          <li><i class="ti ti-check"></i>Gestion complète des messages acheteurs</li>
-          <li><i class="ti ti-check"></i>Organisation et suivi des rendez-vous</li>
+      <div class="card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.6 11.6 12 3H4v8l8.6 8.6a2 2 0 0 0 2.8 0l5.2-5.2a2 2 0 0 0 0-2.8Z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor"/></svg></div>
+        <h3>Accompagnement à la vente</h3>
+        <p class="desc">Vous vendez votre voiture ? Nous gérons tout, de l'annonce jusqu'au rendez-vous de vente.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Mise en ligne (réseaux sociaux, AutoScout24…)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Gestion des messages et des commentaires</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Négociation avec les acheteurs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Prise de rendez-vous pour la vente</li>
         </ul>
-        <div style="margin-bottom:16px;">
-          <div style="font-size:11px; color:rgba(255,255,255,0.35); margin-bottom:10px; letter-spacing:1px; text-transform:uppercase;">Plateformes de publication</div>
-          <div class="platforms">
-            <span class="platform-tag">AutoScout24</span>
-            <span class="platform-tag">tutti.ch</span>
-            <span class="platform-tag">anibis.ch</span>
-            <span class="platform-tag">autolina.ch</span>
-            <span class="platform-tag">Instagram</span>
-            <span class="platform-tag">Facebook</span>
+        <div class="price-tag">Tarif : <b>10% du prix de vente, max. 1 000 CHF</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="block" id="process" style="background:linear-gradient(var(--noir-2),var(--noir))">
+  <div class="inner">
+    <div class="reveal center">
+      <span class="tag">Comment ça marche</span>
+      <h2 class="h2">Simple, rapide, <span class="gold-i">sans surprise</span></h2>
+      <p class="section-intro">Quatre étapes, et votre prochaine voiture est dans votre allée.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h4>Vous nous contactez</h4><p>Formulaire, WhatsApp ou e-mail</p></div>
+      <div class="step reveal"><div class="num">2</div><h4>On définit le projet</h4><p>Modèle, budget, délai</p></div>
+      <div class="step reveal"><div class="num">3</div><h4>Nous gérons tout</h4><p>Recherche, négociation, paperasse</p></div>
+      <div class="step reveal"><div class="num">4</div><h4>Livraison chez vous</h4><p>Votre véhicule à votre porte</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATALOGUE PREVIEW ============ -->
+<section class="block" id="catalogue">
+  <div class="inner">
+    <div class="reveal">
+      <span class="tag">Aperçu du catalogue</span>
+      <h2 class="h2">Quelques modèles <span class="gold-i">négociés pour vous</span></h2>
+      <p class="section-intro">Un échantillon seulement — le véhicule de vos rêves n'est peut-être pas encore listé. Dites-nous ce que vous cherchez.</p>
+    </div>
+    <div class="cat-grid">
+      <a class="cat-card reveal" href="catalogue.html">
+        <div class="cat-photo"><img src="assets/car-audi_a3.jpg" alt="Audi A3 Sportback"></div>
+        <div class="cat-body"><div class="seg">Compacte premium</div><h4>Audi A3 Sportback</h4><p>Élégance allemande, négociée au juste prix.</p></div>
+      </a>
+      <a class="cat-card reveal" href="catalogue.html">
+        <div class="cat-photo"><img src="assets/car-kia_ev5.jpg" alt="Kia EV5"></div>
+        <div class="cat-body"><div class="seg">SUV · 100% électrique</div><h4>Kia EV5</h4><p>L'électrique familial, livré prêt à rouler.</p></div>
+      </a>
+      <a class="cat-card reveal" href="catalogue.html">
+        <div class="cat-photo"><img src="assets/car-kia_ceed.jpg" alt="Kia Ceed SW"></div>
+        <div class="cat-body"><div class="seg">Break polyvalent</div><h4>Kia Ceed SW</h4><p>L'espace et la fiabilité, sans le prix fort.</p></div>
+      </a>
+    </div>
+    <div class="cat-cta reveal">
+      <a class="btn btn-gold" href="catalogue.html">Voir le catalogue complet <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HISTOIRE ============ -->
+<section class="block" id="histoire" style="background:linear-gradient(var(--noir),var(--noir-2))">
+  <div class="inner">
+    <div class="story">
+      <div class="story-media reveal">
+        <img src="assets/car-audi_a3.jpg" alt="Voiture livrée par JujuCar">
+        <span class="frame"></span>
+      </div>
+      <div class="reveal">
+        <span class="tag">Notre histoire · Notre transparence</span>
+        <h2 class="h2">Un service né <span class="gold-i">d'une conviction</span></h2>
+        <blockquote>« Acheter une voiture ne devrait être ni stressant, ni opaque, ni hors de prix. »</blockquote>
+        <p>JujuCar est né en Valais d'une idée simple : remettre l'humain et la confiance au centre de l'achat automobile. Pas de showroom, pas de pression — juste un courtier indépendant qui défend vos intérêts, du premier appel jusqu'à la remise des clés.</p>
+        <p>Chaque mandat est mené en toute transparence : vous savez ce que vous payez, et pourquoi. Notre métier, c'est de vous faire gagner du temps, de l'argent et de la sérénité.</p>
+        <div class="sign">— L'équipe JujuCar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="block cta-final" id="contact">
+  <div class="inner">
+    <div class="reveal">
+      <span class="tag">Démarrons</span>
+      <h2 class="h2">Parlez-nous de <span class="gold-i">votre projet</span></h2>
+      <p class="section-intro">Décrivez-nous le véhicule de vos rêves (ou celui que vous vendez). Nous vous répondons personnellement sous 24 h.</p>
+    </div>
+
+    <div class="contact-wrap">
+      <aside class="contact-aside reveal">
+        <p class="lead-q">« Dites-nous ce que vous cherchez —<br><em>nous nous occupons du reste.</em> »</p>
+        <ul class="contact-list">
+          <li>
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2Z"/></svg></span>
+            <div><div class="k">Téléphone · WhatsApp</div><a class="v" href="tel:+41799272165">079 927 21 65</a></div>
+          </li>
+          <li>
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg></span>
+            <div><div class="k">E-mail</div><a class="v" href="mailto:contact@juju-car.ch">contact@juju-car.ch</a></div>
+          </li>
+          <li>
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><div class="k">Région</div><div class="v">Grône · Valais · Suisse romande</div></div>
+          </li>
+          <li>
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <div><div class="k">Disponibilité</div><div class="v">Lun – Dim · 08h – 20h</div></div>
+          </li>
+        </ul>
+      </aside>
+
+      <div class="form-card reveal">
+        <form id="contactForm" class="jc-form" data-type="Contact (accueil)" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="f-nom">Nom complet <span class="req">*</span></label>
+              <input id="f-nom" name="nom" type="text" placeholder="Jean Dupont" required>
+            </div>
+            <div class="field">
+              <label for="f-tel">Téléphone</label>
+              <input id="f-tel" name="tel" type="tel" inputmode="tel" placeholder="079 000 00 00">
+            </div>
+            <div class="field">
+              <label for="f-mail">E-mail <span class="req">*</span></label>
+              <input id="f-mail" name="email" type="email" placeholder="vous@exemple.ch" required>
+            </div>
+            <div class="field">
+              <label for="f-type">Votre demande <span class="req">*</span></label>
+              <select id="f-type" name="type" required>
+                <option value="Trouver un véhicule">Trouver un véhicule</option>
+                <option value="Vendre mon véhicule">Vendre mon véhicule</option>
+                <option value="Autre question">Autre question</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="f-msg">Votre message <span class="req">*</span></label>
+              <textarea id="f-msg" name="message" placeholder="Modèle recherché, budget, délai souhaité, motorisation…" required></textarea>
+            </div>
           </div>
-        </div>
-        <div class="highlight-box">
-          <p>Exemple : vendu <strong style="color:#F5F1E8;">12'000 CHF</strong> → honoraires : <strong style="color:#C9A24B;">1'000 CHF</strong>. Vendu <strong style="color:#F5F1E8;">6'000 CHF</strong> → honoraires : <strong style="color:#C9A24B;">600 CHF</strong>.</p>
-        </div>
-      </div>
-
-      <div class="special-box reveal">
-        <i class="ti ti-sparkles"></i>
-        <div>
-          <div style="font-size:16px; font-weight:700; margin-bottom:6px;">Offre combinée achat + vente</div>
-          <p style="font-size:14px; color:rgba(255,255,255,0.65); line-height:1.7;">Vous souhaitez vendre votre véhicule et en acquérir un nouveau ? Tarification sur mesure — <button onclick="openContact()" style="background:none; border:none; cursor:pointer; color:#C9A24B; font-family:'Inter',sans-serif; font-size:14px; text-decoration:underline; padding:0;">contactez-nous →</button></p>
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="btn btn-gold">Envoyer ma demande <span class="arr">→</span></button>
+          <p class="form-note">Réponse personnelle sous 24 h — sans engagement.</p>
+        </form>
+        <div class="form-ok" id="formOk">
+          <div class="chk"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h4>Merci !</h4>
+          <p>Votre demande a bien été envoyée. Nous revenons vers vous personnellement sous 24 h.</p>
         </div>
       </div>
-
-      <div class="disclaimer-box reveal">
-        <i class="ti ti-info-circle"></i>
-        <p>Nous nous réservons le droit de refuser les dossiers ne correspondant pas à nos critères. Chaque mandat fait l'objet d'un devis validé avant le début de la prestation.</p>
-      </div>
-
     </div>
-  </section>
+  </div>
+</section>
 
-</div>
-<!-- FIN PAGE TARIFS -->
-
-
-<!-- ========================================
-     PAGE CGV
-     ======================================== -->
-<div id="page-cgv" class="page">
-
-  <section class="page-hero">
-    <div class="inner">
-      <div class="page-label">MENTIONS LÉGALES &amp; CGV</div>
-      <h1>Conditions générales <span class="accent">de service</span></h1>
-      <p style="font-size:13px; color:rgba(255,255,255,0.40); margin-top:8px;">Version en vigueur au 1er janvier 2025 · Droit applicable : droit suisse</p>
-    </div>
-  </section>
-
-  <section class="cgv-section">
-    <div class="inner">
-
-      <h2 style="font-size:20px; font-weight:700; color:#C9A24B; margin:8px 0 18px;">I. Mentions légales</h2>
-
-      <div class="cgv-article reveal"><h3>1. Éditeur du site</h3><p>Le site <strong style="color:rgba(255,255,255,0.80);">juju-car.ch</strong> est édité par JujuCar, service de courtage automobile indépendant exerçant en Suisse.<br><br>Contact : <a href="mailto:contact@juju-car.ch" style="color:#C9A24B;">contact@juju-car.ch</a> · +41 79 927 21 65.<br>JujuCar agit exclusivement en qualité d'intermédiaire : ce n'est ni un revendeur, ni un concessionnaire, ni un garagiste.</p></div>
-      <div class="cgv-article reveal"><h3>2. Hébergement</h3><p>Le site est hébergé par <strong style="color:rgba(255,255,255,0.80);">Infomaniak Network SA</strong>, Rue Eugène-Marziano 25, 1227 Genève (Suisse) — <a href="https://www.infomaniak.com" target="_blank" rel="noopener noreferrer" style="color:#C9A24B;">infomaniak.com</a>.</p></div>
-      <div class="cgv-article reveal"><h3>3. Propriété intellectuelle</h3><p>L'ensemble des contenus du site (textes, logo, charte graphique, mise en page) est protégé. Les visuels des véhicules sont des <strong style="color:rgba(255,255,255,0.80);">images d'illustration</strong> et peuvent provenir des constructeurs ou de banques d'images ; ils ne représentent pas nécessairement le véhicule réel. Toute reproduction sans autorisation est interdite.</p></div>
-      <div class="cgv-article reveal"><h3>4. Catalogue & disponibilité</h3><p>Le catalogue en ligne est fourni à titre indicatif. Les prix, équipements et disponibilités peuvent évoluer à tout moment et ne constituent pas une offre contractuelle. La liste présentée n'est pas exhaustive.</p></div>
-
-      <h2 style="font-size:20px; font-weight:700; color:#C9A24B; margin:34px 0 18px;">II. Conditions générales de service (CGV)</h2>
-
-      <div class="cgv-article reveal"><h3>5. Objet</h3><p>Les présentes conditions régissent la relation entre JujuCar (« le prestataire ») et toute personne faisant appel à ses services (« le client »), pour une prestation de courtage à l'achat ou à la vente d'un véhicule.</p></div>
-      <div class="cgv-article reveal"><h3>6. Nature des prestations</h3><p><strong style="color:rgba(255,255,255,0.80);">Mandat d'achat :</strong> JujuCar recherche le véhicule, négocie le prix et coordonne les démarches. Le contrat de vente est conclu <strong style="color:rgba(255,255,255,0.80);">directement entre le client et le vendeur/concessionnaire</strong> — les fonds liés à l'achat du véhicule ne transitent jamais par JujuCar.<br><br><strong style="color:rgba(255,255,255,0.80);">Mandat de vente :</strong> JujuCar met en valeur le véhicule, gère la diffusion et les contacts. Le prestataire est tenu à une <strong style="color:rgba(255,255,255,0.80);">obligation de moyens et non de résultat</strong> : aucune vente n'est garantie.</p></div>
-      <div class="cgv-article reveal"><h3>7. Honoraires et facturation</h3><p><strong style="color:rgba(255,255,255,0.80);">Achat :</strong> à partir de CHF 600 selon la complexité de la recherche, dus à la livraison du véhicule.<br><br><strong style="color:rgba(255,255,255,0.80);">Vente :</strong> 10 % du prix de vente obtenu, plafonnés à CHF 1'000, dus à la conclusion de la vente.<br><br>JujuCar ne perçoit <strong style="color:rgba(255,255,255,0.80);">aucune commission</strong> de la part des concessionnaires, vendeurs ou acheteurs : sa rémunération provient uniquement des honoraires convenus avec le client.</p></div>
-      <div class="cgv-article reveal"><h3>8. Obligations du client</h3><p>Le client s'engage à fournir des informations exactes, à coopérer de bonne foi et à régler les honoraires convenus dans les délais. Pour un mandat de vente, il garantit être propriétaire du véhicule et habilité à le vendre.</p></div>
-      <div class="cgv-article reveal"><h3>9. Limitation de responsabilité</h3><p>JujuCar ne peut être tenu responsable des <strong style="color:rgba(255,255,255,0.80);">défauts ou vices du véhicule</strong>, des retards de livraison du vendeur, de l'absence de vente, des variations de prix, ni des litiges survenant entre le client et un tiers. Sa responsabilité éventuelle est limitée au montant des honoraires effectivement perçus pour la prestation concernée.</p></div>
-      <div class="cgv-article reveal"><h3>10. Droit de refus & résiliation</h3><p>JujuCar se réserve le droit de refuser tout mandat sans avoir à se justifier. En cas de résiliation par le client après le début des démarches, JujuCar peut facturer au prorata les frais et le temps déjà engagés.</p></div>
-      <div class="cgv-article reveal"><h3>11. Protection des données</h3><p>Le traitement des données personnelles est détaillé dans notre <a href="#" onclick="showPage('confidentialite'); return false;" style="color:#C9A24B;">Politique de confidentialité</a>, conforme à la Loi fédérale sur la protection des données (LPD).</p></div>
-      <div class="cgv-article reveal"><h3>12. Droit applicable et for</h3><p>Les présentes conditions sont soumises au <strong style="color:rgba(255,255,255,0.80);">droit suisse</strong>. Tout litige relève de la compétence exclusive des tribunaux du domicile du prestataire, en Suisse, sous réserve d'une tentative préalable de règlement amiable.</p></div>
-    </div>
-  </section>
-
-</div>
-<!-- FIN PAGE CGV -->
-
-
-<!-- ===== PAGE CONFIDENTIALITÉ ===== -->
-<div id="page-confidentialite" class="page">
-
-  <section class="page-hero">
-    <div class="inner">
-      <div class="page-label">CONFIDENTIALITÉ</div>
-      <h1>Politique de <span class="accent">confidentialité</span></h1>
-      <p style="font-size:13px; color:rgba(255,255,255,0.40); margin-top:8px;">Conforme à la Loi fédérale sur la protection des données (LPD) · Droit suisse</p>
-    </div>
-  </section>
-
-  <section class="cgv-section">
-    <div class="inner">
-      <p style="font-size:14px; color:rgba(255,255,255,0.62); line-height:1.7; margin-bottom:26px;">JujuCar accorde une grande importance à la protection de votre vie privée. Cette politique explique quelles données nous traitons, pourquoi, combien de temps et quels sont vos droits. Elle est conforme à la Loi fédérale suisse sur la protection des données (nLPD).</p>
-
-      <div class="cgv-article reveal"><h3>1. Responsable du traitement</h3><p>Le responsable du traitement de vos données est <strong style="color:rgba(255,255,255,0.80);">JujuCar</strong>, service de courtage automobile en Suisse.<br>Contact dédié : <a href="mailto:contact@juju-car.ch" style="color:#C9A24B;">contact@juju-car.ch</a> · +41 79 927 21 65.</p></div>
-      <div class="cgv-article reveal"><h3>2. Données que nous collectons</h3><p>Nous ne collectons que les données que vous nous transmettez <strong style="color:rgba(255,255,255,0.80);">volontairement</strong> via le formulaire de contact ou par message :<br>• <strong style="color:rgba(255,255,255,0.80);">nom</strong> (pour vous identifier et vous adresser correctement) ;<br>• <strong style="color:rgba(255,255,255,0.80);">adresse e-mail</strong> (pour vous répondre) ;<br>• <strong style="color:rgba(255,255,255,0.80);">numéro de téléphone</strong> (pour vous rappeler au sujet de votre demande).<br><br>Nous ne demandons aucune donnée sensible (santé, opinions, données financières bancaires, etc.).</p></div>
-      <div class="cgv-article reveal"><h3>3. Finalité — pourquoi ces données</h3><p>Vos données servent <strong style="color:rgba(255,255,255,0.80);">exclusivement</strong> à notre prestation de courtage automobile : vous recontacter, comprendre votre projet d'achat ou de vente, négocier en votre nom et assurer le suivi du dossier. Elles ne sont utilisées à aucune autre fin commerciale.</p></div>
-      <div class="cgv-article reveal"><h3>4. Base légale</h3><p>Le traitement repose sur votre <strong style="color:rgba(255,255,255,0.80);">consentement</strong> (votre prise de contact) et sur l'exécution des mesures précontractuelles et contractuelles liées au mandat que vous nous confiez.</p></div>
-      <div class="cgv-article reveal"><h3>5. Durée de conservation</h3><p>Vos données sont conservées au maximum <strong style="color:rgba(255,255,255,0.80);">2 ans</strong> à compter de notre dernier échange, puis supprimées. Les éventuels documents liés à une prestation facturée peuvent être conservés plus longtemps si la loi (comptabilité) l'exige.</p></div>
-      <div class="cgv-article reveal"><h3>6. Aucune revente, aucun partage commercial</h3><p>JujuCar <strong style="color:rgba(255,255,255,0.80);">ne vend, ne loue ni ne cède jamais vos données</strong> à des tiers à des fins commerciales ou publicitaires. Vos informations restent strictement internes à notre activité.</p></div>
-      <div class="cgv-article reveal"><h3>7. Prestataires techniques (sous-traitants)</h3><p>Pour fonctionner, le site s'appuie sur des prestataires qui peuvent techniquement héberger vos données : <strong style="color:rgba(255,255,255,0.80);">Infomaniak</strong> (hébergement, Suisse) et <strong style="color:rgba(255,255,255,0.80);">Airtable</strong> (gestion du catalogue). Ces prestataires n'utilisent pas vos données pour leur propre compte.</p></div>
-      <div class="cgv-article reveal"><h3>8. Cookies & mesure d'audience (Google Analytics)</h3><p>Le site utilise <strong style="color:rgba(255,255,255,0.80);">Google Analytics</strong> pour mesurer son audience de manière agrégée et anonyme (pages vues, durée de visite, provenance). Ces statistiques nous aident à améliorer le site, jamais à vous identifier personnellement. Un cookie technique mémorise par ailleurs que vous avez vu le bandeau cookies. Vous pouvez à tout moment refuser ou supprimer ces cookies via les réglages de votre navigateur.</p></div>
-      <div class="cgv-article reveal"><h3>9. Sécurité</h3><p>Nous mettons en œuvre des mesures raisonnables (accès restreint, prestataires sérieux, connexions sécurisées) pour protéger vos données contre tout accès non autorisé, perte ou divulgation.</p></div>
-      <div class="cgv-article reveal"><h3>10. Vos droits</h3><p>Conformément à la nLPD, vous disposez d'un <strong style="color:rgba(255,255,255,0.80);">droit d'accès</strong>, de <strong style="color:rgba(255,255,255,0.80);">rectification</strong> et de <strong style="color:rgba(255,255,255,0.80);">suppression</strong> de vos données. Pour exercer ces droits, écrivez simplement à <a href="mailto:contact@juju-car.ch" style="color:#C9A24B;">contact@juju-car.ch</a> — nous traitons votre demande dans les meilleurs délais.</p></div>
-      <div class="cgv-article reveal"><h3>11. Modifications</h3><p>Cette politique peut être mise à jour pour refléter une évolution de nos services ou de la législation. La version en vigueur est toujours celle publiée sur cette page.</p></div>
-    </div>
-  </section>
-
-</div>
-<!-- FIN PAGE CONFIDENTIALITÉ -->
-
-
-<!-- ===== FOOTER ===== -->
+<!-- ============ FOOTER ============ -->
 <footer>
-  <div class="footer-main">
-    <button class="footer-logo-btn" onclick="showPage('accueil')">Juju<span class="logo-car">Car</span></button>
-
-    <div class="footer-socials">
-      <button class="social-btn" onclick="window.open('https://www.facebook.com/profile.php?id=61590595763035','_blank')" title="Facebook">
-        <i class="ti ti-brand-facebook"></i>
-      </button>
-      <button class="social-btn" onclick="window.open('https://www.instagram.com/juju_car.ch/','_blank')" title="Instagram">
-        <i class="ti ti-brand-instagram"></i>
-      </button>
-      <button class="social-btn" onclick="window.open('https://wa.me/41799272165','_blank')" title="WhatsApp">
-        <i class="ti ti-brand-whatsapp"></i>
-      </button>
+  <div class="inner">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><b>Juju</b>Car<span class="dot">.</span></div>
+        <p>Courtier automobile indépendant en Valais. Nous trouvons la voiture de votre choix, nous négocions, et nous vous la livrons prête à rouler partout en Suisse romande.</p>
+      </div>
+      <div>
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="catalogue.html">Catalogue</a></li>
+          <li><a href="achat.html">Trouver ma voiture</a></li>
+          <li><a href="vente.html">Vendre mon véhicule</a></li>
+          <li><a href="histoire.html">Histoire</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+41799272165">079 927 21 65</a></li>
+          <li><a href="mailto:contact@juju-car.ch">contact@juju-car.ch</a></li>
+          <li><a href="https://wa.me/41799272165" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li>Grône · Valais · CH · Lun–Dim 08h–20h</li>
+        </ul>
+      </div>
     </div>
-
-    <div class="footer-links">
-      <button class="footer-link-btn" onclick="showPage('cgv')">Mentions légales &amp; CGV</button>
-      <button class="footer-link-btn" onclick="showPage('confidentialite')">Confidentialité</button>
+    <div class="foot-bottom">
+      <span>© <span data-year>2026</span> JujuCar — Courtage automobile en Suisse romande.</span>
+      <span><a href="mentions.html">Mentions légales · CGV</a> · <a href="confidentialite.html">Confidentialité</a></span>
     </div>
-  </div>
-
-  <div class="footer-bottom">
-    +41 79 927 21 65 · <a href="mailto:contact@juju-car.ch">contact@juju-car.ch</a> · © <span id="year">2026</span> JujuCar · Tous droits réservés
   </div>
 </footer>
 
-<!-- BANNEAU COOKIES (à l'intérieur de .content-wrap pour un empilement correct) -->
-<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a1a; border-top:1px solid #2a2a2a; padding:16px 32px; z-index:900; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-  <p style="font-size:14px; color:#aaa; margin:0; flex:1; min-width:200px;">🍪 Ce site utilise des cookies pour améliorer votre expérience. En continuant à naviguer, vous acceptez notre politique de confidentialité. Vous pouvez demander la suppression de vos données à <a href="mailto:contact@juju-car.ch" style="color:#C9A24B;">contact@juju-car.ch</a>.</p>
-  <button onclick="acceptCookies()" style="background:#C9A24B; color:#111; border:none; padding:10px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:14px; white-space:nowrap;">J'accepte</button>
-</div>
-
-</div><!-- end .content-wrap -->
-
-
-<!-- ===== SCRIPTS ===== -->
-<!-- GSAP (animations) — chargé via CDN officiel GreenSock -->
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="vehicules.js"></script>
-<script>
-function showPage(p) {
-  var pages = document.querySelectorAll('.page');
-  for (var i = 0; i < pages.length; i++) {
-    pages[i].classList.remove('active');
-  }
-  var target = document.getElementById('page-' + p);
-  if (target) {
-    target.classList.add('active');
-    window.scrollTo(0, 0);
-    var slug = p === 'accueil' ? '/' : '/' + p;
-    history.pushState({page: p}, '', slug);
-    updateMeta(p);
-    /* Le fond cinématique (heure dorée valaisanne) est fixe pour toutes
-       les pages — voir body / body::before dans le CSS. */
-    /* Re-trigger reveal animations for newly shown page */
-    triggerReveal();
-  }
-}
-
-function updateMeta(p) {
-  var metas = {
-    'accueil': 'JujuCar trouve votre voiture neuve jusqu\'à 30% moins cher, gère toute l\'administration et vous la livre à domicile en Suisse.',
-    'achat': 'Trouvez votre voiture neuve au meilleur prix avec JujuCar. Recherche personnalisée, négociation et livraison à domicile en Suisse.',
-    'vente': 'Vendez votre véhicule d\'occasion sans stress avec JujuCar. Publication sur toutes les plateformes, gestion des contacts et des visites.',
-    'histoire': 'Découvrez l\'histoire de JujuCar et notre engagement pour la transparence totale dans le courtage automobile en Suisse.',
-    'tarifs': 'Tarifs JujuCar: à partir de CHF 600 pour la recherche et l\'achat. 10% du prix obtenu pour la vente, plafonné à CHF 1000.',
-    'cgv': 'Conditions générales de service JujuCar. Courtage automobile indépendant en Suisse.',
-    'confidentialite': 'Politique de confidentialité JujuCar : données collectées, finalité, conservation et vos droits selon la LPD.'
-  };
-  var desc = document.querySelector('meta[name="description"]');
-  if (desc && metas[p]) desc.setAttribute('content', metas[p]);
-}
-
-window.addEventListener('popstate', function(e) {
-  if (e.state && e.state.page) showPage(e.state.page);
-});
-
-window.addEventListener('load', function() {
-  var path = window.location.pathname.replace('/', '');
-  var validPages = ['achat','vente','histoire','tarifs','cgv','confidentialite'];
-  var search = window.location.search;
-  var pageMatch = search.match(/[?&]page=([a-zA-Z]+)/);
-  if (pageMatch && validPages.indexOf(pageMatch[1]) !== -1) {
-    showPage(pageMatch[1]);
-  } else if (path && validPages.indexOf(path) !== -1) {
-    showPage(path);
-  }
-  if (search.indexOf('contact=1') !== -1) {
-    openContact();
-  }
-});
-
-function showAchat(s) {
-  document.getElementById('achat-choix').style.display = 'none';
-  document.getElementById('achat-know').style.display = 'none';
-  document.getElementById('achat-discover').style.display = 'none';
-  var el = document.getElementById('achat-' + s);
-  if (el) {
-    el.style.display = 'block';
-    window.scrollTo(0, 0);
-  }
-}
-
-function openContact() {
-  showContactMenu();
-  document.getElementById('overlay').classList.add('open');
-}
-
-function closeContact() {
-  document.getElementById('overlay').classList.remove('open');
-}
-
-function overlayClick(e) {
-  if (e.target === document.getElementById('overlay')) closeContact();
-}
-
-function showContactMenu() {
-  document.getElementById('contact-menu').style.display = 'block';
-  document.getElementById('contact-form').style.display = 'none';
-}
-
-function showContactForm() {
-  document.getElementById('contact-menu').style.display = 'none';
-  document.getElementById('contact-form').style.display = 'block';
-}
-
-function toggleMobile() {
-  document.getElementById('mobile-nav').classList.toggle('open');
-}
-
-function closeMobile() {
-  document.getElementById('mobile-nav').classList.remove('open');
-}
-
-function toggleChoice(btn) {
-  btn.classList.toggle('active');
-}
-
-function envoyerFormulaire(type) {
-  var data = {};
-  data['type'] = type;
-
-  function addField(name, value) {
-    data[name] = value || '';
-  }
-
-  addField('type', type);
-
-  if (type === 'achat-connu') {
-    var inputs = document.querySelectorAll('#achat-know input');
-    var labels = ['marque','modele','gamme','finition','couleur','options','prenom','nom','email','telephone','ville'];
-    inputs.forEach(function(inp, i) { if(labels[i]) addField(labels[i], inp.value); });
-    if (!document.querySelector('#achat-know input[type="email"]').value) {
-      alert('Veuillez entrer votre adresse email.'); return;
-    }
-  } else if (type === 'achat-guide') {
-    var actifs = document.querySelectorAll('#achat-discover .choice-btn.active');
-    var choix = Array.from(actifs).map(function(b){ return b.textContent; }).join(', ');
-    addField('motorisation', choix);
-    var discInputs = document.querySelectorAll('#achat-discover input');
-    var discLabels = ['budget','couleur_guide','places','prenom','nom','email','telephone','ville'];
-    discInputs.forEach(function(inp, i) { if(discLabels[i]) addField(discLabels[i], inp.value); });
-    if (!document.querySelector('#achat-discover input[type="email"]').value) {
-      alert('Veuillez entrer votre adresse email.'); return;
-    }
-  } else if (type === 'vente') {
-    var venteInputs = document.querySelectorAll('#page-vente input');
-    var venteLabels = ['marque','modele','annee','kilometrage','couleur','prix','prenom','nom','email','telephone','ville'];
-    venteInputs.forEach(function(inp, i) { if(venteLabels[i]) addField(venteLabels[i], inp.value); });
-    var rouesActif = document.querySelector('#page-vente .choice-btn.active');
-    addField('roues', rouesActif ? rouesActif.textContent : '');
-    if (!document.querySelector('#page-vente input[type="email"]').value) {
-      alert('Veuillez entrer votre adresse email.'); return;
-    }
-  } else if (type === 'question') {
-    var qInputs = document.querySelectorAll('#contact-form input, #contact-form textarea');
-    var qLabels = ['prenom','nom','email','message'];
-    qInputs.forEach(function(inp, i) { if(qLabels[i]) addField(qLabels[i], inp.value); });
-    var emailQ = document.querySelector('#contact-form input[type="email"]');
-    if (!emailQ || !emailQ.value) {
-      alert('Veuillez entrer votre adresse email.'); return;
-    }
-  }
-
-  var hp = document.getElementById('hp_field');
-  if (hp && hp.value) { return; }
-
-  fetch('https://formspree.io/f/mvzyvebp', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify(data)
-  }).then(function(response) {
-    if (response.ok) {
-      alert('✅ Votre demande a bien été envoyée ! Nous vous répondons sous 24h.');
-    } else {
-      alert('⚠️ Une erreur est survenue. Veuillez réessayer.');
-    }
-  }).catch(function() {
-    alert('⚠️ Une erreur est survenue. Veuillez réessayer.');
-  });
-}
-
-document.getElementById('year').textContent = new Date().getFullYear();
-
-window.addEventListener('load', function() {
-  if (window.location.search.includes('merci=1')) {
-    alert('✅ Votre demande a bien été envoyée ! Nous vous répondons sous 24h.');
-    history.replaceState({}, '', window.location.pathname);
-  }
-  if (window.location.search.includes('erreur=email')) {
-    alert('⚠️ Veuillez entrer une adresse email valide.');
-    history.replaceState({}, '', window.location.pathname);
-  }
-});
-
-/* ===== APERÇU CATALOGUE (page d'accueil, alimenté par vehicules.js) ===== */
-function formatPrix(n) {
-  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "'");
-}
-
-var CAT_PLACEHOLDER = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='220'%3E%3Crect width='400' height='220' fill='%23141414'/%3E%3Ctext x='200' y='118' fill='%23C9A24B' font-family='Arial,sans-serif' font-size='24' font-weight='bold' text-anchor='middle'%3EJujuCar%3C/text%3E%3C/svg%3E";
-
-function renderCataloguePreview() {
-  var section = document.getElementById('catalogue-preview');
-  var grid = document.getElementById('cat-preview-grid');
-  if (!section || !grid) return;
-
-  /* vehicules.js vide ou absent → on masque proprement toute la section */
-  if (typeof vehicules === 'undefined' || !vehicules.length) {
-    section.style.display = 'none';
-    return;
-  }
-
-  section.style.display = '';
-  grid.innerHTML = '';
-
-  vehicules.slice(0, 4).forEach(function(v) {
-    var imgs = (v.images && v.images.length) ? v.images : [CAT_PLACEHOLDER];
-
-    var card = document.createElement('button');
-    card.className = 'cat-prev-card reveal';
-    card.type = 'button';
-    card.setAttribute('aria-label', (v.marque || '') + ' ' + (v.modele || ''));
-    card.onclick = function() { window.location.href = 'catalogue.html'; };
-
-    var imgWrap = document.createElement('div');
-    imgWrap.className = 'cat-prev-img';
-    var img = document.createElement('img');
-    img.src = imgs[0];
-    img.alt = (v.marque || '') + ' ' + (v.modele || '');
-    img.loading = 'lazy';
-    img.onerror = function() { this.onerror = null; this.src = CAT_PLACEHOLDER; };
-    imgWrap.appendChild(img);
-    card.appendChild(imgWrap);
-
-    var body = document.createElement('div');
-    body.className = 'cat-prev-body';
-    body.innerHTML = '<div class="cat-prev-marque"></div><div class="cat-prev-modele"></div><div class="cat-prev-price"></div>';
-    body.querySelector('.cat-prev-marque').textContent = v.marque || '';
-    body.querySelector('.cat-prev-modele').textContent = v.modele || '';
-    body.querySelector('.cat-prev-price').textContent = 'CHF ' + formatPrix(v.prix_jujucar || 0);
-    /* Badge « Plusieurs coloris disponibles » (champs Airtable) */
-    if (v.plusieursColoris) {
-      var colors = document.createElement('div');
-      colors.className = 'cat-prev-colors';
-      var liste = (v.colorisDispo || '').trim();
-      colors.innerHTML = '<strong>Plusieurs coloris disponibles</strong>';
-      if (liste) { colors.appendChild(document.createElement('br')); colors.appendChild(document.createTextNode(liste)); }
-      body.appendChild(colors);
-    }
-    card.appendChild(body);
-
-    grid.appendChild(card);
-  });
-}
-
-/* ===== ANIMATIONS GSAP =====
-   - Révélation du texte du hero au chargement (timeline)
-   - Apparition des sections au défilement (ScrollTrigger)
-   - Repli propre si GSAP est indisponible OU si l'utilisateur a activé
-     « réduire les animations » (prefers-reduced-motion). */
-var PREFERS_REDUCED = window.matchMedia
-  && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-var GSAP_OK = !!(window.gsap && window.ScrollTrigger) && !PREFERS_REDUCED;
-
-if (GSAP_OK) { gsap.registerPlugin(ScrollTrigger); }
-
-/* Révèle le hero immédiatement (repli sans animation). */
-function showHeroInstant() {
-  document.querySelectorAll('.hero .fade-badge, .hero .fade-h1, .hero .fade-lead, .hero .fade-sub, .hero .fade-btns, .hero .fade-stats')
-    .forEach(function(el) { el.style.opacity = 1; el.style.transform = 'none'; });
-}
-
-/* Timeline d'entrée du hero. */
-function animateHero() {
-  if (!GSAP_OK) { showHeroInstant(); return; }
-  var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-  tl.fromTo('.hero .fade-badge', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6 })
-    .fromTo('.hero .fade-h1',    { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9 }, '-=0.30')
-    .fromTo('.hero .fade-lead',  { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.8 }, '-=0.55')
-    .fromTo('.hero .fade-sub',   { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.50')
-    .fromTo('.hero .fade-btns',  { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.45')
-    .fromTo('.hero .fade-stats', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.40');
-}
-
-/* ===== SCROLL REVEAL — appelé à chaque changement de page (SPA) ===== */
-function triggerReveal() {
-  var els = document.querySelectorAll('.page.active .reveal');
-
-  /* Repli (pas de GSAP ou animations réduites) : on affiche tout de suite,
-     en gardant l'IntersectionObserver pour un fondu CSS léger si dispo. */
-  if (!GSAP_OK) {
-    if (PREFERS_REDUCED || !('IntersectionObserver' in window)) {
-      els.forEach(function(el) { el.classList.add('visible'); });
-      return;
-    }
-    els.forEach(function(el) { el.classList.remove('visible'); });
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    els.forEach(function(el) { obs.observe(el); });
-    return;
-  }
-
-  /* Chemin GSAP : chaque section glisse + apparaît à l'entrée dans le viewport. */
-  els.forEach(function(el) {
-    el.classList.add('visible');                 /* neutralise le masquage CSS */
-    if (el._st) { el._st.kill(); el._st = null; }
-    var tw = gsap.fromTo(el,
-      { opacity: 0, y: 34 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 86%', once: true } });
-    el._st = tw.scrollTrigger;
-  });
-  ScrollTrigger.refresh();
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  renderCataloguePreview();
-  animateHero();
-  triggerReveal();
-});
-</script>
-
-<script>
-/* Bandeau cookies : affiché UNE SEULE FOIS, puis mémorisé durablement dans
-   localStorage (clé cookies_accepted = "true"). Au chargement, si la clé existe,
-   le bandeau reste masqué (display:none par défaut dans le HTML). */
-function cookiesAccepted() {
-  return localStorage.getItem('cookies_accepted') === 'true'
-      || localStorage.getItem('cookieAccepted') === '1'; /* compat ancienne clé */
-}
-function acceptCookies() {
-  localStorage.setItem('cookies_accepted', 'true');
-  document.getElementById('cookie-banner').style.display = 'none';
-}
-if (!cookiesAccepted()) {
-  document.getElementById('cookie-banner').style.display = 'flex';
-}
-</script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>

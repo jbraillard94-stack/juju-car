@@ -10,7 +10,7 @@ jobs:
 
       - name: Inject Airtable token
         run: |
-          sed -i "s|__AIRTABLE_TOKEN__|${{ secrets.AIRTABLE_TOKEN }}|g" airtable-sync.js
+          sed -i "s|__AIRTABLE_TOKEN__|${{ secrets.AIRTABLE_TOKEN }}|g" catalogue.html
 
       - name: Clear FTP cache to force re-deploy of all files
         run: rm -f .ftp-deploy-sync-state.json

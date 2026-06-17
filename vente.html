@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KNT5QQ83');</script>
+<title>Vendre mon véhicule — Accompagnement à la vente | JujuCar</title>
+<meta name="description" content="Vendez votre véhicule d'occasion sans vous en occuper. JujuCar gère l'annonce, la diffusion, les contacts et les rendez-vous. 10% du prix de vente, maximum 1000 CHF.">
+<link rel="canonical" href="https://juju-car.ch/vente.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/theme-pages.css">
+</head>
+<body>
+
+<header id="header">
+  <div class="nav">
+    <a href="index.html" class="brand"><img src="assets/logo.png" alt="JujuCar"><span><b>Juju</b>Car<span class="dot">.</span></span></a>
+    <nav class="menu">
+      <a href="catalogue.html">Catalogue</a>
+      <a href="achat.html">Trouver ma voiture</a>
+      <a href="vente.html">Vendre</a>
+      <a href="histoire.html">Histoire</a>
+      <a href="tarifs.html">Tarifs</a>
+    </nav>
+    <button class="btn-quote" onclick="location.href='#form'">Faire une demande</button>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="drawer" id="drawer" aria-hidden="true">
+  <a href="catalogue.html" data-close>Catalogue</a>
+  <a href="achat.html" data-close>Trouver ma voiture</a>
+  <a href="vente.html" data-close>Vendre</a>
+  <a href="histoire.html" data-close>Histoire</a>
+  <a href="tarifs.html" data-close>Tarifs</a>
+  <a class="btn btn-gold" href="#form" data-close>Faire une demande <span class="arr">→</span></a>
+  <a class="dw-contact" href="tel:+41799272165">079 927 21 65 · contact@juju-car.ch</a>
+</nav>
+
+<section class="page-hero">
+  <div class="inner">
+    <div class="page-label">Vendre mon véhicule</div>
+    <h1>Vendez votre véhicule <span class="accent">sans vous en occuper</span></h1>
+    <p>Donnez-nous les informations essentielles. Nous vous recontactons avec un formulaire complet pour finaliser votre dossier.</p>
+  </div>
+</section>
+
+<section class="form-section" id="form">
+  <div class="inner">
+    <div class="section-box reveal">
+      <span class="section-label">Ce que nous gérons pour vous</span>
+      <p class="form-lead">Nous nous occupons de tout pour vendre votre véhicule d'occasion, de la mise en ligne jusqu'au rendez-vous de vente.</p>
+      <div class="check-item"><i class="ti ti-check"></i>Mise en ligne de l'annonce sur nos réseaux sociaux et les sites spécialisés (AutoScout24…)</div>
+      <div class="check-item"><i class="ti ti-check"></i>Gestion des messages et des commentaires</div>
+      <div class="check-item"><i class="ti ti-check"></i>Négociation avec les acheteurs</div>
+      <div class="check-item"><i class="ti ti-check"></i>Prise de rendez-vous pour la vente</div>
+      <div class="service-price" style="margin-top:16px;">Tarif : <strong>10% du prix de vente, maximum 1 000 CHF</strong></div>
+    </div>
+
+    <form class="jc-form" data-type="Vente" novalidate>
+      <div class="section-box">
+        <span class="section-label">Votre véhicule</span>
+        <div class="grid2">
+          <div class="fgroup"><span class="field-label">Marque</span><input class="field" name="marque" type="text" placeholder="Ex : Renault"></div>
+          <div class="fgroup"><span class="field-label">Modèle</span><input class="field" name="modele" type="text" placeholder="Ex : Clio"></div>
+          <div class="fgroup"><span class="field-label">Année</span><input class="field" name="annee" type="text" placeholder="Ex : 2019"></div>
+          <div class="fgroup"><span class="field-label">Kilométrage</span><input class="field" name="kilometrage" type="text" placeholder="Ex : 45 000 km"></div>
+          <div class="fgroup"><span class="field-label">Couleur</span><input class="field" name="couleur" type="text" placeholder="Ex : Blanc nacré"></div>
+          <div class="fgroup"><span class="field-label">Prix souhaité</span><input class="field" name="prix" type="text" placeholder="Ex : 18 000 CHF"></div>
+        </div>
+        <div class="fgroup">
+          <span class="field-label">Roues motrices</span>
+          <div class="choice-group" data-key="roues">
+            <button type="button" class="choice-btn" onclick="toggleChoice(this)">2 roues motrices</button>
+            <button type="button" class="choice-btn" onclick="toggleChoice(this)">4x4 / AWD</button>
+            <button type="button" class="choice-btn" onclick="toggleChoice(this)">Je ne sais pas</button>
+          </div>
+        </div>
+      </div>
+      <div class="section-box">
+        <span class="section-label">Vos coordonnées</span>
+        <div class="grid2">
+          <div class="fgroup"><span class="field-label">Prénom</span><input class="field" name="prenom" type="text" placeholder="Votre prénom"></div>
+          <div class="fgroup"><span class="field-label">Nom</span><input class="field" name="nom" type="text" placeholder="Votre nom"></div>
+          <div class="fgroup"><span class="field-label">E-mail *</span><input class="field" name="email" type="email" placeholder="votre@email.ch" required></div>
+          <div class="fgroup"><span class="field-label">Téléphone</span><input class="field" name="telephone" type="tel" placeholder="+41 79 000 00 00"></div>
+          <div class="fgroup full"><span class="field-label">Ville</span><input class="field" name="ville" type="text" placeholder="Votre ville"></div>
+        </div>
+        <div class="req-note">* Seul le champ e-mail est obligatoire</div>
+      </div>
+      <div class="info-box">
+        <i class="ti ti-info-circle"></i>
+        <p>Après réception, nous vous enverrons un formulaire détaillé par e-mail — état du véhicule, historique, documents disponibles.</p>
+      </div>
+      <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="btn-submit" style="margin-top:18px;">Envoyer ma demande ↗</button>
+    </form>
+    <div class="form-ok">
+      <div class="chk"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h4>Demande envoyée !</h4>
+      <p>Merci — nous revenons vers vous sous 24 h avec la suite pour mettre votre véhicule en vente.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><b>Juju</b>Car<span class="dot">.</span></div>
+        <p>Courtier automobile indépendant en Valais. Nous trouvons la voiture de votre choix, nous négocions, et nous vous la livrons prête à rouler partout en Suisse romande.</p>
+      </div>
+      <div>
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="catalogue.html">Catalogue</a></li>
+          <li><a href="achat.html">Trouver ma voiture</a></li>
+          <li><a href="vente.html">Vendre mon véhicule</a></li>
+          <li><a href="histoire.html">Histoire</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+41799272165">079 927 21 65</a></li>
+          <li><a href="mailto:contact@juju-car.ch">contact@juju-car.ch</a></li>
+          <li><a href="https://wa.me/41799272165" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li>Grône · Valais · CH · Lun–Dim 08h–20h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-year>2026</span> JujuCar — Courtage automobile en Suisse romande.</span>
+      <span><a href="mentions.html">Mentions légales · CGV</a> · <a href="confidentialite.html">Confidentialité</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

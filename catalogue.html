@@ -14,45 +14,15 @@
 
   <title>Catalogue — Véhicules au meilleur prix négocié | JujuCar</title>
   <meta name="description" content="Découvrez le catalogue JujuCar : une sélection de véhicules à prix négocié. Comparez avec les prix concession et filtrez par marque, motorisation et budget. Liste non exhaustive — contactez-nous pour tout autre modèle.">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="JujuCar">
-  <meta property="og:locale" content="fr_CH">
   <meta property="og:title" content="Catalogue JujuCar — Meilleurs prix négociés">
   <meta property="og:description" content="Découvrez le catalogue JujuCar : une sélection de véhicules à prix négocié. Comparez avec les prix concession et filtrez par marque, motorisation et budget. Liste non exhaustive — contactez-nous pour tout autre modèle.">
   <meta property="og:url" content="https://juju-car.ch/catalogue.html">
-  <meta property="og:image" content="https://juju-car.ch/banniere.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Catalogue JujuCar — Meilleurs prix négociés">
-  <meta name="twitter:description" content="Une sélection de véhicules à prix négocié. Comparez avec les prix concession et filtrez par marque, motorisation et budget.">
-  <meta name="twitter:image" content="https://juju-car.ch/banniere.png">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://juju-car.ch/catalogue.html">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Catalogue JujuCar — Véhicules au meilleur prix négocié",
-    "description": "Sélection de véhicules à prix négocié par JujuCar, courtage automobile en Suisse. Liste non exhaustive.",
-    "url": "https://juju-car.ch/catalogue.html",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "JujuCar",
-      "url": "https://juju-car.ch"
-    },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://juju-car.ch" },
-        { "@type": "ListItem", "position": 2, "name": "Catalogue", "item": "https://juju-car.ch/catalogue.html" }
-      ]
-    }
-  }
-  </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 
   <style>
@@ -62,38 +32,19 @@
     /* ===== BASE ===== */
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: #F5F1E8;
-      background-color: #0E0E0F;
+      color: #F4F1EA;
+      background-color: #0A0A0B;
       background-image:
-        radial-gradient(135% 85% at 72% 8%, rgba(201,162,75,0.18), transparent 52%),
-        radial-gradient(90% 70% at 12% 4%, rgba(176,108,52,0.14), transparent 58%),
-        radial-gradient(120% 90% at 50% 120%, rgba(58,90,64,0.16), transparent 60%),
-        linear-gradient(180deg, #17150F 0%, #121110 42%, #0E0E0F 100%);
+        radial-gradient(120% 80% at 80% 0%, rgba(201,162,75,.07), transparent 55%),
+        radial-gradient(100% 60% at 0% 100%, rgba(46,139,99,.05), transparent 60%);
       background-attachment: fixed;
       min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url('hero.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.35;
-      z-index: 0;
-      pointer-events: none;
     }
 
     .bg-overlay {
       position: fixed;
       inset: 0;
-      background:
-        radial-gradient(120% 120% at 50% 30%, transparent 40%, rgba(8,7,6,0.55) 100%),
-        linear-gradient(180deg, rgba(14,14,15,0.55) 0%, rgba(14,14,15,0.72) 100%);
+      background: rgba(0,0,0,0.52);
       z-index: 0;
       pointer-events: none;
     }
@@ -101,19 +52,6 @@
     .content-wrap { position: relative; z-index: 1; }
 
     .accent { color: #C9A24B; }
-
-    /* Titres en serif display (cohérent avec la page d'accueil) */
-    h1, h2, .cat-hero h1, .v-modal-modele, .v-modele, .price-new, .v-price-new {
-      font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
-      letter-spacing: -0.3px;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .v-card, .fade-1, .fade-2, .badge-dot {
-        animation: none !important; transition: none !important;
-        opacity: 1 !important; transform: none !important;
-      }
-    }
     .inner { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
 
     /* ===== HEADER / NAV (identique au site) ===== */
@@ -141,7 +79,7 @@
       background: none; border: none; cursor: pointer;
       font-family: 'Inter', sans-serif;
       font-size: 22px; font-weight: 700;
-      color: #F5F1E8; letter-spacing: -0.3px;
+      color: #ffffff; letter-spacing: -0.3px;
       text-decoration: none;
     }
     .logo-btn .logo-car { color: #C9A24B; }
@@ -160,7 +98,7 @@
     .nav-btn.active { color: #C9A24B; }
 
     .btn-nav-contact {
-      background: #C9A24B; color: #0E0E0F; border: none;
+      background: #C9A24B; color: #0A0A0B; border: none;
       border-radius: 25px; padding: 9px 20px;
       font-family: 'Inter', sans-serif; font-weight: 700;
       font-size: 13px; cursor: pointer;
@@ -172,7 +110,7 @@
 
     .hamburger {
       display: none; background: none; border: none;
-      color: #F5F1E8; font-size: 24px; cursor: pointer;
+      color: #ffffff; font-size: 24px; cursor: pointer;
     }
 
     /* ===== MOBILE NAV ===== */
@@ -198,7 +136,7 @@
     .mobile-nav-btn.active { color: #C9A24B; }
 
     .mobile-contact-btn {
-      background: #C9A24B; color: #0E0E0F; border: none;
+      background: #C9A24B; color: #0A0A0B; border: none;
       border-radius: 25px; padding: 16px;
       font-family: 'Inter', sans-serif; font-weight: 700;
       font-size: 17px; cursor: pointer; margin-top: 28px;
@@ -210,8 +148,8 @@
 
     .badge-pill {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(201,162,75,0.15);
-      border: 0.5px solid rgba(201,162,75,0.45);
+      background: rgba(57,255,106,0.15);
+      border: 0.5px solid rgba(57,255,106,0.45);
       color: #C9A24B; border-radius: 20px;
       padding: 5px 14px; font-size: 13px; font-weight: 500;
       margin-bottom: 24px;
@@ -228,46 +166,8 @@
       margin-bottom: 16px; text-shadow: 0 2px 30px rgba(0,0,0,0.4);
     }
     .cat-hero p {
-      font-size: 16px; color: rgba(245,241,232,0.72);
-      line-height: 1.65; max-width: 600px;
-    }
-    .cat-hero p strong { color: #F5F1E8; }
-
-    /* ===== BOUTONS (partagés) ===== */
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #C9A24B; color: #0E0E0F; border: none;
-      border-radius: 25px; padding: 12px 24px;
-      font-family: 'Inter', sans-serif; font-weight: 700; font-size: 15px;
-      cursor: pointer; text-decoration: none; transition: opacity 0.2s, transform 0.2s;
-    }
-    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: #C9A24B; border: 1.5px solid #C9A24B;
-      border-radius: 25px; padding: 10px 22px;
-      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px;
-      cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.2s;
-    }
-    .btn-outline:hover { background: rgba(201,162,75,0.10); transform: translateY(-2px); }
-
-    /* ===== BANDEAU « CATALOGUE NON EXHAUSTIF » ===== */
-    .cat-notice-wrap { padding: 8px 0 4px; }
-    .cat-notice {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 24px; flex-wrap: wrap;
-      background: linear-gradient(135deg, rgba(201,162,75,0.12), rgba(201,162,75,0.04));
-      border: 1px solid rgba(201,162,75,0.30);
-      border-radius: 18px; padding: 22px 26px;
-    }
-    .cat-notice-text { display: flex; gap: 14px; align-items: flex-start; flex: 1; min-width: 280px; }
-    .cat-notice-text > i { font-size: 24px; color: #C9A24B; flex-shrink: 0; margin-top: 2px; }
-    .cat-notice-text div { font-size: 15px; line-height: 1.6; color: rgba(245,241,232,0.78); }
-    .cat-notice-text strong { color: #F5F1E8; font-weight: 700; }
-    .cat-notice-cta { display: flex; gap: 10px; flex-wrap: wrap; flex-shrink: 0; }
-    @media (max-width: 768px) {
-      .cat-notice-cta { width: 100%; }
-      .cat-notice-cta .btn-primary, .cat-notice-cta .btn-outline { flex: 1; justify-content: center; }
+      font-size: 16px; color: rgba(255,255,255,0.70);
+      line-height: 1.65; max-width: 560px;
     }
 
     /* ===== BARRE DE FILTRES (sticky) ===== */
@@ -299,14 +199,14 @@
     .filter-select {
       background: rgba(255,255,255,0.08);
       border: 0.5px solid rgba(255,255,255,0.20);
-      color: #F5F1E8; border-radius: 10px;
+      color: #ffffff; border-radius: 10px;
       padding: 10px 16px; font-size: 14px;
       font-family: 'Inter', sans-serif; cursor: pointer;
       outline: none; min-width: 200px;
       transition: border-color 0.2s;
     }
     .filter-select:focus { border-color: #C9A24B; }
-    .filter-select option { background: #141414; color: #F5F1E8; }
+    .filter-select option { background: #141414; color: #ffffff; }
     .filter-select:disabled { opacity: 0.5; cursor: not-allowed; }
 
     .budget-controls { display: flex; align-items: center; gap: 12px; }
@@ -319,7 +219,7 @@
     .budget-input {
       background: rgba(255,255,255,0.08);
       border: 0.5px solid rgba(255,255,255,0.20);
-      color: #F5F1E8; border-radius: 10px;
+      color: #ffffff; border-radius: 10px;
       padding: 10px 14px; font-size: 14px; width: 120px;
       font-family: 'Inter', sans-serif; outline: none;
       transition: border-color 0.2s;
@@ -334,7 +234,7 @@
       transition: background 0.2s; white-space: nowrap;
       margin-left: auto;
     }
-    .reset-btn:hover { background: rgba(201,162,75,0.10); }
+    .reset-btn:hover { background: rgba(57,255,106,0.10); }
 
     /* ===== GRILLE RÉSULTATS ===== */
     .results-section { padding: 40px 0 72px; }
@@ -346,7 +246,7 @@
       border-radius: 14px; padding: 18px 22px; margin-bottom: 24px;
     }
     .cat-disclaimer > i { font-size: 22px; color: #C9A24B; flex-shrink: 0; margin-top: 2px; }
-    .cat-disclaimer strong { color: #F5F1E8; font-weight: 600; }
+    .cat-disclaimer strong { color: #ffffff; font-weight: 600; }
     /* Titre « Bon à savoir » — gris foncé lisible (demande client) */
     .cat-disclaimer-title { color: #4a4a4a; }
     .cat-disclaimer ul { margin: 8px 0 0; padding-left: 18px; }
@@ -368,9 +268,7 @@
     /* ===== CARTE VÉHICULE ===== */
     .v-card {
       position: relative; z-index: 1;
-      /* Fond OPAQUE : la carte s'agrandit au survol et chevauche ses voisines —
-         un fond translucide laissait voir les cartes du dessous (texte illisible). */
-      background: #161616;
+      background: rgba(255,255,255,0.07);
       border: 0.5px solid rgba(255,255,255,0.12);
       border-radius: 16px;
       overflow: hidden;
@@ -378,8 +276,6 @@
       transition: transform 0.3s ease, border-color 0.2s, opacity 0.25s ease, box-shadow 0.3s ease;
       will-change: transform;
     }
-    /* Au survol, fond encore plus dense pour une lisibilité totale par-dessus les voisines. */
-    .v-card:hover { background: #1c1c1c; }
     /* Au survol : la carte grandit fortement (~1.8x), passe au premier plan
        et chevauche les cartes voisines. La photo devient l'élément dominant. */
     .v-card:hover {
@@ -394,19 +290,17 @@
       opacity: 0; transform: scale(0.96); pointer-events: none;
     }
 
-    /* Badge « Plusieurs coloris disponibles » — zone dédiée DANS le corps de la
-       carte (jamais en overlay sur la photo : l'image reste opaque). */
-    .v-colors-badge {
-      display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap;
-      align-self: flex-start;
-      background: rgba(201,162,75,0.12);
-      border: 0.5px solid rgba(201,162,75,0.40);
-      color: #C9A24B; border-radius: 8px;
-      padding: 6px 10px; margin-bottom: 12px;
-      font-size: 12px; font-weight: 600; line-height: 1.35;
+    /* Bandeau coloris (bas de l'image) — visible uniquement au survol / dans la fiche */
+    .v-color-banner {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
+      background: rgba(0,0,0,0.70);
+      color: #ffffff; font-size: 10px; font-weight: 500;
+      text-align: center; padding: 5px 8px; line-height: 1.3;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
     }
-    .v-colors-badge i { font-size: 14px; }
-    .v-colors-badge .vcb-list { color: rgba(255,255,255,0.82); font-weight: 500; }
+    .v-card:hover .v-color-banner { opacity: 1; }
+    .v-modal-imgwrap .v-color-banner { opacity: 1; font-size: 12px; padding: 7px 10px; }
 
     /* Image / carrousel */
     .v-img-wrap {
@@ -428,7 +322,7 @@
 
     .v-fuel {
       position: absolute; top: 12px; left: 12px;
-      background: #C9A24B; color: #0E0E0F;
+      background: #C9A24B; color: #0A0A0B;
       font-size: 11px; font-weight: 700;
       border-radius: 20px; padding: 3px 10px; z-index: 2;
     }
@@ -437,12 +331,12 @@
       position: absolute; top: 50%; transform: translateY(-50%);
       width: 34px; height: 34px; border-radius: 50%;
       background: rgba(0,0,0,0.55); border: 0.5px solid rgba(255,255,255,0.25);
-      color: #F5F1E8; font-size: 20px; line-height: 1;
+      color: #ffffff; font-size: 20px; line-height: 1;
       cursor: pointer; z-index: 2;
       display: flex; align-items: center; justify-content: center;
       transition: background 0.2s; padding: 0;
     }
-    .v-arrow:hover { background: #C9A24B; color: #0E0E0F; }
+    .v-arrow:hover { background: #C9A24B; color: #0A0A0B; }
     .v-prev { left: 10px; }
     .v-next { right: 10px; }
 
@@ -463,7 +357,7 @@
       font-size: 11px; color: #C9A24B; text-transform: uppercase;
       letter-spacing: 1px; font-weight: 600; margin-bottom: 4px;
     }
-    .v-modele { font-size: 17px; font-weight: 700; color: #F5F1E8; margin-bottom: 8px; }
+    .v-modele { font-size: 17px; font-weight: 700; color: #ffffff; margin-bottom: 8px; }
 
     .v-desc {
       font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.55;
@@ -484,7 +378,7 @@
 
     .v-eco {
       display: inline-block; align-self: flex-start;
-      background: rgba(201,162,75,0.15);
+      background: rgba(57,255,106,0.15);
       border: 0.5px solid #C9A24B; color: #C9A24B;
       border-radius: 20px; padding: 4px 12px;
       font-size: 12px; font-weight: 600; margin-bottom: 12px;
@@ -492,7 +386,7 @@
 
     .v-contact {
       margin-top: auto;
-      background: #C9A24B; color: #0E0E0F; border: none;
+      background: #C9A24B; color: #0A0A0B; border: none;
       border-radius: 25px; padding: 13px 16px;
       font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px;
       cursor: pointer; width: 100%; text-align: center;
@@ -504,7 +398,7 @@
     /* ===== BOUTON "VOIR PLUS" ===== */
     .voir-plus-btn {
       display: block; margin: 32px auto 0;
-      background: #C9A24B; color: #0E0E0F; border: none;
+      background: #C9A24B; color: #0A0A0B; border: none;
       border-radius: 25px; padding: 13px 32px;
       font-family: 'Inter', sans-serif; font-weight: 700; font-size: 15px;
       cursor: pointer; transition: opacity 0.2s;
@@ -532,16 +426,16 @@
       position: absolute; top: 10px; right: 12px; z-index: 5;
       width: 36px; height: 36px; border-radius: 50%;
       background: rgba(0,0,0,0.55); border: 0.5px solid rgba(255,255,255,0.25);
-      color: #F5F1E8; font-size: 24px; line-height: 1; cursor: pointer;
+      color: #ffffff; font-size: 24px; line-height: 1; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: background 0.2s, color 0.2s;
     }
-    .v-modal-close:hover { background: #C9A24B; color: #0E0E0F; }
+    .v-modal-close:hover { background: #C9A24B; color: #0A0A0B; }
     .v-modal-imgwrap {
       position: relative; height: 420px; overflow: hidden; background: #141414;
     }
     .v-modal-body { padding: 1.75rem; }
-    .v-modal-modele { font-size: 24px; font-weight: 700; margin: 2px 0 10px; color: #F5F1E8; }
+    .v-modal-modele { font-size: 24px; font-weight: 700; margin: 2px 0 10px; color: #ffffff; }
     .v-modal-desc { font-size: 14px; color: rgba(255,255,255,0.70); line-height: 1.6; margin-bottom: 14px; white-space: pre-line; }
 
     /* Données techniques de la fiche — 3 colonnes (2 sur mobile) */
@@ -558,7 +452,7 @@
       font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
       color: rgba(255,255,255,0.45); margin-bottom: 5px;
     }
-    .v-spec-val { font-size: 16px; font-weight: 600; color: #F5F1E8; }
+    .v-spec-val { font-size: 16px; font-weight: 600; color: #ffffff; }
     .v-spec-val.accent { color: #C9A24B; }
     .v-spec-old { font-size: 14px; color: rgba(255,255,255,0.42); text-decoration: line-through; }
 
@@ -580,85 +474,19 @@
       color: #C9A24B; font-weight: 600; margin: 4px 0 8px;
     }
 
-    /* ===== FICHE DÉTAILLÉE — PLEINE PAGE (remplace l'ancienne modale) =====
-       Quand une annonce est ouverte, on masque le hero + filtres + grille et on
-       affiche cette section pleine page. L'en-tête et le pied de page restent. */
-    .v-detail-page { display: none; padding: 28px 0 64px; }
-    .content-wrap.detail-open .cat-hero,
-    .content-wrap.detail-open .filter-bar,
-    .content-wrap.detail-open .results-section { display: none !important; }
-    .content-wrap.detail-open .v-detail-page { display: block; }
-
-    .v-back-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; border: 1.5px solid #C9A24B; color: #C9A24B;
-      border-radius: 25px; padding: 10px 20px; font-size: 14px; font-weight: 600;
-      font-family: 'Inter', sans-serif; cursor: pointer; margin-bottom: 22px;
-      transition: background 0.2s;
-    }
-    .v-back-btn:hover { background: rgba(201,162,75,0.10); }
-
-    .v-detail-card {
-      background: rgba(15,15,15,0.92);
-      border: 0.5px solid rgba(255,255,255,0.14);
-      border-radius: 18px; overflow: hidden;
-    }
-    /* Galerie pleine page un peu plus haute que dans l'ancienne modale */
-    .v-detail-card .v-modal-imgwrap { height: 460px; }
-    @media (max-width: 768px) { .v-detail-card .v-modal-imgwrap { height: 300px; } }
-    @media (max-width: 480px) { .v-detail-card .v-modal-imgwrap { height: 240px; } }
-
-    /* Formulaire de contact intégré à la fiche (pré-rempli avec le modèle) */
-    .v-contact-form {
-      display: none; margin-top: 16px;
-      border-top: 0.5px solid rgba(255,255,255,0.10); padding-top: 18px;
-    }
-    .v-contact-form.open { display: block; }
-    .v-form-vehicle {
-      background: rgba(201,162,75,0.06);
-      border: 0.5px solid rgba(201,162,75,0.20);
-      border-radius: 10px; padding: 12px 14px; margin-bottom: 14px;
-      font-size: 14px; color: rgba(255,255,255,0.85);
-    }
-    .v-form-vehicle strong { color: #C9A24B; font-weight: 600; }
-    .v-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .v-field-group { margin-bottom: 12px; display: flex; flex-direction: column; gap: 6px; }
-    .v-field-label { font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 500; }
-    .v-input, .v-textarea {
-      background: rgba(255,255,255,0.06);
-      border: 0.5px solid rgba(255,255,255,0.15);
-      border-radius: 10px; padding: 12px 14px; font-size: 14px;
-      color: #F5F1E8; font-family: 'Inter', sans-serif; outline: none;
-      width: 100%; transition: border-color 0.2s;
-    }
-    .v-input:focus, .v-textarea:focus { border-color: #C9A24B; }
-    .v-input::placeholder, .v-textarea::placeholder { color: rgba(255,255,255,0.25); }
-    .v-textarea { resize: vertical; min-height: 84px; }
-    .v-form-submit {
-      background: #C9A24B; color: #0E0E0F; border: none; border-radius: 25px;
-      padding: 14px 28px; font-family: 'Inter', sans-serif; font-weight: 700;
-      font-size: 15px; cursor: pointer; width: 100%; margin-top: 4px;
-      transition: opacity 0.2s;
-    }
-    .v-form-submit:hover { opacity: 0.88; }
-    .v-form-submit:disabled { opacity: 0.55; cursor: default; }
-    .v-form-note { font-size: 12px; color: rgba(255,255,255,0.32); margin-top: 8px; line-height: 1.5; }
-    .v-hp { display: none !important; position: absolute; left: -9999px; }
-    @media (max-width: 480px) { .v-form-row { grid-template-columns: 1fr; } }
-
     /* ===== AUCUN RÉSULTAT ===== */
     .no-results {
       display: none; text-align: center; padding: 4rem 2rem;
     }
     .no-results .nr-icon { font-size: 56px; margin-bottom: 16px; }
-    .no-results h3 { font-size: 22px; font-weight: 700; color: #F5F1E8; margin-bottom: 10px; }
+    .no-results h3 { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 10px; }
     .no-results p {
       font-size: 15px; color: rgba(255,255,255,0.55);
       line-height: 1.6; max-width: 460px; margin: 0 auto 24px;
     }
     .no-results .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
-      background: #C9A24B; color: #0E0E0F; border: none;
+      background: #C9A24B; color: #0A0A0B; border: none;
       border-radius: 25px; padding: 13px 26px;
       font-family: 'Inter', sans-serif; font-weight: 700; font-size: 15px;
       cursor: pointer; text-decoration: none;
@@ -679,7 +507,7 @@
     .footer-logo-btn {
       background: none; border: none; cursor: pointer;
       font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700;
-      color: #F5F1E8; text-decoration: none;
+      color: #ffffff; text-decoration: none;
     }
     .footer-logo-btn .logo-car { color: #C9A24B; }
 
@@ -690,7 +518,7 @@
       cursor: pointer; display: flex; align-items: center; justify-content: center;
       color: rgba(255,255,255,0.65); font-size: 18px; transition: all 0.2s;
     }
-    .social-btn:hover { background: #C9A24B; color: #0E0E0F; border-color: #C9A24B; }
+    .social-btn:hover { background: #C9A24B; color: #0A0A0B; border-color: #C9A24B; }
 
     .footer-links { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
     .footer-link-btn {
@@ -763,6 +591,34 @@
       .v-modal-overlay { padding: 20px 12px; }
       .v-spec-grid { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* ===== HARMONISATION "VELOURS VALAISAN" ===== */
+    .logo-btn,.footer-logo-btn{font-family:'Fraunces',Georgia,serif;font-weight:600}
+    .logo-btn .logo-car,.footer-logo-btn .logo-car{font-style:italic}
+    .cat-hero h1{font-family:'Fraunces',Georgia,serif;font-weight:400;letter-spacing:-.5px;
+      font-size:clamp(34px,5vw,58px);line-height:1.06}
+    .cat-hero .accent{font-style:italic}
+    .v-marque{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#C9A24B}
+    .v-modele,.v-modal-modele{font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-.2px}
+    .v-price-new{font-family:'Fraunces',Georgia,serif;color:#E7CE92}
+    .v-card{border-radius:18px;transition:transform .45s cubic-bezier(.22,.61,.36,1),border-color .45s,box-shadow .45s}
+    .v-card:hover{transform:translateY(-6px);border-color:rgba(231,206,146,.35);
+      box-shadow:0 24px 50px rgba(0,0,0,.45)}
+    /* badge économie = vert valaisan (l'économie reste verte) */
+    .v-eco{color:#7BD2A6 !important}
+    /* boutons or */
+    .btn-nav-contact,.v-contact,.mobile-contact-btn{
+      background:linear-gradient(135deg,#E7CE92,#C9A24B) !important;color:#0A0A0B !important;
+      box-shadow:0 6px 22px rgba(201,162,75,.18)}
+    .btn-nav-contact:hover,.v-contact:hover{opacity:1 !important;transform:translateY(-2px);
+      box-shadow:0 10px 30px rgba(201,162,75,.30)}
+    .nav-btn.active{font-weight:600}
+    /* filtres velours */
+    .filter-bar{background:rgba(19,19,22,.72) !important;backdrop-filter:blur(14px);
+      border-color:rgba(231,206,146,.12) !important}
+    .filter-select,.budget-input{border-radius:11px}
+    .filter-select:focus,.budget-input:focus{border-color:#C9A24B !important;
+      box-shadow:0 0 0 3px rgba(201,162,75,.12) !important;outline:none}
   </style>
 </head>
 <body>
@@ -782,12 +638,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="logo-btn" href="index.html">Juju<span class="logo-car">Car</span></a>
     <nav>
       <a class="nav-btn" href="index.html">Accueil</a>
-      <a class="nav-btn" href="index.html?page=achat">Trouver ma voiture</a>
-      <a class="nav-btn" href="index.html?page=vente">Vendre mon véhicule</a>
-      <a class="nav-btn" href="index.html?page=histoire">Notre histoire</a>
-      <a class="nav-btn" href="index.html?page=tarifs">Tarifs</a>
+      <a class="nav-btn" href="achat.html">Trouver ma voiture</a>
+      <a class="nav-btn" href="vente.html">Vendre mon véhicule</a>
+      <a class="nav-btn" href="histoire.html">Notre histoire</a>
+      <a class="nav-btn" href="tarifs.html">Tarifs</a>
       <a class="nav-btn active" href="catalogue.html">Catalogue</a>
-      <a class="btn-nav-contact" href="index.html?contact=1">Nous contacter</a>
+      <a class="btn-nav-contact" href="index.html#contact">Nous contacter</a>
     </nav>
     <button class="hamburger" onclick="toggleMobile()"><i class="ti ti-menu-2"></i></button>
   </div>
@@ -796,40 +652,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== MENU MOBILE ===== -->
 <div class="mobile-nav" id="mobile-nav">
   <a class="mobile-nav-btn" href="index.html">Accueil</a>
-  <a class="mobile-nav-btn" href="index.html?page=achat">Trouver ma voiture</a>
-  <a class="mobile-nav-btn" href="index.html?page=vente">Vendre mon véhicule</a>
-  <a class="mobile-nav-btn" href="index.html?page=histoire">Notre histoire</a>
-  <a class="mobile-nav-btn" href="index.html?page=tarifs">Tarifs</a>
+  <a class="mobile-nav-btn" href="achat.html">Trouver ma voiture</a>
+  <a class="mobile-nav-btn" href="vente.html">Vendre mon véhicule</a>
+  <a class="mobile-nav-btn" href="histoire.html">Notre histoire</a>
+  <a class="mobile-nav-btn" href="tarifs.html">Tarifs</a>
   <a class="mobile-nav-btn active" href="catalogue.html">Catalogue</a>
-  <a class="mobile-contact-btn" href="index.html?contact=1">Nous contacter</a>
+  <a class="mobile-contact-btn" href="index.html#contact">Nous contacter</a>
 </div>
 
 <!-- ===== HERO ===== -->
 <section class="cat-hero">
   <div class="inner">
-    <h1 class="fade-1">Un aperçu,<br><span class="accent">pas une limite.</span></h1>
-    <p class="fade-2">Quelques modèles négociés pour vous donner une idée. La liste n'est <strong>pas exhaustive</strong> : dites-moi la voiture que vous cherchez — je la trouve.</p>
-  </div>
-</section>
-
-<!-- ===== BANDEAU « CATALOGUE NON EXHAUSTIF » ===== -->
-<section class="cat-notice-wrap">
-  <div class="inner">
-    <div class="cat-notice reveal">
-      <div class="cat-notice-text">
-        <i class="ti ti-sparkles"></i>
-        <div>
-          <strong>Aperçu non exhaustif.</strong>
-          Vous ne voyez ici qu'une petite sélection. Neuve ou d'occasion, n'importe quelle marque,
-          n'importe quel modèle — dites-moi ce que vous cherchez, je m'occupe de la trouver, de la
-          négocier et de vous la livrer.
-        </div>
-      </div>
-      <div class="cat-notice-cta">
-        <a class="btn-primary" href="https://wa.me/41799272165" target="_blank" rel="noopener"><i class="ti ti-brand-whatsapp"></i> WhatsApp</a>
-        <a class="btn-outline" href="index.html?page=achat"><i class="ti ti-car"></i> Décrire ma recherche</a>
-      </div>
-    </div>
+    <h1 class="fade-1">Notre catalogue<br><span class="accent">Meilleurs prix négociés.</span></h1>
+    <p class="fade-2">Comparez les prix concession avec nos tarifs négociés. Filtrez par marque et budget.</p>
   </div>
 </section>
 
@@ -886,7 +721,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>Les photos sont des <strong>visuels d'illustration</strong>, pas le véhicule réel — le modèle existe souvent dans d'autres coloris.</li>
           <li>Cette page ne présente que <strong>quelques exemples</strong> de ce que nous pouvons vous proposer : la liste n'est <strong>pas exhaustive</strong>.</li>
           <li>Un véhicule peut ne plus être disponible ou voir son prix évoluer, même si nous tenons le site à jour autant que possible.</li>
-          <li>Une question ou un modèle non listé ? <a href="index.html?contact=1">Contactez-nous</a> — on s'en occupe.</li>
+          <li>Une question ou un modèle non listé ? <a href="index.html#contact">Contactez-nous</a> — on s'en occupe.</li>
         </ul>
       </div>
     </div>
@@ -898,18 +733,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="nr-icon">🔍</div>
       <h3>Aucun véhicule trouvé</h3>
       <p>On n'a pas encore de comparatif sur ce modèle — mais on a peut-être une solution !</p>
-      <a class="btn-primary" href="index.html?page=achat"><i class="ti ti-car"></i> Contactez-nous quand même</a>
+      <a class="btn-primary" href="achat.html"><i class="ti ti-car"></i> Contactez-nous quand même</a>
     </div>
   </div>
 </section>
 
-<!-- FICHE DÉTAILLÉE — PLEINE PAGE (plus de modale) -->
-<section class="v-detail-page" id="v-detail" aria-label="Fiche détaillée du véhicule">
-  <div class="inner">
-    <button class="v-back-btn" onclick="closeDetail()"><i class="ti ti-arrow-left"></i> Retour aux annonces</button>
-    <div class="v-detail-card" id="v-detail-content"></div>
+<!-- FICHE DÉTAILLÉE (modale) -->
+<div class="v-modal-overlay" id="v-modal" onclick="vModalBackdrop(event)">
+  <div class="v-modal" role="dialog" aria-modal="true">
+    <button class="v-modal-close" onclick="closeModal()" aria-label="Fermer la fiche">&times;</button>
+    <div id="v-modal-content"></div>
   </div>
-</section>
+</div>
 
 <!-- ===== FOOTER ===== -->
 <footer>
@@ -929,8 +764,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="footer-links">
-      <a class="footer-link-btn" href="index.html?page=cgv">Mentions légales &amp; CGV</a>
-      <a class="footer-link-btn" href="index.html?page=confidentialite">Confidentialité</a>
+      <a class="footer-link-btn" href="mentions.html">Mentions légales &amp; CGV</a>
+      <a class="footer-link-btn" href="confidentialite.html">Confidentialité</a>
     </div>
   </div>
 
@@ -940,7 +775,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <!-- BANNEAU COOKIES (à l'intérieur de .content-wrap pour un empilement correct) -->
-<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a1a; border-top:1px solid #2a2a2a; padding:16px 32px; z-index:900; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a1a; border-top:1px solid #2a2a2a; padding:16px 32px; z-index:900; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
   <p style="font-size:14px; color:#aaa; margin:0; flex:1; min-width:200px;">🍪 Ce site utilise des cookies pour améliorer votre expérience. En continuant à naviguer, vous acceptez notre politique de confidentialité. Vous pouvez demander la suppression de vos données à <a href="mailto:contact@juju-car.ch" style="color:#C9A24B;">contact@juju-car.ch</a>.</p>
   <button onclick="acceptCookies()" style="background:#C9A24B; color:#111; border:none; padding:10px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:14px; white-space:nowrap;">J'accepte</button>
 </div>
@@ -948,14 +783,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div><!-- end .content-wrap -->
 
 <!-- Logique du catalogue (données dynamiques depuis Airtable) -->
-<!-- GSAP (animations) — CDN officiel GreenSock -->
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<!-- Configuration Airtable centrale (token injecté au déploiement) -->
-<script src="airtable-sync.js"></script>
 <script>
 /* Image de remplacement si une photo n'existe pas encore */
-var PLACEHOLDER = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='220'%3E%3Crect width='400' height='220' fill='%23141414'/%3E%3Ctext x='200' y='118' fill='%23C9A24B' font-family='Arial,sans-serif' font-size='24' font-weight='bold' text-anchor='middle'%3EJujuCar%3C/text%3E%3C/svg%3E";
+var PLACEHOLDER = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='220'%3E%3Crect width='400' height='220' fill='%23141414'/%3E%3Ctext x='200' y='118' fill='%23C9A24B' font-family='Georgia,serif' font-size='24' font-weight='bold' text-anchor='middle'%3EJujuCar%3C/text%3E%3C/svg%3E";
 
 /* =========================================================================
    CONNEXION AIRTABLE
@@ -968,38 +798,35 @@ var PLACEHOLDER = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.
        Le token est visible côté front-end, c'est acceptable car il ne permet
        que de LIRE les véhicules, jamais de les modifier.
    ========================================================================= */
-/* Connexion Airtable : tout vient de airtable-sync.js (window.JUJUCAR_AT),
-   où le token (lecture seule) est injecté au déploiement. On lit la TABLE V2
-   (tbl7dEkvmCxFRAcG2). Repli défensif si le fichier de config manque. */
-var AT = window.JUJUCAR_AT || {
-  token:   '__AIRTABLE_TOKEN__',
-  baseId:  'app0yutHVptAUcSrk',
-  tableId: 'tbl7dEkvmCxFRAcG2',
-  endpoint:'https://api.airtable.com/v0/app0yutHVptAUcSrk/tbl7dEkvmCxFRAcG2'
+var AT = {
+  token:    '__AIRTABLE_TOKEN__',  // token Airtable (lecture seule)
+  baseId:   'app0yutHVptAUcSrk',
+  tableId:  'tbl7dEkvmCxFRAcG2'
 };
+AT.endpoint = 'https://api.airtable.com/v0/' + AT.baseId + '/' + AT.tableId;
 
-/* Noms EXACTS des champs de la table v2 (alimentée par l'agent Traiteur). */
+/* IDs des champs Airtable (stables même si le nom de la colonne change). */
 var F = {
-  vehicule:     'Vehicule',          /* titre (sans accent) */
-  marque:       'Marque',
-  modele:       'Modèle complet',
-  annee:        'Année',
-  km:           'Kilométrage',
-  carburant:    'Motorisation',
-  puissance:    'Puissance',         /* texte, ex. "204 ch" */
-  transmission: 'Transmission',
-  boite:        'Boîte de vitesse',
-  couleur:      'Couleur',
-  prixJuju:     'Mon prix (CHF)',    /* prix affiché au client */
-  prixFournisseur: 'Prix fournisseur (CHF)',  /* confidentiel — jamais affiché */
-  economie:     'Économie (CHF)',
-  images:       'Photos',            /* pièces jointes */
-  statut:       'Statut',
-  fournisseur:  'Fournisseur'        /* confidentiel — jamais affiché */
+  vehicule:   'fldnIUJcIQraqF6lE',  // Vehicule
+  marque:     'fld6MsPzgj4PrfyHg',  // Marque
+  modele:     'fldsQx9VejZnRDZwN',  // Modèle complet
+  annee:      'fldYI3TuiyRwz5u2J',  // Année
+  couleurs:   'fldY7J7MuymULHjag',  // Couleur
+  km:         'fldmoVHKV0EVAsbI5',  // Kilométrage
+  carburant:  'fldwmQhIm4h6cyDiA',  // Motorisation
+  puissance:  'fldGLbjyKmjdLbS23',  // Puissance
+  prixJuju:   'fldPMZEEwpVipcjzn',  // Mon prix (CHF)
+  prixConc:   'fldrtLSPETSwkE9Ye',  // Prix concessionnaire (CHF)
+  options:    'fldB0SbXGE6e7L43W',  // Équipements
+  images:     'fldORFodjckf0goAn',  // Photos
+  statut:     'fldWZLDNWV90UQVJ2'   // Statut
 };
 
 /* Liste des véhicules — remplie dynamiquement depuis Airtable (voir fetchVehicles). */
 var vehicules = [];
+
+/* Bandeau affiché sur l'image au survol / dans la fiche. */
+var COLOR_BANNER_TEXT = "Existe en plusieurs coloris — photo sur demande";
 
 /* Format prix suisse : 15500 -> 15'500 */
 function formatPrix(n) {
@@ -1086,45 +913,25 @@ function mapRecord(rec) {
   var f = rec.fields || {};
   var imgs = Array.isArray(f[F.images]) ? f[F.images] : [];
   var carburant = asText(f[F.carburant]);
-  var prixJuju  = Number(f[F.prixJuju]) || 0;
-  var economie  = Number(f[F.economie]) || 0;
-  /* Prix de référence barré = mon prix + économie (le prix « ailleurs »),
-     affiché seulement quand une économie est renseignée. */
-  var prixRef   = economie > 0 ? prixJuju + economie : 0;
   return {
     id: rec.id,
     vehicule: asText(f[F.vehicule]),
     marque: asText(f[F.marque]).trim(),
     modele: asText(f[F.modele]).trim(),
     annee: asText(f[F.annee]),
-    couleurs: asList(f[F.couleur]),
+    couleurs: asList(f[F.couleurs]),
     km: f[F.km] || '',
     carburant: carburant,
     motorisation: normMoto(carburant),
-    puissance: asText(f[F.puissance]).trim(),
-    transmission: asText(f[F.transmission]).trim(),
-    boite: asText(f[F.boite]).trim(),
-    prix_jujucar: prixJuju,
-    prix_concession: prixRef,
-    economie: economie,
-    description: '',
+    puissance: f[F.puissance] || '',
+    prix_jujucar: Number(f[F.prixJuju]) || 0,
+    prix_concession: Number(f[F.prixConc]) || 0,
+    description: asText(f[F.options]),
     imagesDisplay: imgs.map(dispUrl),
     imagesFull: imgs.map(fullUrl),
     imagesRaw: imgs.map(rawUrl),
-    statut: asText(f[F.statut]),
-    plusieursColoris: false,
-    colorisDispo: ''
+    statut: asText(f[F.statut])
   };
-}
-
-/* Construit le badge « Plusieurs coloris disponibles » (HTML échappé) si la
-   case Airtable est cochée ; chaîne vide sinon. */
-function colorsBadgeHtml(v) {
-  if (!v.plusieursColoris) return '';
-  var liste = v.colorisDispo
-    ? ' <span class="vcb-list">' + escapeHtml(v.colorisDispo) + '</span>' : '';
-  return '<span class="v-colors-badge"><i class="ti ti-palette"></i>' +
-         'Plusieurs coloris disponibles' + liste + '</span>';
 }
 
 /* Récupère TOUS les véhicules depuis Airtable (pagination 100 par 100),
@@ -1133,7 +940,7 @@ function fetchVehicles() {
   resultsCount.textContent = 'Chargement du catalogue…';
 
   function pageUrl(offset) {
-    var u = AT.endpoint + '?pageSize=100';
+    var u = AT.endpoint + '?pageSize=100&returnFieldsByFieldId=true';
     if (offset) u += '&offset=' + encodeURIComponent(offset);
     return u;
   }
@@ -1153,9 +960,9 @@ function fetchVehicles() {
 
   return loadPage(null)
     .then(function() {
-      /* Règle d'affichage : on n'affiche JAMAIS un véhicule sans prix client
-         (« Mon prix (CHF) » vide ou égal à 0). Tous les statuts restent visibles. */
-      vehicules = all.map(mapRecord).filter(function(v) { return v.prix_jujucar > 0; });
+      /* Tous les véhicules sont affichés, quel que soit le Statut
+         (« En vente » / « Réservé » / « Vendu »). */
+      vehicules = all.map(mapRecord);
       populateMarques();
       populateModeles();
       applyFilters();
@@ -1176,9 +983,9 @@ function buildCompactCard(v) {
   card.tabIndex = 0;
   card.setAttribute('role', 'button');
   card.setAttribute('aria-label', (v.marque || '') + ' ' + (v.modele || '') + ' — voir la fiche');
-  card.addEventListener('click', function() { openDetail(v); });
+  card.addEventListener('click', function() { openModal(v); });
   card.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDetail(v); }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(v); }
   });
 
   var imgWrap = document.createElement('div');
@@ -1205,6 +1012,12 @@ function buildCompactCard(v) {
     imgWrap.appendChild(fuel);
   }
 
+  /* Bandeau coloris (visible au survol uniquement, via CSS) */
+  var banner = document.createElement('div');
+  banner.className = 'v-color-banner';
+  banner.textContent = COLOR_BANNER_TEXT;
+  imgWrap.appendChild(banner);
+
   card.appendChild(imgWrap);
 
   var oldPriceHtml = (v.prix_concession > 0)
@@ -1220,8 +1033,7 @@ function buildCompactCard(v) {
     '<div class="v-sep"></div>' +
     oldPriceHtml +
     '<div class="v-price-new">CHF ' + formatPrix(v.prix_jujucar || 0) + '</div>' +
-    ecoHtml +
-    colorsBadgeHtml(v);
+    ecoHtml;
   body.querySelector('.v-marque').textContent = v.marque || '';
   body.querySelector('.v-modele').textContent = v.modele || '';
   card.appendChild(body);
@@ -1262,6 +1074,12 @@ function buildCarousel(v) {
     wrap.appendChild(fuel);
   }
 
+  /* Bandeau coloris — toujours visible dans la fiche (via CSS) */
+  var banner = document.createElement('div');
+  banner.className = 'v-color-banner';
+  banner.textContent = COLOR_BANNER_TEXT;
+  wrap.appendChild(banner);
+
   if (imgs.length > 1) {
     var prev = document.createElement('button');
     prev.className = 'v-arrow v-prev';
@@ -1286,9 +1104,9 @@ function buildCarousel(v) {
   return wrap;
 }
 
-/* ----- Fiche détaillée — pleine page ----- */
-var contentWrap   = document.querySelector('.content-wrap');
-var detailContent = document.getElementById('v-detail-content');
+/* ----- Fiche détaillée (modale) ----- */
+var modalOverlay = document.getElementById('v-modal');
+var modalContent = document.getElementById('v-modal-content');
 
 /* Construit une case « donnée technique » (ignorée si la valeur est vide). */
 function specBlock(label, valHtml, cls) {
@@ -1299,22 +1117,20 @@ function specBlock(label, valHtml, cls) {
          '</div>';
 }
 
-function openDetail(v) {
-  if (!detailContent || !contentWrap) return;
-  detailContent.innerHTML = '';
-  detailContent.appendChild(buildCarousel(v));
+function openModal(v) {
+  if (!modalContent) return;
+  modalContent.innerHTML = '';
+  modalContent.appendChild(buildCarousel(v));
 
   /* Grille de données : Année, Kilométrage, Carburant, Puissance,
      Prix JujuCar, Prix concessionnaire. */
   var specs =
     specBlock('Année', v.annee ? escapeHtml(String(v.annee)) : '') +
     specBlock('Kilométrage', v.km !== '' ? escapeHtml(formatPrix(v.km)) + ' km' : '') +
-    specBlock('Motorisation', vMotoLabel(v) ? escapeHtml(vMotoLabel(v)) : '') +
-    specBlock('Puissance', v.puissance ? escapeHtml(v.puissance) : '') +
-    specBlock('Boîte', v.boite ? escapeHtml(v.boite) : '') +
-    specBlock('Transmission', v.transmission ? escapeHtml(v.transmission) : '') +
-    specBlock('Mon prix', v.prix_jujucar ? 'CHF ' + formatPrix(v.prix_jujucar) : '', 'accent') +
-    specBlock('Prix de référence',
+    specBlock('Carburant', vMotoLabel(v) ? escapeHtml(vMotoLabel(v)) : '') +
+    specBlock('Puissance', v.puissance !== '' ? escapeHtml(String(v.puissance)) + ' CV' : '') +
+    specBlock('Prix JujuCar', v.prix_jujucar ? 'CHF ' + formatPrix(v.prix_jujucar) : '', 'accent') +
+    specBlock('Prix concessionnaire',
               v.prix_concession ? '<span class="v-spec-old">CHF ' + formatPrix(v.prix_concession) + '</span>' : '');
 
   /* Liste des coloris disponibles */
@@ -1342,126 +1158,33 @@ function openDetail(v) {
     ? '<span class="v-eco">CHF ' + formatPrix(vEconomie(v)) + ' économisés</span>'
     : '';
 
-  /* Libellé du véhicule (pour l'affichage + l'e-mail reçu). */
-  var vehiculeLabel = [v.marque, v.modele, v.annee].filter(Boolean).join(' ').trim();
-
   var body = document.createElement('div');
   body.className = 'v-modal-body';
   body.innerHTML =
     '<div class="v-marque">' + escapeHtml(v.marque || '') + '</div>' +
     '<h3 class="v-modal-modele">' + escapeHtml(v.modele || '') + '</h3>' +
-    colorsBadgeHtml(v) +
     '<div class="v-spec-grid">' + specs + '</div>' +
     ecoHtml +
     colorsHtml +
     optionsHtml +
-    /* Bouton qui déplie un formulaire de contact pré-rempli avec ce modèle */
-    '<button type="button" class="v-contact" id="v-contact-toggle">Nous contacter pour ce modèle</button>' +
-    '<form class="v-contact-form" id="v-contact-form" novalidate>' +
-      '<div class="v-form-vehicle">Véhicule sélectionné : <strong>' + escapeHtml(vehiculeLabel || '—') + '</strong></div>' +
-      '<div class="v-form-row">' +
-        '<div class="v-field-group"><label class="v-field-label" for="vf-prenom">Prénom</label><input class="v-input" id="vf-prenom" type="text" name="prenom" placeholder="Votre prénom" autocomplete="given-name"></div>' +
-        '<div class="v-field-group"><label class="v-field-label" for="vf-nom">Nom</label><input class="v-input" id="vf-nom" type="text" name="nom" placeholder="Votre nom" autocomplete="family-name"></div>' +
-      '</div>' +
-      '<div class="v-field-group"><label class="v-field-label" for="vf-email">Email *</label><input class="v-input" id="vf-email" type="email" name="email" placeholder="votre@email.ch" autocomplete="email" required></div>' +
-      '<div class="v-field-group"><label class="v-field-label" for="vf-tel">Téléphone</label><input class="v-input" id="vf-tel" type="tel" name="telephone" placeholder="+41 79 000 00 00" autocomplete="tel"></div>' +
-      '<div class="v-field-group"><label class="v-field-label" for="vf-msg">Message</label><textarea class="v-textarea" id="vf-msg" name="message" placeholder="Une question sur ce véhicule ?"></textarea></div>' +
-      '<input type="text" name="website" class="v-hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
-      '<button type="submit" class="v-form-submit">Envoyer ma demande ↗</button>' +
-      '<div class="v-form-note">* Seul l\'email est obligatoire. Votre demande nous arrive directement, avec le modèle que vous avez sélectionné.</div>' +
-    '</form>';
-  detailContent.appendChild(body);
-  wireDetailContactForm(v, vehiculeLabel);
+    '<a class="v-contact" href="achat.html">Nous contacter pour ce modèle</a>';
+  modalContent.appendChild(body);
 
-  contentWrap.classList.add('detail-open');
-  window.scrollTo(0, 0);
-  /* Historique : un retour navigateur (ou le bouton « Retour aux annonces »)
-     referme la fiche au lieu de quitter la page. */
-  if (history.state && history.state.vdetail) {
-    history.replaceState({ vdetail: v.id }, '', '#vehicule-' + v.id);
-  } else {
-    history.pushState({ vdetail: v.id }, '', '#vehicule-' + v.id);
-  }
+  modalOverlay.classList.add('open');
 }
 
-/* Branche le formulaire de contact intégré à la fiche : ouverture/fermeture
-   + envoi vers Formspree (même boîte que le formulaire du site). L'e-mail reçu
-   contient le modèle sélectionné + les coordonnées. Seul l'email est requis. */
-function wireDetailContactForm(v, vehiculeLabel) {
-  var toggle = document.getElementById('v-contact-toggle');
-  var form   = document.getElementById('v-contact-form');
-  if (!toggle || !form) return;
-
-  toggle.addEventListener('click', function() {
-    var opening = !form.classList.contains('open');
-    form.classList.toggle('open');
-    if (opening) {
-      var email = form.querySelector('[name="email"]');
-      if (email) email.focus();
-      form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  });
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    /* Anti-spam : si le champ caché est rempli, on ignore silencieusement. */
-    var hp = form.querySelector('[name="website"]');
-    if (hp && hp.value) return;
-
-    var get = function(n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
-    var email = get('email');
-    if (!email) { alert('Veuillez entrer votre adresse email.'); var ef = form.querySelector('[name="email"]'); if (ef) ef.focus(); return; }
-
-    var payload = {
-      type: 'catalogue-modele',
-      vehicule: vehiculeLabel || ((v.marque || '') + ' ' + (v.modele || '')).trim(),
-      vehicule_id: v.id,
-      prix_jujucar: v.prix_jujucar ? 'CHF ' + formatPrix(v.prix_jujucar) : '',
-      prenom: get('prenom'),
-      nom: get('nom'),
-      email: email,
-      telephone: get('telephone'),
-      message: get('message'),
-      _subject: 'Demande catalogue — ' + (vehiculeLabel || 'véhicule')
-    };
-
-    var btn = form.querySelector('.v-form-submit');
-    if (btn) { btn.disabled = true; btn.textContent = 'Envoi…'; }
-
-    fetch('https://formspree.io/f/mvzyvebp', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
-    }).then(function(r) {
-      if (r.ok) {
-        alert('✅ Votre demande a bien été envoyée ! Nous vous répondons sous 24h.');
-        form.reset();
-        form.classList.remove('open');
-      } else {
-        alert('⚠️ Une erreur est survenue. Veuillez réessayer.');
-      }
-    }).catch(function() {
-      alert('⚠️ Une erreur est survenue. Veuillez réessayer.');
-    }).then(function() {
-      if (btn) { btn.disabled = false; btn.textContent = 'Envoyer ma demande ↗'; }
-    });
-  });
+function closeModal() {
+  if (!modalOverlay) return;
+  modalOverlay.classList.remove('open');
+  modalContent.innerHTML = '';
 }
 
-function closeDetail(fromPop) {
-  if (!contentWrap) return;
-  contentWrap.classList.remove('detail-open');
-  if (detailContent) detailContent.innerHTML = '';
-  window.scrollTo(0, 0);
-  if (!fromPop && history.state && history.state.vdetail) history.back();
+function vModalBackdrop(e) {
+  if (e.target === modalOverlay) closeModal();
 }
-
-window.addEventListener('popstate', function() {
-  if (contentWrap && contentWrap.classList.contains('detail-open')) closeDetail(true);
-});
 
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape' && contentWrap && contentWrap.classList.contains('detail-open')) closeDetail();
+  if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('open')) closeModal();
 });
 
 /* ----- Carrousel (flèches + swipe tactile) ----- */
@@ -1592,13 +1315,6 @@ function renderGrid() {
     grid.appendChild(buildCompactCard(v));
   });
 
-  /* Entrée en cascade des cartes (GSAP), sauf si animations réduites. */
-  if (window.gsap && !PREFERS_REDUCED && grid.children.length) {
-    gsap.from(grid.children, {
-      opacity: 0, y: 22, duration: 0.5, ease: 'power2.out', stagger: 0.04, overwrite: true
-    });
-  }
-
   noResults.style.display = (filtered.length === 0) ? 'block' : 'none';
   resultsCount.textContent = (filtered.length === 0) ? '' :
     (filtered.length + (filtered.length > 1 ? ' véhicules' : ' véhicule'));
@@ -1684,15 +1400,6 @@ function resetFilters() {
 })();
 
 /* ----- Init : charge les véhicules depuis Airtable ----- */
-var PREFERS_REDUCED = window.matchMedia
-  && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-/* Légère révélation du bandeau « non exhaustif » au chargement (GSAP). */
-if (window.gsap && window.ScrollTrigger && !PREFERS_REDUCED) {
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.from('.cat-notice', { opacity: 0, y: 18, duration: 0.7, ease: 'power3.out', delay: 0.15 });
-}
-
 updateBudgetLabel(SLIDER_MAX);
 populateModeles();          /* état initial : « Tous les modèles » désactivé */
 fetchVehicles();
@@ -1708,15 +1415,11 @@ function toggleMobile() {
 /* Bannière cookies : affichée UNE SEULE FOIS, puis mémorisée durablement.
    localStorage persiste entre les onglets ET entre les visites → la bannière
    ne réapparaît pas à chaque nouvel onglet (contrairement à sessionStorage). */
-function cookiesAccepted() {
-  return localStorage.getItem('cookies_accepted') === 'true'
-      || localStorage.getItem('cookieAccepted') === '1'; /* compat ancienne clé */
-}
 function acceptCookies() {
-  localStorage.setItem('cookies_accepted', 'true');
+  localStorage.setItem('cookieAccepted', '1');
   document.getElementById('cookie-banner').style.display = 'none';
 }
-if (!cookiesAccepted()) {
+if (!localStorage.getItem('cookieAccepted')) {
   document.getElementById('cookie-banner').style.display = 'flex';
 }
 </script>
