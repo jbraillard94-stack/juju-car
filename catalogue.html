@@ -34,9 +34,14 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       color: #F4F1EA;
       background-color: #0A0A0B;
+      /* Image de fond fixe (identique aux autres pages), couvre toute la page au scroll */
       background-image:
         radial-gradient(120% 80% at 80% 0%, rgba(201,162,75,.07), transparent 55%),
-        radial-gradient(100% 60% at 0% 100%, rgba(46,139,99,.05), transparent 60%);
+        radial-gradient(100% 60% at 0% 100%, rgba(46,139,99,.05), transparent 60%),
+        url("assets/hero-new.png");
+      background-position: center, center, center;
+      background-size: cover, cover, cover;
+      background-repeat: no-repeat;
       background-attachment: fixed;
       min-height: 100vh;
     }
@@ -44,7 +49,7 @@
     .bg-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.52);
+      background: rgba(10,10,11,0.82);
       z-index: 0;
       pointer-events: none;
     }
@@ -144,14 +149,7 @@
     }
 
     /* ===== HERO ===== */
-    .cat-hero { padding: 64px 0 36px; position: relative; }
-    /* Fond photo (Option D) + overlay sombre pour la lisibilité */
-    .cat-hero::before {
-      content: ""; position: absolute; inset: 0; z-index: 0;
-      background: linear-gradient(rgba(10,10,11,0.62), rgba(10,10,11,0.82)),
-        url("assets/hero-new.png") center/cover no-repeat;
-    }
-    .cat-hero .inner { position: relative; z-index: 1; }
+    .cat-hero { padding: 64px 0 36px; }
 
     .badge-pill {
       display: inline-flex; align-items: center; gap: 8px;
@@ -1498,14 +1496,15 @@ function toggleMobile() {
   var modal = document.getElementById('introModal');
   var btn   = document.getElementById('introBtn');
   if (!modal || !btn) return;
-  if (!localStorage.getItem('catIntroSeen')) {
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
+  /* Affiché à CHAQUE chargement de la page catalogue → réapparaît à chaque
+     arrivée depuis un autre onglet. La fiche d'une annonce est une modale
+     interne : la consulter puis la fermer ne recharge pas la page, donc le
+     pop-up ne réapparaît pas dans ce cas. */
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
   function closeIntro() {
     modal.classList.remove('open');
     document.body.style.overflow = '';
-    localStorage.setItem('catIntroSeen', '1');
   }
   btn.addEventListener('click', closeIntro);
   modal.addEventListener('click', function(e) { if (e.target === modal) closeIntro(); });

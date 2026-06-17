@@ -3,7 +3,7 @@
    ===================================================================== */
 /* page hero compact */
 .page-hero{position:relative;padding:150px 0 60px;overflow:hidden;border-bottom:1px solid var(--line-soft);
-  background:linear-gradient(var(--noir),var(--noir-2))}
+  background:transparent}
 .page-hero::before{content:"";position:absolute;inset:0;
   background:radial-gradient(80% 120% at 90% 0%,rgba(201,162,75,.08),transparent 55%);pointer-events:none}
 .page-hero .inner{position:relative}
@@ -15,11 +15,9 @@
 .page-hero h1 .accent{font-style:italic;color:var(--or-clair)}
 .page-hero p{color:var(--creme-2);max-width:600px;font-size:16px}
 
-/* page-hero avec photo de fond (Option D) + overlay sombre pour la lisibilité.
-   Appliqué sur vente.html et tarifs.html via la classe .has-hero-photo. */
-.page-hero.has-hero-photo{
-  background:linear-gradient(rgba(10,10,11,.72),rgba(10,10,11,.84)),
-    url("hero-new.png") center/cover no-repeat;}
+/* L'image de fond est désormais globale et fixe (voir html::before dans theme.css),
+   identique sur toutes les pages — le hero reste donc simplement transparent. */
+.page-hero.has-hero-photo{background:transparent}
 
 /* === Typographie agrandie (vente.html) === */
 .page-vente .page-hero h1{font-size:clamp(40px,6.6vw,74px)}
@@ -61,7 +59,7 @@
 .story-text p strong{color:var(--creme)}
 
 /* engagements grid */
-.engage-section{padding:clamp(60px,8vw,100px) 0;background:linear-gradient(var(--noir-2),var(--noir))}
+.engage-section{padding:clamp(60px,8vw,100px) 0;background:transparent}
 .section-tag{display:inline-flex;align-items:center;gap:11px;font-size:11.5px;letter-spacing:.3em;
   text-transform:uppercase;color:var(--or);margin-bottom:18px}
 .section-tag::before{content:"";width:26px;height:1px;background:var(--or)}
@@ -91,7 +89,7 @@
 .mg4-desc{color:var(--creme-2);font-size:15.5px;max-width:640px;line-height:1.7}
 
 /* blockquote */
-.blockquote-section{padding:clamp(50px,7vw,90px) 0;text-align:center;background:linear-gradient(var(--noir),var(--noir-2))}
+.blockquote-section{padding:clamp(50px,7vw,90px) 0;text-align:center;background:transparent}
 .blockquote{max-width:760px;margin:0 auto 30px}
 .blockquote p{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.6vw,30px);
   line-height:1.45;color:var(--creme);margin-bottom:18px}

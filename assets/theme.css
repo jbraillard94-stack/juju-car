@@ -28,10 +28,15 @@
 }
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;background:var(--noir)}
+/* Image de fond fixe, identique sur toutes les pages : couvre toute la page,
+   y compris au scroll vers le bas, derrière tout le contenu. */
+html::before{content:"";position:fixed;inset:0;z-index:-1;
+  background:linear-gradient(rgba(10,10,11,.80),rgba(10,10,11,.88)),
+    url("hero-new.png") center center/cover no-repeat}
 body{
   font-family:var(--sans);
-  background:var(--noir);
+  background:transparent;
   color:var(--creme);
   line-height:1.6;
   overflow-x:hidden;
@@ -169,7 +174,7 @@ header.scrolled{
 
 /* =================== TRUST STRIP =================== */
 .trust{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
-  background:linear-gradient(var(--noir-2),var(--noir))}
+  background:rgba(16,16,18,.35)}
 .trust .inner{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:46px;padding-bottom:46px}
 .trust-item{text-align:center;position:relative}
 .trust-item:not(:last-child)::after{content:"";position:absolute;right:-12px;top:14%;height:72%;width:1px;background:var(--line-soft)}
@@ -264,7 +269,7 @@ section.block{padding:clamp(80px,11vw,140px) 0;position:relative}
 
 /* =================== CTA FINALE =================== */
 .cta-final{position:relative;text-align:center;overflow:hidden;
-  background:linear-gradient(var(--noir),var(--noir-2))}
+  background:transparent}
 .cta-final::before{content:"";position:absolute;inset:0;
   background:radial-gradient(70% 120% at 50% 0%,rgba(201,162,75,.10),transparent 60%)}
 .cta-final .inner{position:relative}
@@ -339,7 +344,7 @@ section.block{padding:clamp(80px,11vw,140px) 0;position:relative}
 .form-ok p{color:var(--creme-2);font-size:15px}
 
 /* =================== FOOTER =================== */
-footer{border-top:1px solid var(--line-soft);background:var(--noir);padding:64px 0 34px}
+footer{border-top:1px solid var(--line-soft);background:rgba(8,8,9,.6);padding:64px 0 34px}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:46px}
 .foot-brand{font-family:var(--serif);font-size:24px;margin-bottom:14px}
 .foot-brand .dot{color:var(--or)}
