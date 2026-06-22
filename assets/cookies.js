@@ -35,13 +35,13 @@
 
   document.body.appendChild(banner);
 
-  if (!localStorage.getItem('cookieAccepted')) {
+  if (!localStorage.getItem('cookiesOK_v2')) {
     banner.style.display = 'flex';
   }
 })();
 
 function acceptCookies() {
-  localStorage.setItem('cookieAccepted', '1');
+  localStorage.setItem('cookiesOK_v2', '1');
   var b = document.getElementById('cookie-banner');
   if (b) b.style.display = 'none';
 }
