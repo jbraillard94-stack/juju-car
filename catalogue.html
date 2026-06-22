@@ -894,6 +894,7 @@ var F = {
   puissance:  'fldGLbjyKmjdLbS23',  // Puissance
   prixJuju:   'fldPMZEEwpVipcjzn',  // Mon prix (CHF)
   prixConc:   'fldrtLSPETSwkE9Ye',  // Prix concessionnaire (CHF)
+  affBarre:   'fldYGvPu37fXmNypX',  // Afficher prix barré (checkbox)
   options:    'fldB0SbXGE6e7L43W',  // Équipements
   images:     'fldORFodjckf0goAn',  // Photos
   statut:     'fldWZLDNWV90UQVJ2'   // Statut
@@ -1003,6 +1004,7 @@ function mapRecord(rec) {
     puissance: f[F.puissance] || '',
     prix_jujucar: Number(f[F.prixJuju]) || 0,
     prix_concession: Number(f[F.prixConc]) || 0,
+    afficher_barre: !!f[F.affBarre],
     description: asText(f[F.options]),
     imagesDisplay: imgs.map(dispUrl),
     imagesFull: imgs.map(fullUrl),
@@ -1091,9 +1093,10 @@ function buildCompactCard(v) {
 
   card.appendChild(imgWrap);
 
-  var oldPriceHtml = (v.prix_concession > 0)
+  var showBarre = v.afficher_barre && v.prix_concession > 0;
+  var oldPriceHtml = showBarre
     ? '<div class="v-price-old">CHF ' + formatPrix(v.prix_concession) + '</div>' : '';
-  var ecoHtml = (vEconomie(v) > 0)
+  var ecoHtml = (showBarre && vEconomie(v) > 0)
     ? '<span class="v-eco">CHF ' + formatPrix(vEconomie(v)) + ' économisés</span>' : '';
 
   var body = document.createElement('div');
@@ -1200,7 +1203,7 @@ function openModal(v) {
     specBlock('Puissance', v.puissance !== '' ? escapeHtml(String(v.puissance)) + ' CV' : '') +
     specBlock('Prix JujuCar', v.prix_jujucar ? 'CHF ' + formatPrix(v.prix_jujucar) : '', 'accent') +
     specBlock('Prix concessionnaire',
-              v.prix_concession ? '<span class="v-spec-old">CHF ' + formatPrix(v.prix_concession) + '</span>' : '');
+              (v.afficher_barre && v.prix_concession) ? '<span class="v-spec-old">CHF ' + formatPrix(v.prix_concession) + '</span>' : '');
 
   /* Liste des coloris disponibles */
   var colorsHtml = '';
@@ -1223,7 +1226,8 @@ function openModal(v) {
       '<p class="v-modal-desc">' + escapeHtml(v.description) + '</p>';
   }
 
-  var ecoHtml = (vEconomie(v) > 0)
+  var showBarreModal = v.afficher_barre && v.prix_concession > 0;
+  var ecoHtml = (showBarreModal && vEconomie(v) > 0)
     ? '<span class="v-eco">CHF ' + formatPrix(vEconomie(v)) + ' économisés</span>'
     : '';
 
@@ -1566,3 +1570,4 @@ if (lb) {
   <script src="assets/cookies.js" defer></script>
 </body>
 </html>
+
